@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./Backend/index.js",
-    "pug": "pug -w ./Frontend/admin/template -o ./Frontend/admin -P & pug -w ./Frontend/client/template -o ./Frontend/client -P"
+    "pug": "concurrently \"pug -w ./Frontend/admin/template -o ./Frontend/admin -P\" \"pug -w ./Frontend/client/template -o ./Frontend/client -P\""
+
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,10 @@
     "express": "^4.21.1",
     "md5": "^2.3.0",
     "mongoose": "^8.8.1",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
   }
 }
