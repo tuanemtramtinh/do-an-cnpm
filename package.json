@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./Backend/index.js",
     "pug": "concurrently \"pug -w ./Frontend/admin/template -o ./Frontend/admin -P\" \"pug -w ./Frontend/client/template -o ./Frontend/client -P\""
-
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "md5": "^2.3.0",
     "mongoose": "^8.8.1",
     "pug": "^3.0.3",
