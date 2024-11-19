@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const tagSchema = mongoose.Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   status: {
     type: Boolean,
-    require: true,
+    required: true,
   },
 });
 
