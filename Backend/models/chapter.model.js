@@ -5,16 +5,16 @@ const chapterSchema = mongoose.Schema({
   uploader: {
     type: mongoose.Schema.ObjectId,
     ref: "user",
-    require: true,
+    required: true,
   },
   book_id: {
     type: mongoose.Schema.ObjectId,
     ref: "book",
-    require: true,
+    required: true,
   },
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   images: {
     type: Array,

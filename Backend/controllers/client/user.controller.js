@@ -9,10 +9,10 @@ const { sendMail } = require("../../helpers/mail.helper");
 
 module.exports.register = async (req, res) => {
   try {
-    const { email, username, password } = req.body;
+    const { email, username, password, phone, dob } = req.body;
 
     const existUser = await User.findOne({
-      email: email,
+      email,
     });
 
     if (existUser) {
@@ -24,11 +24,14 @@ module.exports.register = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const dobDate = new Date(dob);
 
     const newUser = new User({
       email,
       username,
       password: hashedPassword,
+      dob: dobDate,
+      phone,
     });
 
     await newUser.save();
@@ -38,6 +41,13 @@ module.exports.register = async (req, res) => {
     const token = await signAccessToken(data);
 
     if (token === -1) {
+      const message = messageHelper.eturnMessage(
+        "Có lỗi server, vui lòng thử lại",
+        null,
+        500
+      );
+      res.status(500).json(message);
+      return;
     }
 
     const message = messageHelper.returnMessage(
@@ -54,10 +64,10 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     const existUser = await User.findOne({
-      email,
+      username,
     });
 
     if (!existUser) {
@@ -77,7 +87,6 @@ module.exports.login = async (req, res) => {
         null,
         400
       );
-
       res.status(400).json(message);
       return;
     }
@@ -87,6 +96,16 @@ module.exports.login = async (req, res) => {
     };
 
     const token = await signAccessToken(data);
+
+    if (token === -1) {
+      const message = messageHelper.eturnMessage(
+        "Có lỗi server, vui lòng thử lại",
+        null,
+        500
+      );
+      res.status(500).json(message);
+      return;
+    }
 
     const message = messageHelper.returnMessage(
       "Đăng nhập thành công",
@@ -138,7 +157,7 @@ module.exports.forgetPassword = async (req, res) => {
 
     //Gửi email
 
-    const content = `Mã OTP của bạn là <b>${forgotPasswordUser.otp}</b>. Xin đừng chia sẻ với ai, chia sẻ là cook :). Token sẽ hết hạn sau <b>3 phút</b>`;
+    const content = `Mã OTP của bạn là <b>${forgotPasswordUser.otp}</b>. Xin đừng chia sẻ với ai, chia sẻ là cook :). Token sẽ hết hạn sau <b>5 phút</b>`;
 
     sendMail(email, content);
 
@@ -194,6 +213,16 @@ module.exports.sendOTP = async (req, res) => {
     const data = { id: existUser.id };
 
     const token = await signAccessToken(data);
+
+    if (token === -1) {
+      const message = messageHelper.eturnMessage(
+        "Có lỗi server, vui lòng thử lại",
+        null,
+        500
+      );
+      res.status(500).json(message);
+      return;
+    }
 
     const message = messageHelper.returnMessage(
       "Xác thực người dùng thành coong",

@@ -1,22 +1,22 @@
 const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
-  name: { type: String, require: true },
-  author: { type: String, require: true },
+  name: { type: String, required: true },
+  author: { type: String, required: true },
   thumbnail: String,
   description: String,
-  type: { type: String, require: true },
+  type: { type: String, required: true },
   language: {
     type: String,
     default: "vn",
   },
   age_limit: {
     type: Number,
-    require: true,
+    required: true,
   },
   like: {
     type: Array,
-    require: true,
+    required: true,
   },
   view: {
     type: Number,
@@ -25,12 +25,12 @@ const bookSchema = mongoose.Schema({
   translator: {
     type: mongoose.Schema.ObjectId,
     ref: "user",
-    require: true,
+    required: true,
   },
   tag: {
     type: mongoose.Schema.ObjectId,
     ref: "tag",
-    require: true,
+    required: true,
   },
   comment: {
     type: mongoose.Schema.ObjectId,
