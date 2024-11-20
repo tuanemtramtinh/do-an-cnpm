@@ -8,6 +8,8 @@ router.post("/register", controller.register);
 
 router.post("/login", controller.login);
 
+router.get("/info", authMiddleware.requireAuth, controller.info);
+
 router.post("/forgot-password", controller.forgetPassword);
 
 router.post("/send-otp", controller.sendOTP);

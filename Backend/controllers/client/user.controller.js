@@ -121,6 +121,31 @@ module.exports.login = async (req, res) => {
   }
 };
 
+module.exports.info = async (req, res) => {
+  try {
+    const dob = req.user.dob.toISOString().split("T")[0];
+
+    const returnUser = {
+      id: req.user.id,
+      username: req.user.username,
+      email: req.user.email,
+      phone: req.user.phone,
+      isAdmin: req.user.isAdmin,
+      dob,
+    };
+
+    res.json(
+      messageHelper.returnMessage(
+        "Lấy thông tin người dùng thành công",
+        returnUser,
+        200
+      )
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports.forgetPassword = async (req, res) => {
   try {
     const email = req.body.email;
