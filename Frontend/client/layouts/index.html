@@ -45,22 +45,17 @@
             <div class="modal-form">
               <form class="form" id="form-1" action="" method="POST">
                 <div class="form-group">
-                  <label class="modal-label">
-                    <!-- for chi tro den id-->Tên người dùng
-                  </label>
-                  <input class="modal-input" id="username" type="text"><span class="form-message"></span>
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
                 </div>
                 <div class="form-group">
-                  <label class="modal-label">Mật khẩu</label>
-                  <input class="modal-input" id="password" type="password"><span class="form-message"></span>
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
                 </div>
                 <div class="modal-label-quenpass">Quên mật khẩu?</div>
-                <div class="modal-label-result">
-                  <button id="button-login">Đăng nhập</button>
-                </div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
               </form>
-              <p class="modal-label-chuyendangky">
-                <!-- for chi tro den id-->Người dùng mới?
+              <p class="modal-label-chuyendangky">Người dùng mới?
                 <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
               </p>
             </div>
@@ -77,45 +72,40 @@
             <div class="modal-form-dangky">
               <form class="form" id="form-2" action="" method="POST">
                 <div class="form-group2">
-                  <label class="modal-label-dangky">
-                    <!-- for chi tro den id-->Tên người dùng
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
                     <p>*</p>
                   </label>
-                  <input class="modal-input-dangky" id="username2" type="text"><span class="form-message"></span>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
                 </div>
                 <div class="form-group2">
-                  <label class="modal-label-dangky">
-                    <!-- for chi tro den id-->Mật khẩu
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
                     <p>*</p>
                   </label>
-                  <input class="modal-input-dangky" id="pass2" type="text"><span class="form-message"></span>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
                 </div>
                 <div class="form-group2">
-                  <label class="modal-label-dangky">
-                    <!-- for chi tro den id-->Ngày sinh
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
                     <p>*</p>
                   </label>
-                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy"><span class="form-message"></span>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
                 </div>
                 <div class="form-group2">
-                  <label class="modal-label-dangky">
-                    <!-- for chi tro den id-->Email
+                  <label class="modal-label-dangky" for="email">Email
                     <p>*</p>
                   </label>
-                  <input class="modal-input-dangky" id="email" type="text"><span class="form-message"></span>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
                 </div>
                 <div class="form-group2">
-                  <label class="modal-label-dangky">Số điện thoại
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
                     <p>*</p>
                   </label>
-                  <input class="modal-input-dangky" id="phone" type="phone"><span class="form-message"></span>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder="0123456789"><span class="form-message"></span>
                 </div>
                 <div class="modal-label-result">
-                  <button id="button-dangky">Đăng ký</button>
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
                 </div>
               </form>
-              <p class="modal-label-chuyendangky">
-                <!-- for chi tro den id-->Quay lại?
+              <p class="modal-label-chuyendangky">Quay lại?
                 <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
               </p>
             </div>

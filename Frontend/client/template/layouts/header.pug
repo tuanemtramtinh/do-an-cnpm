@@ -32,27 +32,23 @@
             .modal-form
                 form#form-1.form(action='', method='POST')
                     div.form-group
-                        label.modal-label
-                            // for chi tro den id
-                            |Tên người dùng
-                        input#username.modal-input(type='text')
+                        label.modal-label(for='username')
+                            | Tên người dùng
+                        input#username.modal-input(type='text', required=true)
                         span.form-message
                     div.form-group
-                        label.modal-label
-                            |Mật khẩu
-                        input#password.modal-input(type='password')
+                        label.modal-label(for='password')
+                            | Mật khẩu
+                        input#password.modal-input(type='password', required=true)
                         span.form-message
                     div.modal-label-quenpass
                         | Quên mật khẩu?
-                    div.modal-label-result
-                        button#button-login
-                            | Đăng nhập
+                    button#button-login(type='submit', disabled=true)
+                        | Đăng nhập
                 p.modal-label-chuyendangky
-                    // for chi tro den id
-                    |Người dùng mới?
+                    | Người dùng mới?
                     button.modal-label-chuyendangky-trangmoi#dangky Đăng ký
 
-    
 
 
 .modal-dangky.js-modal-dangky
@@ -65,46 +61,42 @@
             .modal-form-dangky
                 form#form-2.form(action='', method='POST')
                     div.form-group2
-                        label.modal-label-dangky
-                            // for chi tro den id
-                            |Tên người dùng
+                        label.modal-label-dangky(for='username2')
+                            | Tên người dùng
                             p *
-                        input#username2.modal-input-dangky(type='text')
+                        input#username2.modal-input-dangky(type='text', required=true)
                         span.form-message
                     div.form-group2
-                        label.modal-label-dangky
-                            // for chi tro den id
-                            |Mật khẩu
+                        label.modal-label-dangky(for='pass2')
+                            | Mật khẩu
                             p *
-                        input#pass2.modal-input-dangky(type='text')
+                        input#pass2.modal-input-dangky(type='password', required=true)
                         span.form-message
                     div.form-group2
-                        label.modal-label-dangky
-                            // for chi tro den id
-                            |Ngày sinh
+                        label.modal-label-dangky(for='daybd')
+                            | Ngày sinh
                             p *
-                        input#daybd.modal-input-dangky(type='date' placeholder="dd/mm/yyyy")
+                        input#daybd.modal-input-dangky(type='date', placeholder="dd/mm/yyyy", required=true)
                         span.form-message
                     div.form-group2
-                        label.modal-label-dangky
-                            // for chi tro den id
-                            |Email
+                        label.modal-label-dangky(for='email')
+                            | Email
                             p *
-                        input#email.modal-input-dangky(type='text')
+                        input#email.modal-input-dangky(type='email', required=true)
                         span.form-message
                     div.form-group2
-                        label.modal-label-dangky
-                            |Số điện thoại
+                        label.modal-label-dangky(for='phone')
+                            | Số điện thoại
                             p *
-                        input#phone.modal-input-dangky(type='phone')
+                        input#phone.modal-input-dangky(type='tel', pattern='[0-9]{10}', required=true, placeholder="0123456789")
                         span.form-message
                     div.modal-label-result
-                        button#button-dangky
+                        button#button-dangky(type='submit', disabled=true)
                             | Đăng ký
                 p.modal-label-chuyendangky
-                    // for chi tro den id
-                    |Quay lại?
+                    | Quay lại?
                     button.modal-label-chuyendangky-trangmoi#dangnhap Đăng nhập
+
 script(src="../../assets/js/client/header.js") 
 script(src="../../assets/js/client/validator.js")
 script.
