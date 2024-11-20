@@ -10,6 +10,134 @@
     </div>
     <div class="header-list">
       <button class="header-item__login">Thành viên</button>
+      <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt=""/>
+        <ul class="header__navbar-user-menu">
+          <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
+          <li class="header__navbar-user-item"><a href="">Trang quản lý</a></li>
+          <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+              <button id="button-logout">Đăng xuất</button></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
+<div class="modal js-modal">
+  <div class="modal-container js-modal-container">
+    <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+    <header class="modal-header">
+      <p>Đăng nhập vào tài khoản </p>
+    </header>
+    <div class="modal-body">
+      <div class="modal-form">
+        <form class="form" id="form-1" action="" method="POST">
+          <div class="form-group">
+            <label class="modal-label">
+              <!-- for chi tro den id-->Tên người dùng
+            </label>
+            <input class="modal-input" id="username" type="text"/><span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label class="modal-label">Mật khẩu</label>
+            <input class="modal-input" id="password" type="password"/><span class="form-message"></span>
+          </div>
+          <div class="modal-label-quenpass">Quên mật khẩu?</div>
+          <div class="modal-label-result">
+            <button id="button-login">Đăng nhập</button>
+          </div>
+        </form>
+        <p class="modal-label-chuyendangky">
+          <!-- for chi tro den id-->Người dùng mới?
+          <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-dangky js-modal-dangky">
+  <div class="modal-container-dangky js-modal-container-dangky">
+    <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+    <header class="modal-header-dangky">
+      <p>Đăng ký </p>
+    </header>
+    <div class="modal-body-dangky">
+      <div class="modal-form-dangky">
+        <form class="form" id="form-2" action="" method="POST">
+          <div class="form-group2">
+            <label class="modal-label-dangky">
+              <!-- for chi tro den id-->Tên người dùng
+              <p>*</p>
+            </label>
+            <input class="modal-input-dangky" id="username2" type="text"/><span class="form-message"></span>
+          </div>
+          <div class="form-group2">
+            <label class="modal-label-dangky">
+              <!-- for chi tro den id-->Mật khẩu
+              <p>*</p>
+            </label>
+            <input class="modal-input-dangky" id="pass2" type="text"/><span class="form-message"></span>
+          </div>
+          <div class="form-group2">
+            <label class="modal-label-dangky">
+              <!-- for chi tro den id-->Ngày sinh
+              <p>*</p>
+            </label>
+            <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy"/><span class="form-message"></span>
+          </div>
+          <div class="form-group2">
+            <label class="modal-label-dangky">
+              <!-- for chi tro den id-->Email
+              <p>*</p>
+            </label>
+            <input class="modal-input-dangky" id="email" type="text"/><span class="form-message"></span>
+          </div>
+          <div class="form-group2">
+            <label class="modal-label-dangky">Số điện thoại
+              <p>*</p>
+            </label>
+            <input class="modal-input-dangky" id="phone" type="phone"/><span class="form-message"></span>
+          </div>
+          <div class="modal-label-result">
+            <button id="button-dangky">Đăng ký</button>
+          </div>
+        </form>
+        <p class="modal-label-chuyendangky">
+          <!-- for chi tro den id-->Quay lại?
+          <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../assets/js/client/header.js"> </script>
+<script src="../../assets/js/client/validator.js"></script>
+<script>
+  Validator({
+      form: '#form-1',
+      formGroupSelector: '.form-group',
+      errorSelector: '.form-message',
+      rules: [
+      Validator.isRequired('#username'),
+      Validator.minLength('#password', 6),
+      ],
+      onSubmit: function (data) {
+      console.log(data);
+      }
+  });
+  
+  
+  Validator({
+      form: '#form-2',
+      formGroupSelector: '.form-group2',
+      errorSelector: '.form-message',
+      rules: [
+      Validator.isRequired('#username2'),
+      Validator.minLength('#pass2', 6),
+      Validator.isEmail('#email'),
+      Validator.isPhone('#phone'),
+      Validator.isRequired('#daybd'),
+      ],
+      onSubmit: function (data) {
+      console.log(data);
+      }
+  });
+</script>
