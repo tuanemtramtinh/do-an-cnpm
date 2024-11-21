@@ -12,7 +12,7 @@ module.exports.register = async (req, res) => {
     const { email, username, password, phone, dob } = req.body;
 
     const existUser = await User.findOne({
-      email,
+      $or: [{ email: email }, { username: username }],
     });
 
     if (existUser) {
