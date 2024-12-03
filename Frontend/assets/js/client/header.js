@@ -1,5 +1,4 @@
 const buyBtns = document.querySelectorAll('.header-item__login')
-// document de lay class trong bai query.. lay tat ca cac class co ten
 const modal = document.querySelector('.js-modal')
 const modalContai = document.querySelector('.js-modal-container')
 const tat=document.querySelector('.js-modal-close')
@@ -14,19 +13,18 @@ function tatbuyticket(){
 
 for(const buyBtn of buyBtns){
     buyBtn.addEventListener('click', showbuyticket)
-} // chay tung nut trong buyBtns
+} 
 
 tat.addEventListener('click',tatbuyticket)
 modal.addEventListener('click',tatbuyticket)
 modalContai.addEventListener('click', function(event){
     event.stopPropagation()
-})// ngang chan click vao ben trong bi out ra
+})
 
 //////////////////////////////////////////////////////////////////////
 
 
 const buyBtnsDangky = document.querySelectorAll('#dangky')
-// document de lay class trong bai query.. lay tat ca cac class co ten
 const modalDangky = document.querySelector('.js-modal-dangky')
 const modalDangkyContai = document.querySelector('.js-modal-container-dangky')
 const tatDangky=document.querySelector('.js-modal-close-dangky')
@@ -42,18 +40,17 @@ function tatDangkybuyticket(){
 
 for(const buyBtn of buyBtnsDangky){
     buyBtn.addEventListener('click', showbuyticketDangky)
-} // chay tung nut trong buyBtnsDangky
+} 
 
 tatDangky.addEventListener('click',tatDangkybuyticket)
 modalDangky.addEventListener('click',tatDangkybuyticket)
 modalDangkyContai.addEventListener('click', function(event){
     event.stopPropagation()
-})// ngang chan click vao ben trong bi out ra
+})
 
 
 /////////////////////////////////////////////////
 const buyBtnsTH = document.querySelectorAll('#dangnhap')
-// document de lay class trong bai query.. lay tat ca cac class co ten
 
 function showbuyticket(){
     modal.classList.add('open')
@@ -66,13 +63,13 @@ function tatbuyticket(){
 
 for(const buyBtn of buyBtnsTH){
     buyBtn.addEventListener('click', showbuyticket)
-} // chay tung nut trong buyBtnsTH
+} 
 
 tat.addEventListener('click',tatbuyticket)
 modal.addEventListener('click',tatbuyticket)
 modalContai.addEventListener('click', function(event){
     event.stopPropagation()
-})// ngang chan click vao ben trong bi out ra
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
@@ -91,11 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Gọi validateInputs khi người dùng nhập dữ liệu
     usernameInput.addEventListener('input', validateInputs);
     passwordInput.addEventListener('input', validateInputs);
 
-    // Kiểm tra ngay khi tải trang
     validateInputs();
 });
 
@@ -124,14 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Gọi validateInputs khi người dùng nhập dữ liệu
     usernameInput.addEventListener('input', validateInputs);
     passwordInput.addEventListener('input', validateInputs);
     daybdInput.addEventListener('input', validateInputs);
     emailInput.addEventListener('input', validateInputs);
     phoneInput.addEventListener('input', validateInputs);
 
-    // Kiểm tra ngay khi tải trang
     validateInputs();
 });
 
@@ -232,10 +225,8 @@ async function getUserProfile() {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-	// Initialize UI and user profile
 	await updateUIBasedOnLogin();
   
-	// Login Button
 	const loginButton = document.querySelector("#button-login");
     
 	if (loginButton) {
@@ -244,7 +235,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 		const password = document.getElementById("password").value;
 		await login(username, password);
         
-		// Close the modal after login
 		const modal = document.querySelector(".js-modal");
 		if (modal) {
 		  setTimeout(() => {
@@ -277,10 +267,12 @@ async function dangky(email, username, password, dob, phone) {
 				}),
 			}
 		);
-
+        console.log(response);
 		if (response.ok) {
 			const data = await response.json();
+            
 			alert("Đăng ký thành công");
+
 		} else {
 			const errorData = await response.json();
 			console.error("Đăng ký thất bại:", errorData.message);
@@ -322,3 +314,4 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 });
+
