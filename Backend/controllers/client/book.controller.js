@@ -63,11 +63,6 @@ module.exports.createBook = async (req, res) => {
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
-    fs.unlink(req.file.path, (err) => {
-      if (err) {
-        console.error("Error deleting file:", err);
-      }
-    });
     res.status(201).json({
       status: "success",
       data: {
