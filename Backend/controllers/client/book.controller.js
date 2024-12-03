@@ -1,6 +1,7 @@
 const Book = require("../../models/book.model");
 const Tag = require("../../models/tag.model");
 const User = require("../../models/user.model");
+const Chapter = require("../../models/chapter.model");
 const cloudinary = require("../../configs/cloudinary");
 const fs = require("fs");
 const path = require("path");
