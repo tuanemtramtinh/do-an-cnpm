@@ -261,7 +261,7 @@ html{
     margin-top: 60px;
     height: 351px;
     width: 100%;
-    overflow: hidden; /* Ẩn phần dư khi nhòa ảnh */
+    overflow: hidden;
   }
   
   .content-noibat::before {
@@ -271,9 +271,10 @@ html{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../../img/truyen1.jpg);
+    /* background-image: url(../../img/truyen1.jpg); */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     filter: blur(4px); 
     z-index: -1; 
   }
@@ -357,6 +358,9 @@ html{
     -2px 2px 0 #1e1e1e,  
     2px -2px 0 #1e1e1e,  
     -2px -2px 0  #1e1e1e;
+
+    max-width: 1000px;
+    width:1000px;
 }
 
 .content-noibat__noidung-tag-list{
@@ -494,6 +498,7 @@ html{
     font-weight: 700;
     margin-top:16px;
     margin-bottom: 12px;
+    line-height: 32px;
   }
 
   .content-chuamanga__item-author,
@@ -636,6 +641,10 @@ html{
 
 .content-chuamanga__item-rank-thongtinphai{
   width: 11.5%;
+  display: flex;
+  flex-direction: column; /* Đảm bảo các phần tử con được xếp theo hướng dọc */
+  align-items: flex-end;  /* Đẩy các phần tử con sang lề phải */
+  gap: 10px;
 }
 
 .content-chuamanga__item-rank-thongtintrai{
@@ -684,24 +693,24 @@ html{
   font-weight: 800;
   margin:0;
 }
+
+.content-chuamanga__item-rank-like{
+  
+}
+
 .content-chuamanga__item-rank-like,
-.content-chuamanga__item-rank-cmt
-{
+.content-chuamanga__item-rank-cmt {
   display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
+  align-items: center;  
   font-size: 1.6rem;
   color: #000;
   font-weight: 700;
+  margin-top: -20px;
 }
-.content-chuamanga__item-rank-like{
-  margin-bottom: -15px;
-  margin-top: -15px;
-}
+
 .content-chuamanga__item-rank-like i,
-.content-chuamanga__item-rank-cmt i{
-  margin-right: 13px;
+.content-chuamanga__item-rank-cmt i {
+  margin-right: 13px; 
 }
 
 .content-chuamanga__item-rank-xemthem{
