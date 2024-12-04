@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
-  name: { type: String, required: true },
-  author: { type: String, required: true },
+  name: { type: String, required: true, unique: true, trim: true },
+  author: { type: String, required: true, trim: true },
   thumbnail: String,
   description: String,
-  type: { type: String, required: true },
+  type: { type: String, required: true, trim: true },
   language: {
     type: String,
     default: "vn",
@@ -14,10 +14,13 @@ const bookSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  like: {
-    type: Array,
-    required: true,
-  },
+  like: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "user",
+      default: [],
+    },
+  ],
   view: {
     type: Number,
     default: 0,
@@ -27,15 +30,20 @@ const bookSchema = mongoose.Schema({
     ref: "user",
     required: true,
   },
-  tag: {
-    type: mongoose.Schema.ObjectId,
-    ref: "tag",
-    required: true,
-  },
-  comment: {
-    type: mongoose.Schema.ObjectId,
-    ref: "comment",
-  },
+  tag: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "tag",
+      required: true,
+    },
+  ],
+  comment: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "comment",
+      default: [],
+    },
+  ],
 });
 
 const Book = mongoose.model("book", bookSchema);
