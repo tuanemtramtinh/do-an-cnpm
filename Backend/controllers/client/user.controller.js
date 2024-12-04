@@ -32,6 +32,7 @@ module.exports.register = async (req, res) => {
       password: hashedPassword,
       dob: dobDate,
       phone,
+      avatar: `https://avatar.iran.liara.run/username?username=${username}`,
     });
 
     await newUser.save();
@@ -131,7 +132,8 @@ module.exports.info = async (req, res) => {
       email: req.user.email,
       phone: req.user.phone,
       isAdmin: req.user.isAdmin,
-      dob,
+      dob: dob,
+      avatar: user.avatar,
     };
 
     res.json(
