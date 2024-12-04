@@ -133,7 +133,7 @@ module.exports.info = async (req, res) => {
       phone: req.user.phone,
       isAdmin: req.user.isAdmin,
       dob: dob,
-      avatar: user.avatar,
+      avatar: req.user.avatar,
     };
 
     res.json(
