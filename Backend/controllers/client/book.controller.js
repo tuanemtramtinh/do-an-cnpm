@@ -5,6 +5,63 @@ const Chapter = require("../../models/chapter.model");
 const cloudinary = require("../../configs/cloudinary");
 const fs = require("fs");
 const path = require("path");
+const { returnMessage } = require("../../helpers/message.helper");
+
+module.exports.getBook = async (req, res) => {
+  try {
+    const keyword = req.query.keyword;
+
+    if (keyword === "highlight") {
+      const limit = 5;
+
+      const books = await Book.find({})
+        .sort({ like: -1 })
+        .populate({
+          path: "tag",
+          select: "_id name",
+        })
+        .limit(5)
+        .lean();
+
+      const booksFinal = [];
+
+      for (const book of books) {
+        const chapters = await Chapter.find({
+          book: book._id,
+        })
+          .select("_id chapter_no name")
+          .limit(limit);
+
+        booksFinal.push({
+          id: book._id,
+          name: book.name,
+          tag: [...book.tag],
+          author: book.author,
+          thumbnail: book.thumbnail,
+          description: book.description,
+          num_like: book.like.length,
+          num_cmt: book.comment.length,
+          chapters: chapters,
+        });
+      }
+
+      res.json(returnMessage("Lấy truyện nổi bật thành công", booksFinal, 200));
+    } else {
+      const books = await Book.find({})
+        .select("_id name author thumbnail tag")
+        .populate({
+          path: "tag",
+          select: "_id name",
+        })
+        .lean();
+
+      res.json(returnMessage("Lấy danh sách truyện thành công", books, 200));
+    }
+  } catch (error) {
+    console.log(error);
+    res.json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
+  }
+};
 
 module.exports.createBook = async (req, res) => {
   const {
