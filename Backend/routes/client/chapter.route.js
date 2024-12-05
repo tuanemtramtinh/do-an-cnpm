@@ -14,4 +14,6 @@ router.post(
 
 router.get("/get-novel", controller.getNovel);
 
+router.get("/get-comic", controller.getComic);
+
 module.exports = router;

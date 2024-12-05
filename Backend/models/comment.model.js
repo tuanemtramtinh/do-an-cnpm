@@ -10,9 +10,7 @@ const commentSchema = mongoose.Schema({
     ref: "user",
     required: true,
   },
-  book_id: {
-    type: mongoose.Schema.ObjectId,
-    ref: "book",
-    required: true,
-  },
 });
+
+const Comment = mongoose.model("comment", commentSchema);
+module.exports = Comment;
