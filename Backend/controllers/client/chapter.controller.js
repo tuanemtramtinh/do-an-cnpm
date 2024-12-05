@@ -150,3 +150,30 @@ module.exports.createChapterComic = async (req, res) => {
     });
   }
 };
+
+module.exports.getNovel = async (req, res) => {
+  const book_ID = req.query.id;
+  const chapter_number = req.query.chapter_no * 1;
+  try {
+    const book = await Book.findOne({ _id: book_ID });
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "invalid book's ID",
+      });
+    }
+    const chapter = await Chapter.findOne({
+      chapter_no: chapter_number,
+      book: book_ID,
+    });
+    res.status(200).json({
+      status: "success",
+      content: chapter.content,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
