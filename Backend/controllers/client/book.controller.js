@@ -6,6 +6,7 @@ const cloudinary = require("../../configs/cloudinary");
 const fs = require("fs");
 const path = require("path");
 const { returnMessage } = require("../../helpers/message.helper");
+const moment = require("moment");
 
 module.exports.getBook = async (req, res) => {
   try {
@@ -48,12 +49,16 @@ module.exports.getBook = async (req, res) => {
       res.json(returnMessage("Lấy truyện nổi bật thành công", booksFinal, 200));
     } else {
       const books = await Book.find({})
-        .select("_id name author thumbnail tag description")
+        .select("_id name author thumbnail tag description updatedAt")
         .populate({
           path: "tag",
           select: "_id name",
         })
         .lean();
+
+      for (const book of books) {
+        book.updatedAt = moment(book.updatedAt).format("DD-MM-YYYY");
+      }
 
       res.json(returnMessage("Lấy danh sách truyện thành công", books, 200));
     }
