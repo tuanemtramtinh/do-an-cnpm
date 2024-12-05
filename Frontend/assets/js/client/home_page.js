@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             <div class="content-chuamanga__item-container">
                                 <h3 class="content-chuamanga__item-name">${manga.name}</h3>
                                 <p class="content-chuamanga__item-author">${manga.author}</p>
-                                <p class="content-chuamanga__item-description">${manga.name}</p>
+                                <p class="content-chuamanga__item-time">${manga.name}</p>
                             </div>
                         </div>
                     </div>
