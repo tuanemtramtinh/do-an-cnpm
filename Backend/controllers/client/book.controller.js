@@ -48,7 +48,7 @@ module.exports.getBook = async (req, res) => {
       res.json(returnMessage("Lấy truyện nổi bật thành công", booksFinal, 200));
     } else {
       const books = await Book.find({})
-        .select("_id name author thumbnail tag")
+        .select("_id name author thumbnail tag description")
         .populate({
           path: "tag",
           select: "_id name",
