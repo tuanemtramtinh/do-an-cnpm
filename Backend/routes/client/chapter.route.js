@@ -8,7 +8,7 @@ router.post("/create-chapter-novel", controller.createChapterNovel);
 
 router.post(
   "/create-chapter-comic",
-  upload.array("images", 30),
+  upload.array("images", 100),
   controller.createChapterComic
 );
 
