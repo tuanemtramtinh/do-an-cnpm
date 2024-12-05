@@ -52,14 +52,14 @@ module.exports.createBook = async (req, res) => {
         });
     });
     const newBook = new Book({
-      name: name,
-      author: author,
+      name,
+      author,
       thumbnail: uploadResult?.secure_url,
-      description: description,
-      type: type,
-      language: language,
-      age_limit: age_limit,
-      translator: translator,
+      description,
+      type,
+      language,
+      age_limit,
+      translator,
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
@@ -73,6 +73,37 @@ module.exports.createBook = async (req, res) => {
     res.status(400).json({
       status: "fail",
       message: err,
+    });
+  }
+};
+
+module.exports.getAllChapter = async (req, res) => {
+  const book_ID = req.query.id;
+  try {
+    const book = await Book.findOne({ _id: book_ID });
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "book not found",
+      });
+    }
+    const chapters_find = await Chapter.find({ book: book_ID });
+    let chapters = [];
+    chapters_find.map((chapter) => {
+      const name = chapter.name;
+      const id = chapter._id;
+      const chapter_no = chapter.chapter_no;
+      const data = { _id: id, title: name, chapter_no: chapter_no };
+      chapters.push(data);
+    });
+    res.status(200).json({
+      status: "success",
+      chapters: chapters,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
     });
   }
 };
