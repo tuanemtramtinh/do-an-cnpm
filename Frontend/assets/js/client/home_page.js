@@ -19,18 +19,41 @@ document.addEventListener('DOMContentLoaded', async function() {
         alert('Đã xảy ra lỗi khi lấy dữ liệu truyện nổi bật.');
     }
 
+    console.log(mangaData);
+
+    
     function renderCurrentManga(index) {
+        console.log(index)
         const manga = mangaData[index];
+        console.log(manga);
+
+        // console.log(manga);
         if (manga) {
+            const mangaLink = document.querySelector('.content-noibat__noidung-truyen');
             const mangaImg = document.querySelector('.content-noibat__noidung-img');
             const mangaTitle = document.querySelector('.content-noibat__noidung-tieude');
             const mangaTagsContainer = document.querySelector('.content-noibat__noidung-tag-list');
             const mangaDescription = document.querySelector('.content-noibat__noidung-thongtin');
             const mangaBackground = document.querySelector('.content-noibat');
 
+            if(index === 0){
+                mangaLink.href = `/manga/${manga.id}`; 
+                mangaLink.setAttribute('data-id', manga.id); 
+            }
+            else{
+                if (mangaLink) {
+                    mangaLink.href = `/manga/${manga._id}`; 
+                    mangaLink.setAttribute('data-id', manga._id); 
+                }
+            }
+
             if (mangaImg) mangaImg.src = manga.thumbnail;
             if (mangaTitle) mangaTitle.textContent = manga.name;
-            if (mangaDescription) mangaDescription.textContent = manga.description;
+            
+            if (mangaDescription) {
+                console.log(manga.description);
+                mangaDescription.textContent = manga.description;
+            }
 
             if (mangaTagsContainer) {
                 mangaTagsContainer.innerHTML = '';
@@ -100,18 +123,38 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     }
 
+
     // Lấy danh sách truyện tranh
+
     try {
         const response = await fetch('https://do-an-cnpm.onrender.com/book');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
-            mangaData = data.payload;
-            renderMangaList(mangaData);
+            mangaData = data.payload; 
+
+            const mangaListContainer = document.querySelector('.content-chuamanga__list-manga');
+            if (mangaListContainer) {
+                renderMangaList(mangaData);
+            } else {
+                console.error('Không tìm thấy container cho danh sách truyện.');
+            }
         } else {
             console.error('Lấy dữ liệu manga thất bại:', data.message);
             alert('Lấy dữ liệu manga thất bại.');
         }
+
+        const tagButtons = document.querySelectorAll('.content-chuatag__item-tag');
+        tagButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const tagName = this.textContent.trim().toLowerCase();
+                const filteredManga = mangaData.filter(manga =>
+                    manga.tag.some(tag => tag.name.toLowerCase() === tagName)
+                );
+                renderMangaList(filteredManga); 
+            });
+        });
+
     } catch (error) {
         console.error('Lỗi khi fetch manga:', error);
         alert('Đã xảy ra lỗi khi lấy dữ liệu manga.');
@@ -120,22 +163,24 @@ document.addEventListener('DOMContentLoaded', async function() {
     function renderMangaList(mangaList) {
         const mangaListContainer = document.querySelector('.content-chuamanga__list-manga');
         if (mangaListContainer) {
-            const limitedMangaList = mangaList.length > 12 ? mangaList.slice(0, 12) : mangaList;
+            let mangaItemsHtml = mangaList.map(manga => {
+                const mangaId = manga._id ? manga._id : 'no-id';
 
-            let mangaItemsHtml = limitedMangaList.map(manga => `
-                <div class="col l-3 m-4 c-6">
-                    <div class="content-chuamanga__item-manga">
-                        <a href="#" class="content-chuamanga__item-chitiet">
-                            <img src="${manga.thumbnail}" class="content-chuamanga__item-img">
-                        </a>
-                        <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">${manga.name}</h3>
-                            <p class="content-chuamanga__item-author">${manga.author}</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: ${new Date().toLocaleDateString()}</p>
+                return `
+                    <div class="col l-3 m-4 c-6">
+                        <div class="content-chuamanga__item-manga">
+                            <a href="/manga/${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
+                                <img src="${manga.thumbnail}" class="content-chuamanga__item-img" alt="${manga.name}">
+                            </a>
+                            <div class="content-chuamanga__item-container">
+                                <h3 class="content-chuamanga__item-name">${manga.name}</h3>
+                                <p class="content-chuamanga__item-author">${manga.author}</p>
+                                <p class="content-chuamanga__item-description">${manga.name}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
             mangaListContainer.innerHTML = `
                 <div class="row sm-gutter">
@@ -147,57 +192,47 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    // Lọc và hiển thị danh sách truyện theo tag khi bấm nút tag tương ứng
-    const tagButtons = document.querySelectorAll('.content-chuatag__item-tag');
-    tagButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const tagName = this.textContent.trim().toLowerCase();
-            const filteredManga = mangaData.filter(manga =>
-                manga.tag.some(tag => tag.name.toLowerCase() === tagName)
-            );
-            renderMangaList(filteredManga);
-        });
-    });
 
-    // Lấy avatar 
-    const token = localStorage.getItem('token');
-    const avatarImg = document.querySelector('.header__navbar-user-img');
 
-    if (token && avatarImg) {
-        avatarImg.src = '../../assets/img/loading.gif'; 
-        try {
-            const response = await fetch('https://do-an-cnpm.onrender.com/user/info', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
+        // Lấy avatar 
+        const token = localStorage.getItem('token');
+        const avatarImg = document.querySelector('.header__navbar-user-img');
 
-            if (response.ok) {
-                const data = await response.json();
+        if (token && avatarImg) {
+            avatarImg.src = '../../assets/img/loading.gif'; 
+            try {
+                const response = await fetch('https://do-an-cnpm.onrender.com/user/info', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-                if (data.status === 200 && data.payload) {
-                    const avatarUrl = data.payload.avatar;
-                    if (avatarUrl) {
-                        avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
+                if (response.ok) {
+                    const data = await response.json();
+
+                    if (data.status === 200 && data.payload) {
+                        const avatarUrl = data.payload.avatar;
+                        if (avatarUrl) {
+                            avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
+                        } else {
+                            console.error('Không tìm thấy URL ảnh đại diện trong payload.');
+                        }
                     } else {
-                        console.error('Không tìm thấy URL ảnh đại diện trong payload.');
+                        console.error('Lấy thông tin người dùng thất bại:', data.message);
                     }
                 } else {
-                    console.error('Lấy thông tin người dùng thất bại:', data.message);
+                    console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
                 }
-            } else {
-                console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
+            } catch (error) {
+                console.error('Lỗi khi lấy thông tin người dùng:', error);
             }
-        } catch (error) {
-            console.error('Lỗi khi lấy thông tin người dùng:', error);
+        } else {
+            if (avatarImg) {
+                avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            }
         }
-    } else {
-        if (avatarImg) {
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
-        }
-    }
 
     ///////////////////////////////////////////////////////////////
     const buyBtnsquenpass = document.querySelectorAll('.modal-label-quenpass');
