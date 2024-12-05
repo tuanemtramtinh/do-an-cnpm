@@ -55,8 +55,8 @@ module.exports.createChapterNovel = async (req, res) => {
     }
     const newChapterNovel = new Chapter({
       chapter_no,
-      uploader: uploader,
-      book: book,
+      uploader,
+      book,
       name,
       images: [],
       content,
