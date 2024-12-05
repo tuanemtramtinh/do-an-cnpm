@@ -32,7 +32,7 @@ module.exports.register = async (req, res) => {
       password: hashedPassword,
       dob: dobDate,
       phone,
-      avatar: `https://avatar.iran.liara.run/username?username=${username}`,
+      avatar: `https://ui-avatars.com/api/?name=${username}`,
     });
 
     await newUser.save();
