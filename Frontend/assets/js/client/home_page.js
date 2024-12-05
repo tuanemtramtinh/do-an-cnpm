@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     blurLayer.style.backgroundRepeat = 'no-repeat';
                     blurLayer.style.filter = 'blur(4px)';
                     blurLayer.style.zIndex = '-1';
+                    blurLayer.style.transition = 'filter 0.5s ease, background-image 0.3s ease';
                     mangaBackground.appendChild(blurLayer);
                 } else {
                     blurLayer.style.backgroundImage = `url(${manga.thumbnail})`;
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     overlay.style.height = '100%';
                     overlay.style.opacity = '0.6';
                     overlay.style.zIndex = '0';
+                    overlay.style.transition = 'opacity 0.3s ease';
                     mangaBackground.appendChild(overlay);
                 }
 
@@ -175,7 +177,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             <div class="content-chuamanga__item-container">
                                 <h3 class="content-chuamanga__item-name">${manga.name}</h3>
                                 <p class="content-chuamanga__item-author">${manga.author}</p>
-                                <p class="content-chuamanga__item-time">${manga.name}</p>
+                                <p class="content-chuamanga__item-time">Cập nhật lúc: ${manga.updatedAt}</p>
                             </div>
                         </div>
                     </div>
@@ -195,44 +197,56 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
         // Lấy avatar 
-        const token = localStorage.getItem('token');
-        const avatarImg = document.querySelector('.header__navbar-user-img');
+    const token = localStorage.getItem('token');
+    const avatarImg = document.querySelector('.header__navbar-user-img');
+    const adminLink = document.querySelector('.header__navbar-user-item.admin-link'); 
 
-        if (token && avatarImg) {
-            avatarImg.src = '../../assets/img/loading.gif'; 
-            try {
-                const response = await fetch('https://do-an-cnpm.onrender.com/user/info', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
+    if (token && avatarImg) {
+        avatarImg.src = '../../assets/img/loading.gif';
+        try {
+            const response = await fetch('https://do-an-cnpm.onrender.com/user/info', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
+            if (response.ok) {
+                const data = await response.json();
 
-                    if (data.status === 200 && data.payload) {
-                        const avatarUrl = data.payload.avatar;
-                        if (avatarUrl) {
-                            avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
-                        } else {
-                            console.error('Không tìm thấy URL ảnh đại diện trong payload.');
-                        }
+                if (data.status === 200 && data.payload) {
+                    const avatarUrl = data.payload.avatar;
+                    if (avatarUrl) {
+                        avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
                     } else {
-                        console.error('Lấy thông tin người dùng thất bại:', data.message);
+                        console.error('Không tìm thấy URL ảnh đại diện trong payload.');
+                        avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                    }
+
+                    if (data.payload.isAdmin) {
+                        if (adminLink) {
+                            adminLink.style.display = 'list-item'; 
+                        }
                     }
                 } else {
-                    console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
+                    console.error('Lấy thông tin người dùng thất bại:', data.message);
+                    avatarImg.src = '../../assets/img/default-avatar.jpg'; 
                 }
-            } catch (error) {
-                console.error('Lỗi khi lấy thông tin người dùng:', error);
-            }
-        } else {
-            if (avatarImg) {
+            } else {
+                console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
                 avatarImg.src = '../../assets/img/default-avatar.jpg'; 
             }
+        } catch (error) {
+            console.error('Lỗi khi lấy thông tin người dùng:', error);
+            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
         }
+    } else {
+        if (avatarImg) {
+            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+        }
+    }
+
 
     ///////////////////////////////////////////////////////////////
     const buyBtnsquenpass = document.querySelectorAll('.modal-label-quenpass');

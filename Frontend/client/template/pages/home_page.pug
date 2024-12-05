@@ -218,12 +218,12 @@ block container
                 p Đổi mật khẩu
             .modal-changepass-body
                 .modal-changepass-form
-                    form#form-group-3-3.form.test-form2
+                    form#form3-3.form.test-form2
                         .form-group-3-3
                             label.modal-changepass-label(for='changepass')
                                 | Nhập mật khẩu mới
                             input#changepass.modal-changepass-input(type='text', style='margin-bottom: 4px;')
-                            span.form-message 
+                            span.form-message(style='color: #f33a58;') 
                         button#button-changepass(type='submit')
                             | Đổi mật khẩu
                     p.modal-changepass-label-resend
@@ -243,6 +243,18 @@ block container
             errorSelector: '.form-message',
             rules: [
             Validator.isEmail('#email2')
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+
+        Validator({
+            form: '#form3-3',
+            formGroupSelector: '#form-group-3-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.minLength('#changepass', 6)
             ],
             onSubmit: function (data) {
             console.log(data);

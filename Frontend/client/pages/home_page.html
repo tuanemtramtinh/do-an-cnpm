@@ -27,7 +27,7 @@
             <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
               <ul class="header__navbar-user-menu">
                 <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
-                <li class="header__navbar-user-item"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
                 <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
                     <button id="button-logout">Đăng xuất</button></a></li>
               </ul>
@@ -395,10 +395,10 @@
           </header>
           <div class="modal-changepass-body">
             <div class="modal-changepass-form">
-              <form class="form test-form2" id="form-group-3-3">
+              <form class="form test-form2" id="form3-3">
                 <div class="form-group-3-3">
                   <label class="modal-changepass-label" for="changepass">Nhập mật khẩu mới</label>
-                  <input class="modal-changepass-input" id="changepass" type="text" style="margin-bottom: 4px;"><span class="form-message"> </span>
+                  <input class="modal-changepass-input" id="changepass" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58;"> </span>
                 </div>
                 <button id="button-changepass" type="submit">Đổi mật khẩu</button>
               </form>
@@ -418,6 +418,18 @@
             errorSelector: '.form-message',
             rules: [
             Validator.isEmail('#email2')
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        Validator({
+            form: '#form3-3',
+            formGroupSelector: '#form-group-3-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.minLength('#changepass', 6)
             ],
             onSubmit: function (data) {
             console.log(data);

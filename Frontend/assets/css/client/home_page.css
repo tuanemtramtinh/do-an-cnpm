@@ -182,6 +182,7 @@ html{
 }
 .header__navbar-user-item:nth-child(2){
   margin-bottom: 5px !important;
+  display: none;
 }
 
 
@@ -342,9 +343,11 @@ html{
 }
 
 .content-noibat__noidung-baothongtin{
-    width: 434px;
+    min-width: 434px;
     text-align:left;
     margin-left: 26px;
+    overflow: hidden;
+    height: 278px;
 }
 
 .content-noibat__noidung-tieude{
@@ -388,6 +391,9 @@ html{
     -1px 1px 0 #1e1e1e,  
     1px -1px 0 #1e1e1e,  
     -1px -1px 0  #1e1e1e;
+
+    width: 434px;
+    text-align: justify;
 }
 
 .content-chuatag {
