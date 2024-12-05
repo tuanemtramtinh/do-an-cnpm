@@ -1,4 +1,3 @@
-const User = require("../../models/user.model");
 const Tag = require("../../models/tag.model");
 
 module.exports.getAll = async (req, res) => {
@@ -6,9 +5,7 @@ module.exports.getAll = async (req, res) => {
     const resultTag = await Tag.find();
     res.status(200).json({
       status: "success",
-      data: {
-        resultTag,
-      },
+      data: resultTag,
     });
   } catch (err) {
     res.status(400).json({
@@ -22,15 +19,13 @@ module.exports.createTag = async (req, res) => {
   const { name, status } = req.body;
   try {
     const newTag = new Tag({
-      name: name,
-      status: status,
+      name,
+      status,
     });
     await newTag.save();
     res.status(200).json({
       status: "success",
-      data: {
-        newTag,
-      },
+      data: newTag,
     });
   } catch (err) {
     res.status(400).json({
