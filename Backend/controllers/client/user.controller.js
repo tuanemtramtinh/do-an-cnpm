@@ -12,7 +12,7 @@ module.exports.register = async (req, res) => {
     const { email, username, password, phone, dob } = req.body;
 
     const existUser = await User.findOne({
-      email,
+      $or: [{ email: email }, { username: username }],
     });
 
     if (existUser) {
@@ -32,6 +32,7 @@ module.exports.register = async (req, res) => {
       password: hashedPassword,
       dob: dobDate,
       phone,
+      avatar: `https://avatar.iran.liara.run/username?username=${username}`,
     });
 
     await newUser.save();
@@ -116,6 +117,32 @@ module.exports.login = async (req, res) => {
     );
 
     res.status(200).json(message);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.info = async (req, res) => {
+  try {
+    const dob = req.user.dob.toISOString().split("T")[0];
+
+    const returnUser = {
+      id: req.user.id,
+      username: req.user.username,
+      email: req.user.email,
+      phone: req.user.phone,
+      isAdmin: req.user.isAdmin,
+      dob: dob,
+      avatar: req.user.avatar,
+    };
+
+    res.json(
+      messageHelper.returnMessage(
+        "Lấy thông tin người dùng thành công",
+        returnUser,
+        200
+      )
+    );
   } catch (error) {
     console.log(error);
   }
