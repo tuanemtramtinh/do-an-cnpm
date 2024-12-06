@@ -24,20 +24,136 @@
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div class="content-noibat">
-        <div class="content-noibat__noidung">
-          <button class="content-noibat__noidung-dieukhientrai"><i class="fa-solid fa-chevron-left"></i></button>
-          <div class="content-noibat__noidung-truyen"><img class="content-noibat__noidung-img" src="../../assets/img/truyen1.jpg">
-            <div class="content-noibat__noidung-baothongtin">
-              <div class="content-noibat__noidung-tieude">Made in abyss</div>
-              <div class="content-noibat__noidung-tag-list"><span class="content-noibat__noidung-tag-item">Hành động</span><span class="content-noibat__noidung-tag-item">Phiêu lưu</span><span class="content-noibat__noidung-tag-item">Viễn tưởng </span></div>
-              <div class="content-noibat__noidung-thongtin">
-                 Câu chuyện xoay quanh về một cô gái mồ côi tên Riko sống ở trại trẻ mồ côi Belchero, nằm tại thị trấn Orth trên một hòn đảo giữa vùng biển Beoluska. Thị trấn Orth bao vây một cái hố khổng lồ đi sâu vào lòng đất, thường được gọi với cái tên Abyss (Vực thẳm). Abyss là nơi tụ tập của những loài sinh vật kì lạ và cũng là nơi chứa những món di vật quý hiếm từ nền văn minh cổ xưa mà con người chưa biết, mà sau đó nó đã trở thành nơi săn tìm phổ biến của các nhà thám hiểm (Cave Raiders) bất chấp khó khăn, gian nan và nguy hiểm, để đi sâu vào hố và tìm những di vật họ thấy được. </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <div class="content-noibat">
+        <div class="content-noibat__noidung">
+          <button class="content-noibat__noidung-dieukhientrai"><i class="fa-solid fa-chevron-left"></i></button><a class="content-noibat__noidung-truyen" href=""><img class="content-noibat__noidung-img" src="">
+            <div class="content-noibat__noidung-baothongtin">
+              <div class="content-noibat__noidung-tieude"> </div>
+              <div class="content-noibat__noidung-tag-list"></div>
+              <div class="content-noibat__noidung-thongtin">
+                 </div>
+            </div></a>
           <button class="content-noibat__noidung-dieukhienphai"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
@@ -79,118 +195,7 @@
           <h2 class="content-chuamanga__tieude">Truyện đề cử</h2><a class="content-chuamanga__xemthem-list" href="#">
             <p class="content-chuamanga__xemthem">Xem thêm<i class="fa-solid fa-chevron-right"></i></p></a>
         </div>
-        <div class="content-chuamanga__list-manga">   
-          <div class="row sm-gutter">
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col l-3 m-4 c-6">
-                        <div class="content-chuamanga__item-manga"><a class="content-chuamanga__item-chitiet" href="#"><img class="content-chuamanga__item-img" src="../../assets/img/truyen1.jpg"></a>
-                          <div class="content-chuamanga__item-container">
-                            <h3 class="content-chuamanga__item-name">Made in abyss</h3>
-                            <p class="content-chuamanga__item-author">Riko Belchero</p>
-                            <p class="content-chuamanga__item-time">Cập nhật lúc: 2024-10-22</p>
-                          </div>
-                        </div>
-                      </div>
-          </div>
-        </div>
+        <div class="content-chuamanga__list-manga">   </div>
       </div>
       <div class="content-chuarank">    
         <div class="content-chuamanga__header">
@@ -224,20 +229,20 @@
                   </div>
                   <div class="content-chuamanga__item-rank-thongtinphai">
                     <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">20</p>
                     </div>
                     <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">10</p>
                     </div>
                   </div>
                 </div>
                 <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
                 <ul class="content-chuamanga__item-rank-thongtinduoi"> 
-                  <li class="content-chuamanga__item-rank-chap">Chapter 171</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 170</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 169</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 168</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 167</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 6</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 5</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 4</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 3</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 2</li>
                 </ul>
               </div>
             </div>
@@ -248,25 +253,25 @@
             <div class="content-chuamanga__thutu-rank thu2">2</div>
           </div>
           <div class="content-chuamanga__item-rank">
-            <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen_2.webp" alt="">
               <div class="content-chuamanga__item-rank-thongtinhienthi">
                 <div class="content-chuamanga__item-rank-thongtintren">
                   <div class="content-chuamanga__item-rank-thongtintrai">
-                    <h3 class="content-chuamanga__item-rank-tieude">Made in Abyss</h3>
-                    <p class="content-chuamanga__item-rank-tag-author">Tastu Yukinobu </p>
+                    <h3 class="content-chuamanga__item-rank-tieude">Tổng Tài Tại Thượng</h3>
+                    <p class="content-chuamanga__item-rank-tag-author">ICiyuan</p>
                     <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
                     <ul class="content-chuamanga__item-rank-tag-list"> 
-                      <li class="content-chuamanga__item-rank-tag-item">Phiêu lưu</li>
-                      <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
-                      <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
+                      <li class="content-chuamanga__item-rank-tag-item">Tình cảm</li>
+                      <li class="content-chuamanga__item-rank-tag-item">Tổng tài</li>
+                      <li class="content-chuamanga__item-rank-tag-item">Đời thường</li>
                     </ul>
                   </div>
                   <div class="content-chuamanga__item-rank-thongtinphai">
                     <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">16</p>
                     </div>
                     <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">10</p>
                     </div>
                   </div>
                 </div>
@@ -287,35 +292,34 @@
             <div class="content-chuamanga__thutu-rank thu3">3</div>
           </div>
           <div class="content-chuamanga__item-rank">
-            <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen3.jpg" alt="">
               <div class="content-chuamanga__item-rank-thongtinhienthi">
                 <div class="content-chuamanga__item-rank-thongtintren">
                   <div class="content-chuamanga__item-rank-thongtintrai">
-                    <h3 class="content-chuamanga__item-rank-tieude">Made in Abyss</h3>
-                    <p class="content-chuamanga__item-rank-tag-author">Tastu Yukinobu </p>
+                    <h3 class="content-chuamanga__item-rank-tieude">Attack on Titan</h3>
+                    <p class="content-chuamanga__item-rank-tag-author"> Isayama Hajime </p>
                     <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
                     <ul class="content-chuamanga__item-rank-tag-list"> 
-                      <li class="content-chuamanga__item-rank-tag-item">Phiêu lưu</li>
                       <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
                       <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
                     </ul>
                   </div>
                   <div class="content-chuamanga__item-rank-thongtinphai">
                     <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">10</p>
                     </div>
                     <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
-                      <p class="content-chuamanga__item-rank-num-like">9999</p>
+                      <p class="content-chuamanga__item-rank-num-like">4</p>
                     </div>
                   </div>
                 </div>
                 <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
                 <ul class="content-chuamanga__item-rank-thongtinduoi"> 
-                  <li class="content-chuamanga__item-rank-chap">Chapter 171</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 170</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 169</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 168</li>
-                  <li class="content-chuamanga__item-rank-chap">Chapter 167</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 34</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 33</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 32</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 31</li>
+                  <li class="content-chuamanga__item-rank-chap">Chapter 30</li>
                 </ul>
               </div>
             </div>
@@ -337,8 +341,107 @@
             </ul>
           </div>
         </div>
-        <p class="footer__container-copyright">Copyright © 2024 Mango</p>
+        <p class="footer__container-copyright">Copyright © 2024 Mango     </p>
       </div>
+      <div class="modal-quenpass js-modal-quenpass">
+        <div class="modal-quenpass-container js-modal-quenpass-container">
+          <div class="modal-close js-modal-close-quenpass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-quenpass-header">
+            <p>Tìm tài khoản </p>
+          </header>
+          <div class="modal-quenpass-body">
+            <div class="modal-quenpass-form">
+              <form class="form" id="form-3">
+                <div class="form-group-3">
+                  <label class="modal-quenpass-label" for="email2">Email</label>
+                  <input class="modal-quenpass-input" id="email2" type="email"><span class="form-message"></span>
+                </div>
+                <button id="button-quenpass">Tiếp tục</button>
+              </form>
+              <p class="modal-quenpass-label-chuyendangky">Quay về đăng nhập?
+                <button class="modal-quenpass-label-chuyendangky-trangmoi" id="dangky">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-otp js-modal-otp">
+        <div class="modal-otp-container js-modal-otp-container">
+          <div class="modal-close js-modal-close-otp"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-otp-header">
+            <p>Nhập mã OTP</p>
+          </header>
+          <div class="modal-otp-body">
+            <div class="modal-otp-form">
+              <form class="form test-form" id="form-group-3-2">
+                <div class="form-group-3-2">
+                  <label class="modal-otp-label" for="otpCode">Mã OTP</label>
+                  <input class="modal-otp-input" id="otpCode" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58">OTP chỉ có hạn trong 5 phút.</span>
+                </div>
+                <button id="button-otp">Xác nhận</button>
+              </form>
+              <p class="modal-otp-label-resend">Quay về đăng nhập?
+                <button class="modal-otp-label-resend-button" id="resendOtp">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-changepass js-modal-changepass">
+        <div class="modal-changepass-container js-modal-changepass-container">
+          <div class="modal-close js-modal-close-changepass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-changepass-header">
+            <p>Đổi mật khẩu</p>
+          </header>
+          <div class="modal-changepass-body">
+            <div class="modal-changepass-form">
+              <form class="form test-form2" id="form3-3">
+                <div class="form-group-3-3">
+                  <label class="modal-changepass-label" for="changepass">Nhập mật khẩu mới</label>
+                  <input class="modal-changepass-input" id="changepass" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58;"> </span>
+                </div>
+                <button id="button-changepass" type="submit">Đổi mật khẩu</button>
+              </form>
+              <p class="modal-changepass-label-resend">Quay về đăng nhập?
+                <button class="modal-changepass-label-resend-button" id="resendOtp">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script src="../../assets/js/client/home_page.js"></script>
+      <script>
+        Validator({
+            form: '#form-3',
+            formGroupSelector: '.form-group-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isEmail('#email2')
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        Validator({
+            form: '#form3-3',
+            formGroupSelector: '#form-group-3-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.minLength('#changepass', 6)
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+                            
+                        
+                
+        
+        
+                        
+      </script>
     </body>
   </head>
 </html>

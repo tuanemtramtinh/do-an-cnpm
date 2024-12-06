@@ -169,3 +169,45 @@ module.exports.getAllChapter = async (req, res) => {
     });
   }
 };
+
+module.exports.updateBook = async (req, res) => {
+  const book_ID = req.query.book_id;
+  const user_ID = req.query.user_id;
+  const change = req.body;
+  try {
+    const book = await Book.findOne({ _id: book_ID });
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "invalid book id",
+      });
+    }
+    const user = await User.findOne({ _id: user_ID });
+    if (!user) {
+      return res.status(404).json({
+        status: "fail",
+        message: "missing or invalid user id",
+      });
+    }
+    if (!user.isAdmin && !book.translator.equals(user._id)) {
+      return res.status(404).json({
+        status: "fail",
+        message: "not have permission to change the book",
+      });
+    }
+    const updateBook = await Book.findOneAndUpdate(
+      { _id: book_ID },
+      { $set: change },
+      { new: true, runValidators: true }
+    );
+    res.status(200).json({
+      status: "success",
+      updatedBook: updateBook,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};

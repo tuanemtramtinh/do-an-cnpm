@@ -12,4 +12,8 @@ router.post(
   controller.createChapterComic
 );
 
+router.get("/get-novel", controller.getNovel);
+
+router.get("/get-comic", controller.getComic);
+
 module.exports = router;
