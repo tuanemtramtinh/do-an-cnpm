@@ -206,3 +206,40 @@ module.exports.updateBook = async (req, res) => {
     });
   }
 };
+
+module.exports.getUserUploadBook = async (req, res) => {
+  const user_ID = req.query.id;
+  try {
+    const user = await User.findOne({ _id: user_ID });
+    if (!user) {
+      return res.status(404).json({
+        status: "fail",
+        message: "invalid user id",
+      });
+    }
+    const books = await Book.find({ translator: user._id }).sort({
+      updatedAt: -1,
+    });
+    let data = [];
+    books.map((book) => {
+      const newData = {
+        img: book.thumbnail,
+        name: book.name,
+        author: book.author,
+        tag: book.tag,
+        day_update: book.updatedAt,
+        language: book.language,
+      };
+      data.push(newData);
+    });
+    res.status(200).json({
+      status: "success",
+      data: data,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
