@@ -1,11 +1,11 @@
 //- Sử dụng file layout chính cho page
-extends ../layouts/default.pug
+extends ../layouts/index.pug
 
 //- Import các mixins cần thiết
 include ../mixins/profile_section.pug
 include ../mixins/profile_info.pug
 
-block content
+block container
   //- Phần thông tin chung (profile section)
   +profileSection("Triệu Mẫn", "Uploader", "01/01/2024", "../../assets/img/Boss Combat.jpg")
   
