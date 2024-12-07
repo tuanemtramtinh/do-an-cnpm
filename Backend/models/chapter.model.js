@@ -1,25 +1,32 @@
 const mongoose = require("mongoose");
 
 const chapterSchema = mongoose.Schema({
-  chapter_no: { type: Number, require: true },
+  chapter_no: { type: Number, required: true },
   uploader: {
     type: mongoose.Schema.ObjectId,
     ref: "user",
-    require: true,
+    required: true,
   },
-  book_id: {
+  book: {
     type: mongoose.Schema.ObjectId,
     ref: "book",
-    require: true,
+    required: true,
   },
   name: {
     type: String,
-    require: true,
+    required: true,
   },
-  images: {
-    type: Array,
-  },
+  images: [
+    {
+      url: { type: String, required: true },
+    },
+  ],
+
   content: {
     type: String,
   },
 });
+
+const Chapter = mongoose.model("chapter", chapterSchema);
+
+module.exports = Chapter;
