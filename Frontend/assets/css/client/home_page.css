@@ -26,6 +26,7 @@ html{
 }
 
 
+
 .header__logo{
     height: 60px;
     cursor: pointer;
@@ -52,11 +53,7 @@ html{
     font-weight: 700;
     cursor: pointer;
 }
-.header-item__print{
-    margin-right: 20px;
-    display: none;  
-    /* hien thi khi dang nhap */
-}
+
 
 .header-list{
     display: flex;
@@ -93,6 +90,126 @@ html{
     margin-left: 40px;
     font-weight: 700;
     cursor: pointer;
+}
+
+
+.header__navbar-user{
+  display: flex;
+  justify-items: center;
+  position: relative;
+  display: none;
+  /* hien thi khi dang nhap */
+
+}
+
+.header__navbar-user:hover .header__navbar-user-menu{
+  display: block;
+}
+
+#button-logout{
+  background: transparent;
+  cursor: pointer;
+  border: transparent;
+  height: 100%;
+  width: 100%;
+  color:var(--text-color);
+  font-size: 1.6rem !important;
+  /* border-top: 1px solid #000; */
+}
+
+
+.header__navbar-user-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-size: cover;
+  object-fit: cover;
+}
+
+
+.header__navbar-item.header__navbar-user{
+  width: 40px;
+  justify-items: center;
+  align-items: center;
+  top:0px;
+}
+
+.header__navbar-user-menu{
+  position: absolute;
+  z-index: 1;
+  padding-left: 0;
+  top: 35px !important;
+  right: -72px;
+  background: var(--white-color);
+  border-radius: 8px;
+  width: 176px;
+  list-style: none;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); */
+  border:rgba(71, 71, 71, 0.2) solid 0.4px;
+  display: none;
+}
+
+.header__navbar-user-menu::after{
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top:-20px;
+  width: 100%;
+  height: 20px;
+}
+
+
+.header__navbar-user-item--separate{
+  border-top: 1px solid rgb(71, 71, 71,0.2);
+}
+
+.header__navbar-user-item a{
+  text-decoration: none;
+  color:var(--text-color);
+  font-size: 1.6rem !important;
+  padding: 16px 0px !important;
+  display: block;
+  text-align: center;
+}
+
+.header__navbar-user-item a:first-child{
+  border-top-right-radius: 8px !important;
+  border-top-left-radius: 8px !important;
+}
+.header__navbar-user-item:nth-child(1){
+}
+.header__navbar-user-item:nth-child(2){
+  margin-bottom: 5px !important;
+  display: none;
+}
+
+
+.header__navbar-user-item a:last-child{
+  border-bottom-right-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+}
+
+.header__navbar-user-item a:hover{
+  background: #FaFaFa !important;
+  color: var(--text-color) !important;
+}
+
+.header__navbar-user-dropdown {
+  position: fixed;
+  color: #921A40;
+  font-size: 0.9rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFEBEB;
+  border-radius: 50%;
+  height: 14px !important;
+  width: 14px !important;
+  top: 38px !important;
+  right: 212px !important;
+  border: #921A40 solid 0.3px;
 }
 
 .header-item__dangky{
@@ -145,7 +262,7 @@ html{
     margin-top: 60px;
     height: 351px;
     width: 100%;
-    overflow: hidden; /* Ẩn phần dư khi nhòa ảnh */
+    overflow: hidden;
   }
   
   .content-noibat::before {
@@ -155,9 +272,10 @@ html{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../img/truyen1.jpg);
+    /* background-image: url(../../img/truyen1.jpg); */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     filter: blur(4px); 
     z-index: -1; 
   }
@@ -225,9 +343,11 @@ html{
 }
 
 .content-noibat__noidung-baothongtin{
-    width: 434px;
+    min-width: 434px;
     text-align:left;
     margin-left: 26px;
+    overflow: hidden;
+    height: 278px;
 }
 
 .content-noibat__noidung-tieude{
@@ -241,10 +361,14 @@ html{
     -2px 2px 0 #1e1e1e,  
     2px -2px 0 #1e1e1e,  
     -2px -2px 0  #1e1e1e;
+
+    max-width: 1000px;
+    width:1000px;
 }
 
 .content-noibat__noidung-tag-list{
     margin-bottom: 7px;
+    width: 1000px;
 }
 
 .content-noibat__noidung-tag-item{
@@ -267,6 +391,9 @@ html{
     -1px 1px 0 #1e1e1e,  
     1px -1px 0 #1e1e1e,  
     -1px -1px 0  #1e1e1e;
+
+    width: 434px;
+    text-align: justify;
 }
 
 .content-chuatag {
@@ -378,6 +505,7 @@ html{
     font-weight: 700;
     margin-top:16px;
     margin-bottom: 12px;
+    line-height: 32px;
   }
 
   .content-chuamanga__item-author,
@@ -520,6 +648,10 @@ html{
 
 .content-chuamanga__item-rank-thongtinphai{
   width: 11.5%;
+  display: flex;
+  flex-direction: column; /* Đảm bảo các phần tử con được xếp theo hướng dọc */
+  align-items: flex-end;  /* Đẩy các phần tử con sang lề phải */
+  gap: 10px;
 }
 
 .content-chuamanga__item-rank-thongtintrai{
@@ -568,24 +700,24 @@ html{
   font-weight: 800;
   margin:0;
 }
+
+.content-chuamanga__item-rank-like{
+  
+}
+
 .content-chuamanga__item-rank-like,
-.content-chuamanga__item-rank-cmt
-{
+.content-chuamanga__item-rank-cmt {
   display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
+  align-items: center;  
   font-size: 1.6rem;
   color: #000;
   font-weight: 700;
+  margin-top: -20px;
 }
-.content-chuamanga__item-rank-like{
-  margin-bottom: -15px;
-  margin-top: -15px;
-}
+
 .content-chuamanga__item-rank-like i,
-.content-chuamanga__item-rank-cmt i{
-  margin-right: 13px;
+.content-chuamanga__item-rank-cmt i {
+  margin-right: 13px; 
 }
 
 .content-chuamanga__item-rank-xemthem{
@@ -688,3 +820,403 @@ html{
   margin-top: 0;
   padding: 10px 0;
 }
+
+/* login */
+
+
+.modal, .modal-dangky, .modal-quenpass, .modal-otp, .modal-changepass{
+  position: fixed;
+  /* 1 lop de len lop chinh */
+  top:0;
+  right:0;
+  bottom:0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  z-index: 100;
+  /* nam giua thang cha */
+  justify-content: center; 
+  border-radius: 10px;
+  /* nam giua chieu nang thang cha */
+}
+
+.modal-otp{
+  /* display: flex; */
+}
+
+.modal{
+   /* display: flex;  */
+   
+}
+
+.modal-changepass{
+  /* display: flex; */
+}
+
+.modal-dangky{
+  /* display: flex; */
+}
+
+.modal-quenpass{
+  /* display:flex; */
+}
+
+
+.modal.open, .modal-dangky.open, .modal-quenpass.open, .modal-otp.open, .modal-changepass.open{
+  display: flex;
+}
+.modal.tat .modal-dangky.tat{
+  display: none;
+}
+
+.modal-quenpass.js-modal-quenpass-2{
+  /* display: flex !important; */
+}
+
+.modal .modal-container,
+.modal-dangky .modal-container-dangky,
+.modal-quenpass .modal-quenpass-container,
+ .modal-otp .modal-otp-container,
+ .modal-changepass .modal-changepass-container{
+  background: #1E1E1E;
+  width: 622px;
+  height: 620px;
+  color: var(--text-color);
+  position: relative;
+  animation: modalFadeIn ease 0.5s;
+  border-radius: 10px;
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.modal-quenpass-container,
+ .modal-otp-container,
+ .modal-changepass-container{
+  width: 622px !important;
+  height: 462px !important;
+}
+.modal-container-dangky{
+  width: 622px !important;
+  height: 675px !important;
+}
+
+.modal-quenpass-header,
+ .modal-otp-header,
+ .modal-changepass-header{
+  padding: 45px;
+}
+
+.modal-close, 
+.modal-close-dangky
+{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  padding: 26px;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.modal-close:hover,
+.modal-close-dangky:hover,
+.modal-quenpass-close:hover,
+ .modal-otp-close:hover,
+ .modal-changepass-close:hover
+{
+  color:rgb(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+.modal-header,
+.modal-header-dangky,
+.modal-quenpass-header,
+.modal-otp-header,
+ .modal-changepass-header{
+  background: #1E1E1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 3.6rem;
+  line-height: 1.4;
+  border-radius: 0px 0px 0 0;
+  border-top: 6px solid #FE7819;
+  height:95px;
+  
+}
+.line{
+  width: 100%;
+  height: 0.5px;
+  background: rgba(71, 71, 71, 0.2);
+  margin-bottom: 29px;
+  margin-top: 14px;
+  font-size: 3rem;
+}
+.ti-bag{
+  margin-right: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.modal-body,
+.modal-body-dangky,
+.modal-quenpass-body,
+ .modal-otp-body,
+ .modal-changepass-body
+{
+  padding: 0 16px;
+}
+
+.modal-body-dangky
+{
+  margin-top: -34px;
+}
+
+.modal-label,
+.modal-label-dangky,
+.modal-quenpass-label,
+ .modal-otp-label,
+ .modal-changepass-label{
+  display: block;
+  /* moi thang nam tren 1 hang rieng biet */
+  font-size: 2rem;
+  margin-top: 39px;
+  font-style:normal;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 12px;
+  /* margin-top: auto; */
+  /* position: absolute; */
+  bottom: 0;
+}
+
+
+
+.modal-label-dangky{
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.6rem;
+  /* color-scheme: white; */
+}
+
+#daybd{
+  color-scheme: dark;
+}
+
+.modal-label-dangky p{
+  margin-left: 5px;
+  color: #FE7819;
+}
+
+.modal-input,
+.modal-input-dangky,
+.modal-quenpass-input,
+ .modal-otp-input,
+ .modal-changepass-input{
+  width: 100%;
+  padding: 10px;
+  font-size: 1.6rem;
+  /* margin-bottom: 15.5px; */
+  margin-top: 6px;
+  background-color: #5B5B5B;
+  border-radius: 8px;
+  color:#D9D9D9;
+  box-sizing: border-box;
+  color: #fff !important;
+  outline:none;
+  /* height:37px; */
+}
+
+.modal-input-dangky::placeholder{
+  color: rgb(255, 255, 255, 0.34);
+}
+
+
+.modal-input-dangky{
+  margin-top: -6px;
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+}
+
+.modal-label-quenpass{
+  color: #FE7819;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: end;
+  margin-top: 32px;
+  margin-bottom: 72px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal-label-result,
+.modal-label-result-dangky,
+.modal-quenpass-label-result,
+.modal-otp-label-resend,
+.modal-changepass-label-resend
+{
+  display: flex;
+  justify-content: space-around;
+  text-transform:none;
+}
+
+.modal-form, 
+.modal-form-dangky,
+ .modal-quenpass-form,
+ .modal-otp-form,
+ .modal-changepass-form{
+  /* background: rgba(217, 171, 171, 0.2); */
+  /* padding-top: 46px; */
+  padding-bottom: 19px;
+  padding-left: 38px;
+  padding-right: 38px;
+  /* margin-top: 38px; */
+  margin-bottom: 38px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 5px;
+
+}
+.modal-form-dangky{
+  /* display: flex; */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: transparent;
+  /* margin-top: -12px; */
+}
+
+.form-item{
+  flex: 1; 
+  min-width: 250px;
+}
+
+#button-login,
+#button-dangky,
+#button-quenpass,
+#button-otp,
+#button-changepass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E37F28;
+  border: none;
+  color: #000;
+  height: 51px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  padding: 18px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 70px;
+  /* tao hinh con chuot */
+}
+#button-login:hover,
+#button-dangky:hover,
+#button-quenpass:hover,
+#button-otp:hover,
+#button-changepass:hover{
+  background: #902900;
+  color: #fff;
+  /* tao do nhac khi tro vao */
+}
+
+#button-quenpass,
+#button-otp,
+#button-changepass{
+  margin-top: 82px;
+}
+
+#button-dangky{
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+@keyframes modalFadeIn{
+  from{
+      opacity: 0;
+      transform: translateY(-140px);
+  }
+  to{
+      opacity: 1;
+      transform: translateY(0);
+  }
+  /* tao chuyen dong di tu tren xuong */
+}
+
+.form-label,
+.form-message {
+  text-align: left;
+}
+
+.form-group.invalid .form-message {
+  color: #f33a58;
+}
+
+.form-group:first-child{
+  margin-top: -32px;
+}
+
+.form-message {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  padding: 4px 0 0;
+  padding-bottom: -4px;
+}
+
+.modal-label-chuyendangky,
+.modal-quenpass-label-chuyendangky,
+.modal-otp-label-resend,
+.modal-changepass-label-resend
+{
+  display: flex;
+  background: #5B5B5B;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 16px;
+  margin: 0;
+  margin-top: -6px;
+  margin-left: -44px;
+  margin-right: -44px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  left: 0;
+}
+
+.modal-label-chuyendangky-trangmoi,
+.modal-quenpass-label-chuyendangky-trangmoi,
+.modal-otp-label-resend-button,
+ .modal-changepass-label-resend-button{
+  background: transparent;
+  color: #000;
+  border: none;
+  color: #E37F28;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-left: 23px;
+  cursor: pointer;
+}
+
+.form-group2.invalid .form-message,
+.form-group-3.invalid .form-message,
+.form-group-3-2 .form-message
+.form-group-3-3.invalid .form-message{
+  color: #f33a58;
+  
+}
+
+
