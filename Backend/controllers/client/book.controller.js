@@ -69,16 +69,9 @@ module.exports.getBook = async (req, res) => {
 };
 
 module.exports.createBook = async (req, res) => {
-  const {
-    translatorID,
-    tagIDs,
-    name,
-    author,
-    description,
-    type,
-    language,
-    age_limit,
-  } = req.body;
+  const translatorID = req.user.id;
+  const { tagIDs, name, author, description, type, language, age_limit } =
+    req.body;
   const thumbnail = req.file;
   try {
     const translator = await User.findOne({ _id: translatorID });
@@ -213,7 +206,7 @@ module.exports.updateBook = async (req, res) => {
 };
 
 module.exports.getUserUploadBook = async (req, res) => {
-  const user_ID = req.query.id;
+  const user_ID = req.user.id;
   try {
     const user = await User.findOne({ _id: user_ID });
     if (!user) {
