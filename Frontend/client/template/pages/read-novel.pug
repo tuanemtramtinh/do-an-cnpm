@@ -1,16 +1,17 @@
 extends ../layouts/default.pug
-
 block main 
     .control-container
         .navigation
             .nav-item.chapter
-                span.current-chapter Chap 1
+                .text Chap 1
                 .material-symbols-outlined(style="font-size: 25px") chevron_right
                 ul.chapter-dropdown
+                    li.dropdown-item Chap 2
+                    li.dropdown-item Chap 3
+                    li.dropdown-item Chap 4
             a.nav-item.back-to-menu(href="../../client/pages/chapter-page.html")
                 .material-symbols-outlined(style="font-size: 25px") chevron_left
                 .text Quay lại menu
         .divider
     .reader-container
-        .image-gallery
     script(src="../../assets/js/client/api.js")

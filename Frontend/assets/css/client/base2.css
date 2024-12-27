@@ -1,0 +1,11 @@
+body{
+    background-color: #2B2B2B;
+}
+
+.wrapper{
+    max-width: 1246px;
+    width: 100%;
+    margin: 35px auto;
+}
+
+
