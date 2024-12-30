@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return `
                     <div class="col l-3 m-4 c-6">
                         <div class="content-chuamanga__item-manga">
-                            <a href="/manga/${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
+                            <a href="./manga/${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
                                 <img src="${manga.thumbnail}" class="content-chuamanga__item-img" alt="${manga.name}">
                             </a>
                             <div class="content-chuamanga__item-container">
