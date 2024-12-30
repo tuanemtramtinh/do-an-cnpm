@@ -1,0 +1,277 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.header-avatar {
+    width: 40px; /* Kích thước avatar */
+    height: 40px;
+    border-radius: 50%; /* Bo tròn để tạo hình tròn cho avatar */
+    object-fit: cover; /* Đảm bảo ảnh hiển thị đầy đủ mà không bị méo */
+    cursor: pointer;
+    margin-left: 20px; /* Khoảng cách từ avatar đến các phần tử khác */
+  }
+  
+  .header-item__avatar {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Profile Section */
+.profile-section {
+    position: relative;
+    width: 2000px;
+    height: 325px;
+    background: #D9D9D9;
+    margin-top: 60px;
+  }
+  
+  /* Avatar */
+  .profile-avatar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 70px;
+    left: 89px;
+    border: 0.5px solid #2B2B2B;
+    border-radius: 1000px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Profile Info */
+  .profile-info {
+    position: absolute;
+    top: 69px;
+    left: 315px;
+  }
+  
+  .profile-name {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000000;
+    margin-top: 28px;
+  }
+  
+  .profile-role {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+  }
+  
+  .profile-join-date {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+  }
+  
+  /* Extra Content (Optional) */
+  .profile-extra {
+    position: absolute;
+    bottom: 10px;
+    left: 89px;
+  }
+  
+
+/* Container cho toàn bộ phần thông tin */
+.personal-info-container {
+    width: 1230px;
+    margin: 20px auto;
+    background: #F3F4F6;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Tiêu đề "Thông tin cá nhân" */
+.personal-info-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  /* Wrapper cho icon, tiêu đề */
+.icon-user {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+.personal-info-title {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 39px;
+  color: #000000;
+  white-space: nowrap;
+}
+.personal-info-header{
+  position: relative;
+  left: 215px;
+}
+.personal-info-divider {
+  width: 74%; /* Đường ngang kéo dài toàn bộ container */
+  border: 2px solid #000000;
+  margin: 10px auto; /* Căn giữa trên dưới */
+}
+  
+  /* Hộp chứa thông tin */
+  .personal-info-box {
+    margin-top: 20px;
+  }
+  
+  .personal-info-box p {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+  }
+  
+  .personal-info-box strong {
+    font-weight: 700;
+    color: #000000;
+    margin-right: 10px;
+  }
+  
+  .personal-info-box span {
+    font-style: italic;
+    font-weight: 400;
+    color: #000000;
+  }
+  
+  .main-layout {
+    display: grid; /* Sử dụng Grid Layout */
+    grid-template-columns: 3fr 1fr; /* Chia 2 cột: Manga 75%, Chức năng 25% */
+    gap: 20px; /* Khoảng cách giữa 2 cột */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    margin: 20px auto; /* Căn giữa container */
+    align-items: start; /* Căn phần tử con lên đầu */
+    box-sizing: border-box; /* Đảm bảo padding không làm ảnh hưởng kích thước */
+    border: 2px dashed red;
+    
+  }
+  
+/* Manga Section */
+.manga-section {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+  border-radius: 10px; /* Bo góc */
+  overflow: hidden; /* Ẩn nội dung tràn */
+  height: auto;
+  border: 2px dashed blue;
+}
+  
+  .manga-section-title-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và tiêu đề */
+  }
+  
+  .mangaicon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .manga-section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+  }
+  
+  .manga-info-divider {
+    width: 70%;
+    border: 1px solid #000000;
+    margin: 10px 0;
+  }
+  
+
+/* Function Section */
+.function-section {
+  background-color: #f3f4f6;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+  border-radius: 10px; /* Bo góc */
+  overflow: hidden; /* Ẩn nội dung tràn */
+  height: auto;
+  border: 2px dashed green;
+}
+  
+  .function-section-title-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .functionicon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .function-section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+  }
+  
+  .function-info-divider {
+    width: 50%;
+    border: 1px solid #000000;
+    margin: 10px 0;
+  }
+
+/* Function Section Box */
+.function-box {
+  background: #f3f4f6; /* Nền của box */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Viền nhạt */
+  border-radius: 10px; /* Bo góc box */
+  padding: 20px; /* Khoảng cách bên trong box */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+/* Button */
+.function-btn {
+  display: flex; /* Đặt icon và text trên cùng hàng */
+  align-items: center; /* Căn giữa icon và text theo chiều dọc */
+  gap: 10px; /* Khoảng cách giữa icon và text */
+  background: #000; /* Nền đen */
+  color: #fff; /* Text màu trắng */
+  border: none; /* Không viền */
+  border-radius: 5px; /* Bo góc nút */
+  padding: 10px 15px; /* Khoảng cách trong nút */
+  cursor: pointer; /* Con trỏ chỉ tay khi hover */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  text-align: left; /* Văn bản căn trái */
+  transition: background 0.3s; /* Hiệu ứng hover */
+}
+
+.function-btn:hover {
+  background: #1a1a1a; /* Nền tối hơn khi hover */
+}
+
+/* Icon trong nút */
+.function-btn img.icon {
+  width: 20px; /* Kích thước icon */
+  height: 20px;
+  object-fit: contain;
+}
