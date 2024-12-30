@@ -134,7 +134,7 @@ async function login(username, password) {
     // console.log(username);
     // console.log(password);
 	try {
-		const response = await fetch("https://do-an-cnpm.onrender.com/user/login", {
+		const response = await fetch("http://4.194.248.208:3000/user/login", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ username, password }),
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 async function dangky(email, username, password, dob, phone) {
 	try {
 		const response = await fetch(
-			"https://do-an-cnpm.onrender.com/user/register",
+			"http://4.194.248.208:3000/user/register",
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
