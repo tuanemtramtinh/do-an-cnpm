@@ -175,6 +175,7 @@ module.exports.forgetPassword = async (req, res) => {
       forgotPasswordUser = new ForgotPassword({
         email,
         otp,
+        expireAt: Date.now() + 5 * 60 * 1000,
       });
 
       await forgotPasswordUser.save();
