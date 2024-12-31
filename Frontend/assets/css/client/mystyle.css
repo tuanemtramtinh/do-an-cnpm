@@ -97,14 +97,7 @@
     word-wrap: break-word
 }
 
-.related_comic-list{
-    margin-top: 35px;
-    flex-direction: row-reverse;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 64px;
-}
+
 /* book content */
 .container {
     position: relative;
@@ -183,7 +176,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     cursor: pointer;
 }
 .icon-box:hover {
@@ -193,6 +186,13 @@
     color: #7A7A7A; 
     transition: color 0.3s ease; 
 }
+.icon-box.filled {
+    background: #fff; 
+}
+.icon-box.filled .material-symbols-outlined {
+    color: #7A7A7A; 
+}
+
 .tags-section {
     
     display: flex;

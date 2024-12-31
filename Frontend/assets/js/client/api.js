@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Show/hide navigation bar on scroll
-  const controlContainer = document.querySelector(".control-container");
+const controlContainer = document.querySelector(".control-container");
   if (controlContainer) {
     let lastScrollTop = 0;
 
@@ -104,10 +104,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  const chapterNavItem = document.querySelector(".nav-item.chapter");
+const chapterNavItem = document.querySelector(".nav-item.chapter");
   if (chapterNavItem) {
     chapterNavItem.addEventListener("click", () => {
       chapterNavItem.classList.toggle("active");
     });
+  }
+
+const backToMenuButton = document.querySelector('.nav-item.back-to-menu');
+  if (backToMenuButton) {
+      backToMenuButton.addEventListener("click", () => {
+        window.location.href = `../../client/pages/chapter-page.html?bookId=${bookId}`
+      })
   }
 });

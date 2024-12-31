@@ -19,14 +19,13 @@
 }
 
 .chapter-title {
-    position: absolute;
-    left: 6px;
-    top: 0;
     color: white;
     font-size: 20px;
     font-family: Inter, sans-serif;
     font-weight: 700;
-    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .chapter-divider {
@@ -47,3 +46,44 @@
 .chapter-item:hover .chapter-divider {
     transform: scaleX(0); 
 }
+
+.related_comic-list {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 60px; 
+    list-style: none; 
+    padding: 0;
+}
+  
+.related-list-item {
+    width: 198px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #7A7A7A; 
+    background: #7A7A7A;
+    border-radius: 8px;
+    overflow: hidden; 
+    cursor: pointer;
+}
+  
+.related-list-item img {
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+}
+  
+.related-list-item p {
+    font-family: Inter, sans-serif;
+    font-weight: 300;
+    margin: 8px 5px; 
+    font-size: 14px; 
+    color: #fff; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    max-width: 100%; 
+}
+  

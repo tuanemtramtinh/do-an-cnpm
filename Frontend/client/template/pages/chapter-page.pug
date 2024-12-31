@@ -1,5 +1,6 @@
 extends ../layouts/index.pug
 include ../mixins/chapter-list.pug
+include ../mixins/manga-card.pug
 
 block main
     // Tab structure
@@ -15,17 +16,8 @@ block main
         .tabcontent(id="comments" style="display:none")
             p comment
         .tabcontent(id="related" style="display:none")
-            // Related content here
             ul.related_comic-list
-                li.related-list-item
-                    img(src="../../assets/img/cover.png")
-                li.related-list-item
-                    img(src="../../assets/img/cover.png")
-                li.related-list-item
-                    img(src="../../assets/img/cover.png")
-                li.related-list-item
-                    img(src="../../assets/img/cover.png")
-                li.related-list-item
-                    img(src="../../assets/img/cover.png")
+                each book in books
+                    +card(book.thumbnail, book.name)
 
         script(src="../../assets/js/client/script.js")
