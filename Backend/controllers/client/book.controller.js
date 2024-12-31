@@ -68,6 +68,24 @@ module.exports.getBook = async (req, res) => {
   }
 };
 
+module.exports.getBookDetail = async (req, res) => {
+  try {
+    const bookId = req.params.id;
+
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+      res.json(returnMessage("Không tìm thấy truyện", null, 404));
+      return;
+    }
+
+    res.json(returnMessage("Lấy chi tiết truyện thành công", book, 200));
+  } catch (error) {
+    console.log(error);
+    res.json(returnMessage("Lấy chi tiết truyện thất bại", null, 500));
+  }
+};
+
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
   const { tagIDs, name, author, description, type, language, age_limit } =
