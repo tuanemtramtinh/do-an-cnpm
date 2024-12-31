@@ -57,34 +57,34 @@ const eventButtonDelete = () => {
             const body = document.querySelector("body");
 
             const elementDelete = document.createElement("div");
-            elementDelete.classList.add("modal");
+            elementDelete.classList.add("_modal");
 
             elementDelete.innerHTML = `
-                <div class="modal__main">
-                    <button class="modal__close">
+                <div class="_modal__main">
+                    <button class="_modal__close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
-                    <div class="modal__content">
-                        <div class="modal__content__top">
-                            <div class="modal__content__top--icon"><i class="fa-solid fa-circle-exclamation"></i></div>
-                            <div class="modal__content__top--title">Bạn có chắc muốn xóa?</div>
-                            <div class="modal__content__top--desc">Đây là hành động không thể hoàn tác!</div>
+                    <div class="_modal__content">
+                        <div class="_modal__content__top">
+                            <div class="_modal__content__top--icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                            <div class="_modal__content__top--title">Bạn có chắc muốn xóa?</div>
+                            <div class="_modal__content__top--desc">Đây là hành động không thể hoàn tác!</div>
                         </div>
-                        <div class="modal__content__bottom">
-                            <button class="modal__bottom--No button">Hủy</button>
-                            <button class="modal__bottom--Yes button">Có, hãy xóa nó!</button>
+                        <div class="_modal__content__bottom">
+                            <button class="_modal__bottom--No button">Hủy</button>
+                            <button class="_modal__bottom--Yes button">Có, hãy xóa nó!</button>
                         </div>
                     </div>
                 </div>
-                <div class="modal__overlay">
+                <div class="_modal__overlay">
                 </div>
             `;
 
             body.appendChild(elementDelete);
 
-            const buttonClose = elementDelete.querySelector(".modal__close");
-            const buttonOverlay = elementDelete.querySelector(".modal__overlay");
-            const buttonNo = elementDelete.querySelector(".modal__bottom--No");
+            const buttonClose = elementDelete.querySelector("._modal__close");
+            const buttonOverlay = elementDelete.querySelector("._modal__overlay");
+            const buttonNo = elementDelete.querySelector("._modal__bottom--No");
 
             buttonClose.addEventListener("click", () => {
                 body.removeChild(elementDelete);
@@ -96,7 +96,7 @@ const eventButtonDelete = () => {
                 body.removeChild(elementDelete);
             })
 
-            const buttonYes = elementDelete.querySelector(".modal__bottom--Yes");
+            const buttonYes = elementDelete.querySelector("._modal__bottom--Yes");
 
             buttonYes.addEventListener("click", () => {
 

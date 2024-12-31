@@ -1,5 +1,8 @@
 extends ../layouts/index.pug
 
+block link
+    link(rel="stylesheet", href="../../assets/css/client/style_GiaQui.css")
+
 block container
 
     include ../partials/user-info.pug
@@ -39,7 +42,7 @@ block container
                                         li Các ảnh phải có cùng chiều rộng (width).
                                 .client--edit-manga__middle--image
                                     .client--edit-manga__middle--image-main
-                                        img(src="../../assets/images/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
+                                        img(src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
                                     label.client--edit-manga__middle--image-button
                                         input(type="file" name="image")
                                         span(class="button") Chọn ảnh bìa

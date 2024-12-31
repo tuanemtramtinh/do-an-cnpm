@@ -8,6 +8,7 @@ function showbuyticket() {
 }
 
 function tatbuyticket() {
+
   modal.classList.remove("open");
 }
 

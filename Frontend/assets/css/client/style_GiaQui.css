@@ -1,3 +1,8 @@
+.container {
+  margin: 0 186px; 
+}
+
+
 .button {
   background-color: white;
   display: flex;
@@ -51,7 +56,7 @@
   color: #0A0A0A;
 }
 
-.modal {
+._modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -61,7 +66,7 @@
   align-items: center;
   justify-content: center;
 }
-.modal__main {
+._modal__main {
   width: 40%;
   padding: 25px;
   border-radius: 8px;
@@ -69,7 +74,7 @@
   position: relative;
   z-index: 8;
 }
-.modal__close {
+._modal__close {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -84,7 +89,7 @@
   color: #fff;
   cursor: pointer;
 }
-.modal__overlay {
+._modal__overlay {
   background-color: rgba(0, 0, 0, 0.3960784314);
   position: absolute;
   top: 0px;
@@ -93,42 +98,42 @@
   height: 100%;
   cursor: pointer;
 }
-.modal__content {
+._modal__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
-.modal__content__top {
+._modal__content__top {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modal__content__top--icon {
+._modal__content__top--icon {
   font-size: 80px;
   color: #F40000;
 }
-.modal__content__top--title {
+._modal__content__top--title {
   margin-top: 20px;
   font-size: 34px;
   font-weight: 600;
   color: #003459;
 }
-.modal__content__top--desc {
+._modal__content__top--desc {
   font-size: 18px;
   font-weight: 500;
   color: #667479;
 }
-.modal__content__bottom {
+._modal__content__bottom {
   display: flex;
   gap: 20px;
 }
-.modal__bottom--Yes:hover {
+._modal__bottom--Yes:hover {
   background-color: #52CE22;
   color: #FDFDFD;
 }
-.modal__bottom--No:hover {
+._modal__bottom--No:hover {
   color: #FDFDFD;
   background-color: #F40000;
 }
