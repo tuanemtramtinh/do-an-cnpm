@@ -1,0 +1,115 @@
+extends ../layouts/index.pug
+
+block container
+
+    include ../partials/user-info.pug
+
+    .alert-list
+
+    section.client--edit-manga
+        .container
+            form(id="form-uploadManga"  action="")
+                .client--edit-manga__wrap
+                    .client--edit-manga__top
+                        .client--edit-manga__top--element
+                            label(for="languageUM") Ngôn ngữ:
+                            select(id="languageUM" name="ngonNgu")
+                                option(value="VI" selected) Tiếng Việt
+                                option(value="EN") Tiếng Anh
+                                option(value="JP") Tiếng Nhật
+                        .client--edit-manga__top--element
+                            label(for="ageLimitUM") Giới hạn độ tuối:
+                            select(id="ageLimitUM" name="gioiHanDoTuoi")
+                                option(value="Tiếng Việt" selected) Phù hợp với mọi lứa tuối
+                                option(value="Tiếng Anh") 8+
+                                option(value="Tiếng Anh") 10+
+                                option(value="Tiếng Anh") 12+
+                                option(value="Tiếng Nhật") 16+
+                                option(value="Tiếng Nhật") 18+
+                    .client--edit-manga__middle
+                        .client--edit-manga__middle--image
+                            .client--edit-manga__middle--image-main
+                                img(src="../../assets/images/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
+                            label.client--edit-manga__middle--image-button
+                                input(type="file" name="image")
+                                span(class="button") Chọn ảnh bìa
+                            span(id="file-name" class="nameFile") No file chosen
+
+                        .client--edit-manga__middle--form
+                            .client--edit-manga__middle--form-main
+                                .client--edit-manga__middle--form-main_title Tên truyện:
+                                .client--edit-manga__middle--form-main_form 
+                                    input(type="text" name="nameOfMangaUM" aria-label="x")
+
+                            .client--edit-manga__middle--form-list
+
+                                .client--edit-manga__middle--form-element 
+                                    .client--edit-manga__middle--form-element_title Tác giả: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        input(type="text" name="nameOfAuthorUM" aria-label="x")
+
+                                .client--edit-manga__middle--form-element
+                                    .client--edit-manga__middle--form-element_title Kiểu: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        select(id="typeOfMangaUM" name="type" aria-label="x")
+                                            option(value="Truyện tranh" selected) Truyện tranh
+                                            option(value="Tiểu thuyết") Tiểu thuyết
+
+                                .client--edit-manga__middle--form-element 
+                                    .client--edit-manga__middle--form-element_title Tình trạng: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        select(id="statusOfMangaUM" name="status" aria-label="x")
+                                            option(value="Hoàn thành" selected) Hoàn thành
+                                            option(value="Chưa hoàn thành") Chưa hoàn thành
+
+                        .client--edit-manga__middle--tag
+                            .client--edit-manga__middle--tag-title 
+                                i(class="fa-solid fa-tags") 
+                                .main Tag:
+                            .client--edit-manga__middle--tag-box
+                                .client--edit-manga__middle--tag-list
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="alphaMale" name="tagUM" value="Tổng tài")
+                                        label(for="alphaMale") Tổng tài
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="detective" name="tagUM" value="Trinh thám")
+                                        label(for="detective") Trinh thám
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="love" name="tagUM" value="Tình cảm")
+                                        label(for="love") Tình cảm
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="advanture" name="tagUM" value="Phiêu lưu")
+                                        label(for="advanture") Phiêu lưu
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="act" name="tagUM" value="Hành động")
+                                        label(for="act") Hành động
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="science" name="tagUM" value="Viễn tưởng")
+                                        label(for="science") Viễn tưởng
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="horrified" name="tagUM" value="Kinh dị")
+                                        label(for="horrified") Kinh dị
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="realLive" name="tagUM" value="Đời thường")
+                                        label(for="realLive") Đời thường
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="funny" name="tagUM" value="Hài hước")
+                                        label(for="funny") Hài hước
+
+                    .client--edit-manga__bottom
+                        .client--edit-manga__bottom--introduce
+                            .client--edit-manga__bottom--introduce-title Giới thiệu:
+                            .client--edit-manga__bottom--introduce-content
+                                textarea(id="desc" name="descriptionUM" rows="3" cols="" aria-label="x")
+                                
+                    .client--edit-manga__button
+                        a(href="mangaWrittingCenter.html" class="button") 
+                            i(class="fa-solid fa-arrow-left")
+                            .content Trang trước
+                        button(type="submit" class="button button-submit") 
+                            i(class="fa-solid fa-arrow-up-from-bracket")
+                            .content Upload truyện
+    
+    script(src="https://unpkg.com/axios/dist/axios.min.js")
+    //- script(src="../assets/script/product-detail.js")
+    script(src = "../../assets/js/client/script.js")

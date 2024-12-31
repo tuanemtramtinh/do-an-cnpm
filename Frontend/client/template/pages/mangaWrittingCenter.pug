@@ -1,0 +1,60 @@
+extends ../layouts/index.pug
+
+block container
+
+    include ../partials/user-info.pug
+
+    section.client--mangaWrittingCenter
+        //- .client--mangaWrittingCenter-main
+        .container
+            .client--mangaWrittingCenter-head
+                .client--mangaWrittingCenter-left
+                    i(class="fa-solid fa-book-open")
+                    .content Thông tin truyện upload
+                .client--mangaWrittingCenter-right
+                    //- .client--mangaWrittingCenter-right_search
+                    form(action="#" class="form-search")
+                        input(name="keyword" placeholder="Tìm kiếm...")
+                        button(aria-label="x")
+                            i(class="fa-solid fa-magnifying-glass")
+
+                    a(href="upload-Manga.html" class="button client--mangaWrittingCenter-right_button")
+                        i(class="fa-solid fa-file-arrow-up")
+                        | Upload thêm truyện
+
+            div(class="client--mangaWrittingCenter-list" id="product-list")
+
+                //- .client--mangaWrittingCenter-element 
+                //-     .client--mangaWrittingCenter-element--right
+                //-         img(src="../../assets/images/MangaCenter_Element.png" alt="imageOfElement")
+                //-     .client--mangaWrittingCenter-element--middle
+                //-         .client--mangaWrittingCenter-element-top
+                //-             .client--mangaWrittingCenter-element-top--language VI
+                //-             .client--mangaWrittingCenter-element-top--name The lost and the damned I
+                //-             .client--mangaWrittingCenter-element-top--type Tiểu thuyết
+                //-         .client--mangaWrittingCenter-element-mid 
+                //-             .client--mangaWrittingCenter-element-mid--status Đang ra
+                //-             .client--mangaWrittingCenter-element-mid--date 
+                //-                 i(class="fa-regular fa-clock")
+                //-                 .content 19:43 25/10/2024
+                //-         .client--mangaWrittingCenter-element-bottom
+                //-             a(href="edit-Manga.html" class="button client--mangaWrittingCenter-element-bottom--edit")
+                //-                 i(class="fa-regular fa-pen-to-square")
+                //-                 | Chỉnh sửa
+                //-             button(class="button client--mangaWrittingCenter-element-bottom--delete")
+                //-                 i(class="fa-regular fa-trash-can")
+                //-                 | Xóa
+                //-     .client--mangaWrittingCenter-element--left
+                //-         .client--mangaWrittingCenter-element--left-inner
+                //-             a(href="upload-chapterManga.html" class="button client--mangaWrittingCenter-element--left_button--addChapter")
+                //-                 i(class="fa-solid fa-file-arrow-up")
+                //-                 .content Thêm chương
+                //-             a(href="chapter-list.html" class="button client--mangaWrittingCenter-element--left_button--addChapter")
+                //-                 i(class="fa-solid fa-ellipsis-vertical")
+                //-                 i(class="fa-solid fa-bars")
+                //-                 .content Danh sách chương
+                      
+
+    script(src="https://unpkg.com/axios/dist/axios.min.js")
+    //- script(src="../assets/script/product-detail.js")
+    script(src = "../../assets/js/client/script.js")

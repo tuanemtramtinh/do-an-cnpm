@@ -1,0 +1,39 @@
+extends ../layouts/index.pug
+
+block container
+
+    include ../partials/user-info.pug
+
+    section.client--upload-chapterNovel 
+        .container
+            form(id="form-edit"  action="")
+                .client--upload-chapterNovel__box
+                    .client--upload-chapterNovel__top
+                        a(href="chapter-list.html" class="button")
+                            .icon
+                                i(class="fa-solid fa-ellipsis-vertical")
+                                i(class="fa-solid fa-bars")
+                            .content Danh sách chương
+                    .client--upload-chapterNovel__middle
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Chương số:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="text" name="numberOfChapter" placeholder ="1")
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Tiêu đề:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="text" name="nameOfChapter" placeholder ="Tiêu đề")
+
+                    .client--upload-chapterNovel__bottom
+                        .client--upload-chapterNovel__bottom--element
+                            .client--upload-chapterNovel__bottom--element-title Nội dung chương:
+                            .client--upload-chapterNovel__bottom--element-form
+                                textarea(id="content" name="contentOfChapter" aria-label="x")
+
+                    .client--upload-chapterNovel__button
+                        button(type="submit" class="button button-submit") 
+                            i(class="fa-solid fa-arrow-up-from-bracket")
+                            .content Upload chương
+

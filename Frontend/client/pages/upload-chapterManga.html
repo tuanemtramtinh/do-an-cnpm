@@ -146,47 +146,72 @@
             }
         });
       </script>
-      <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
-        <div class="profile-info">
-          <h2 class="profile-name">Triệu Mẫn</h2>
-          <p class="profile-role">Vai trò: Uploader</p>
-          <p class="profile-join-date">Ngày gia nhập: 01/01/2024</p>
-        </div>
-      </div>
-      <div class="block-content"></div>
-      <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
-        <h2 class="personal-info-title">Thông tin cá nhân</h2>
-      </div>
-      <hr class="personal-info-divider">
-      <div class="personal-info-container">
-        <div class="personal-info-box"> 
-          <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
-          <p><strong>Username: </strong>kandy_2705</p>
-          <p><strong>SĐT: </strong>0123456789</p>
-          <p><strong>Ngày sinh: </strong>27/05/2004</p>
-        </div>
-      </div>
-      <div class="main-layout">
-        <div class="grid__column-3">
-          <div class="manga-section">
-            <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
-              <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element">
+              <div class="client--user-info__element--image"><img src="../../assets/images/partials-userInfo-avatar.png" alt="avatar"></div>
+              <div class="client--user-info__element--content">
+                <div class="client--user-info__element--content-name">%Gia Qui%</div>
+                <div class="client--user-info__element--content-position">Vị trí: %Uploader%</div>
+                <div class="client--user-info__element--content-day">Ngày gia nhập: %17/12/2023%</div>
+              </div>
             </div>
-            <hr class="manga-info-divider">
           </div>
         </div>
-        <div class="grid__column-1">
-          <div class="function-section">
-            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
-              <h2 class="function-section-title">Chức năng</h2>
+      </section>
+      <section class="client--upload-chapterNovel"> 
+        <div class="container">
+          <form id="form-edit" action="">
+            <div class="client--upload-chapterNovel__box">
+              <div class="client--upload-chapterNovel__top"><a class="button" href="chapter-list.html">
+                  <div class="icon"><i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-bars"></i></div>
+                  <div class="content">Danh sách chương</div></a></div>
+              <div class="client--upload-chapterNovel__middle">
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Chương số:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="text" name="numberOfChapter" placeholder="1">
+                  </div>
+                </div>
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Tiêu đề:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="text" name="nameOfChapter" placeholder="Tiêu đề">
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterManga__bottom">
+                <div class="client--upload-chapterManga__bottom--element">
+                  <div class="client--upload-chapterManga__bottom--element-title">Trang truyện:</div>
+                  <div class="client--upload-chapterManga__bottom--element-box">
+                    <div class="client--upload-chapterManga__bottom--element-notice">Lưu ý:
+                      <ul> 
+                        <li>Không vượt quá 50 ảnh/chương.</li>
+                        <li>Tổng dung lượng của các ảnh trong một chương không được phép vượt quá 15MB.</li>
+                        <li>Chiều rộng 720 pixel tới 1200 pixel, độ phân giải 72 dpi.</li>
+                        <li>Đặt tên file theo thứ tự trang truyện hiển thị.</li>
+                        <li>Các ảnh phải có cùng chiều rộng (width).</li>
+                      </ul>
+                    </div>
+                    <div class="client--edit-manga__middle--image">
+                      <div class="client--edit-manga__middle--image-main"><img src="../../assets/images/edit-manga-uploadMangaDefault.png" alt="defaultIMG"></div>
+                      <label class="client--edit-manga__middle--image-button">
+                        <input type="file" name="image"><span class="button">Chọn ảnh bìa</span>
+                      </label><span class="nameFile" id="file-name">No file chosen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterNovel__button">
+                <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                  <div class="content">Upload chương</div>
+                </button>
+              </div>
             </div>
-            <hr class="function-info-divider">
-            <button class="function-btn"> <img class="icon" src="../../assets/img/my-story-icon.png" alt="My Story Icon"><span>Truyện của tôi</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></button>
-          </div>
+          </form>
         </div>
-      </div>
+      </section>
     </body>
   </head>
 </html>

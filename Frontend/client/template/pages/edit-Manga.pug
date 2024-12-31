@@ -1,0 +1,120 @@
+extends ../layouts/index.pug
+
+block container
+
+    .alert-list
+
+    section.client--edit-manga
+        .container
+            form(id="form-edit"  action="")
+                .client--edit-manga__wrap
+                    .client--editManga__top
+                        .client--editManga__top--right 
+                            .client--edit-manga__top--element
+                                label(for="language") Ngôn ngữ:
+                                select(id="language" name="ngonNgu")
+                                    option(value="VI") Tiếng Việt
+                                    option(value="EN") Tiếng Anh
+                                    option(value="JP") Tiếng Nhật
+                            .client--edit-manga__top--element
+                                label(for="ageLimit") Giới hạn độ tuối:
+                                select(id="ageLimit" name="gioiHanDoTuoi")
+                                    option(value="Phù hợp với mọi lứa tuối") Phù hợp với mọi lứa tuối
+                                    option(value="8+") 8+
+                                    option(value="10+") 10+
+                                    option(value="12+") 12+
+                                    option(value="16+") 16+
+                                    option(value="18+") 18+
+                        .client--editManga__top--left 
+                            button(class="button client--mangaWrittingCenter-element-bottom--delete")
+                                i(class="fa-regular fa-trash-can")
+                                | Xóa
+                    .client--edit-manga__middle
+                        .client--edit-manga__middle--image
+                            .client--edit-manga__middle--image-main
+                                img(src="../../assets/images/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
+                            label.client--edit-manga__middle--image-button
+                                input(type="file" name="image")
+                                span(class="button") Chọn ảnh bìa
+                            span(id="file-name" class="nameFile") No file chosen
+
+                        .client--edit-manga__middle--form
+                            .client--edit-manga__middle--form-main
+                                .client--edit-manga__middle--form-main_title Tên truyện:
+                                .client--edit-manga__middle--form-main_form 
+                                    input(type="text" name="nameOfManga" aria-label="x")
+
+                            .client--edit-manga__middle--form-list
+
+                                .client--edit-manga__middle--form-element 
+                                    .client--edit-manga__middle--form-element_title Tác giả: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        input(type="text" name="nameOfAuthor" aria-label="x")
+
+                                .client--edit-manga__middle--form-element
+                                    .client--edit-manga__middle--form-element_title Kiểu: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        select(id="typeOfManga" name="type" aria-label="x")
+                                            option(value="Truyện tranh") Truyện tranh
+                                            option(value="Tiểu thuyết") Tiểu thuyết
+
+                                .client--edit-manga__middle--form-element 
+                                    .client--edit-manga__middle--form-element_title Tình trạng: 
+                                    .client--edit-manga__middle--form-element_form 
+                                        select(id="statusOfManga" name="status" aria-label="x")
+                                            option(value="Hoàn thành") Hoàn thành
+                                            option(value="Chưa hoàn thành") Chưa hoàn thành
+                                            option(value="Đang ra") Đang ra
+                                            option(value="Tạm hoãn") Tạm hoãn
+
+                        .client--edit-manga__middle--tag
+                            .client--edit-manga__middle--tag-title 
+                                i(class="fa-solid fa-tags") 
+                                .main Tag:
+                            .client--edit-manga__middle--tag-box
+                                .client--edit-manga__middle--tag-list
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="alphaMale" name="tag" value="Tổng tài")
+                                        label(for="alphaMale") Tổng tài
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="detective" name="tag" value="Trinh thám")
+                                        label(for="detective") Trinh thám
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="love" name="tag" value="Tình cảm")
+                                        label(for="love") Tình cảm
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="advanture" name="tag" value="Phiêu lưu")
+                                        label(for="advanture") Phiêu lưu
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="act" name="tag" value="Hành động")
+                                        label(for="act") Hành động
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="science" name="tag" value="Viễn tưởng")
+                                        label(for="science") Viễn tưởng
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="horrified" name="tag" value="Kinh dị")
+                                        label(for="horrified") Kinh dị
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="realLife" name="tag" value="Đời thường")
+                                        label(for="realLive") Đời thường
+                                    .client--edit-manga__middle--tag-element-detail
+                                        input(type="checkbox" class="checkbox-round" id="funny" name="tag" value="Hài hước")
+                                        label(for="funny") Hài hước
+
+                    .client--edit-manga__bottom
+                        .client--edit-manga__bottom--introduce
+                            .client--edit-manga__bottom--introduce-title Giới thiệu:
+                            .client--edit-manga__bottom--introduce-content
+                                textarea(id="desc" name="description" rows="3" cols="" aria-label="x")
+                                
+                    .client--edit-manga__button
+                        a(href="mangaWrittingCenter.html" class="button") 
+                            i(class="fa-solid fa-arrow-left")
+                            .content Trang trước
+                        button(type="submit" class="button button-submit") 
+                            i(class="fa-solid fa-arrow-up-from-bracket")
+                            .content Chỉnh sửa truyện
+    
+    script(src="https://unpkg.com/axios/dist/axios.min.js")
+    //- script(src="../assets/script/product-detail.js")
+    script(src = "../../assets/js/client/script.js")

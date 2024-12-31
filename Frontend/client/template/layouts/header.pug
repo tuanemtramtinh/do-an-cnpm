@@ -12,7 +12,7 @@
         div.header-list
             button.header-item__login Thành viên
             div.header__navbar-item.header__navbar-user
-                img(src="../../assets/img/truyen1.jpg", alt="").header__navbar-user-img
+                img(src="../../assets/img/truyen1.jpg" alt="").header__navbar-user-img
                 ul.header__navbar-user-menu
                     li.header__navbar-user-item
                         a(href="./personal_page.html") Trang cá nhân
@@ -30,7 +30,7 @@
             p Đăng nhập vào tài khoản 
         .modal-body
             .modal-form
-                form#form-1.form(action='', method='POST')
+                form#form-1.form(action='' method='POST')
                     div.form-group
                         label.modal-label(for='username')
                             | Tên người dùng
@@ -59,7 +59,7 @@
             p Đăng ký 
         .modal-body-dangky
             .modal-form-dangky
-                form#form-2.form(action='', method='POST')
+                form#form-2.form(action='' method='POST')
                     div.form-group2
                         label.modal-label-dangky(for='username2')
                             | Tên người dùng
@@ -76,7 +76,7 @@
                         label.modal-label-dangky(for='daybd')
                             | Ngày sinh
                             p *
-                        input#daybd.modal-input-dangky(type='date', placeholder="dd/mm/yyyy", required=true)
+                        input#daybd.modal-input-dangky(type='date' placeholder="dd/mm/yyyy", required=true)
                         span.form-message
                     div.form-group2
                         label.modal-label-dangky(for='email')
@@ -88,7 +88,7 @@
                         label.modal-label-dangky(for='phone')
                             | Số điện thoại
                             p *
-                        input#phone.modal-input-dangky(type='tel', pattern='[0-9]{10}', required=true, placeholder="")
+                        input#phone.modal-input-dangky(type='tel' pattern='[0-9]{10}', required=true, placeholder="")
                         span.form-message
                     div.modal-label-result
                         button#button-dangky(type='submit', disabled=true)
