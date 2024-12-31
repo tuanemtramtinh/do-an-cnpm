@@ -69,16 +69,9 @@ module.exports.getBook = async (req, res) => {
 };
 
 module.exports.createBook = async (req, res) => {
-  const {
-    translatorID,
-    tagIDs,
-    name,
-    author,
-    description,
-    type,
-    language,
-    age_limit,
-  } = req.body;
+  const translatorID = req.user.id;
+  const { tagIDs, name, author, description, type, language, age_limit } =
+    req.body;
   const thumbnail = req.file;
   try {
     const translator = await User.findOne({ _id: translatorID });
@@ -203,6 +196,43 @@ module.exports.updateBook = async (req, res) => {
     res.status(200).json({
       status: "success",
       updatedBook: updateBook,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
+
+module.exports.getUserUploadBook = async (req, res) => {
+  const user_ID = req.user.id;
+  try {
+    const user = await User.findOne({ _id: user_ID });
+    if (!user) {
+      return res.status(404).json({
+        status: "fail",
+        message: "invalid user id",
+      });
+    }
+    const books = await Book.find({ translator: user._id }).sort({
+      updatedAt: -1,
+    });
+    let data = [];
+    books.map((book) => {
+      const newData = {
+        img: book.thumbnail,
+        name: book.name,
+        author: book.author,
+        tag: book.tag,
+        day_update: book.updatedAt,
+        language: book.language,
+      };
+      data.push(newData);
+    });
+    res.status(200).json({
+      status: "success",
+      data: data,
     });
   } catch (error) {
     res.status(400).json({
