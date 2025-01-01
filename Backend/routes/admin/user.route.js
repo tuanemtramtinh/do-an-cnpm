@@ -6,5 +6,7 @@ const controller = require("../../controllers/admin/user.controller");
 // const { isAdmin } = require("../../middlewares/role.middleware");
 
 router.post("/change-role/:id", controller.changeRole);
+router.get("/getAlluser", controller.getAllUsers);
+router.get("/getComment", controller.getAllComments);
 
 module.exports = router;

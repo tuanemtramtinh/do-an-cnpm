@@ -1,11 +1,13 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const User = require("../../models/user.model");
+const Comment = require("../../models/comment.model");
 const messageHelper = require("../../helpers/message.helper");
 const { signAccessToken } = require("../../helpers/jwt.helper");
 const ForgotPassword = require("../../models/forgot-password.model");
 const { generateOTP } = require("../../helpers/generate.helper");
 const { sendMail } = require("../../helpers/mail.helper");
+
 
 module.exports.register = async (req, res) => {
   try {
@@ -291,5 +293,40 @@ module.exports.updatePassword = async (req, res) => {
     res.json(message);
   } catch (error) {
     console.log(error);
+  }
+};
+
+module.exports.getAllComments = async (req, res) => {
+  try {
+    const comments = await Comment.find().populate("commentor", "name"); 
+    res.status(200).json({
+      status: "success",
+      data: comments,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
+module.exports.createComment = async (req, res) => {
+  const { comment, commentor } = req.body;
+  try {
+    const newComment = new Comment({
+      comment,
+      commentor,
+    });
+    await newComment.save();
+    const populatedComment = await newComment.populate("commentor", "name");
+    res.status(200).json({
+      status: "success",
+      data: populatedComment,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
   }
 };
