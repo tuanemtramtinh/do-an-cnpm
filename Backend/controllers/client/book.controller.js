@@ -12,7 +12,19 @@ module.exports.getBook = async (req, res) => {
   try {
     const keyword = req.query.keyword;
 
-    if (keyword === "highlight") {
+    if (keyword === "bookId") {
+      const bookId = req.params.id;
+
+      const book = await Book.findById(bookId);
+
+      if (!book) {
+        res.json(returnMessage("Truyện không tồn tại", null, 500));
+        return;
+      }
+
+      res.json(returnMessage("Lấy truyện thành công", book, 200));
+      return;
+    } else if (keyword === "highlight") {
       const limit = 5;
 
       const books = await Book.find({})
@@ -68,23 +80,23 @@ module.exports.getBook = async (req, res) => {
   }
 };
 
-module.exports.getBookDetail = async (req, res) => {
-  try {
-    const bookId = req.params.id;
+// module.exports.getBookDetail = async (req, res) => {
+//   try {
+//     const bookId = req.params.id;
 
-    const book = await Book.findById(bookId);
+//     const book = await Book.findById(bookId);
 
-    if (!book) {
-      res.json(returnMessage("Không tìm thấy truyện", null, 404));
-      return;
-    }
+//     if (!book) {
+//       res.json(returnMessage("Không tìm thấy truyện", null, 404));
+//       return;
+//     }
 
-    res.json(returnMessage("Lấy chi tiết truyện thành công", book, 200));
-  } catch (error) {
-    console.log(error);
-    res.json(returnMessage("Lấy chi tiết truyện thất bại", null, 500));
-  }
-};
+//     res.json(returnMessage("Lấy chi tiết truyện thành công", book, 200));
+//   } catch (error) {
+//     console.log(error);
+//     res.json(returnMessage("Lấy chi tiết truyện thất bại", null, 500));
+//   }
+// };
 
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;

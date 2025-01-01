@@ -7,7 +7,7 @@ const { requireAuth } = require("../../middlewares/auth.middleware");
 
 router.get("/", controller.getBook);
 
-router.get("/:id", controller.getBookDetail);
+// router.get("/:id", controller.getBookDetail);
 
 router.post(
   "/create",
