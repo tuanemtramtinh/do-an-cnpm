@@ -271,3 +271,28 @@ module.exports.getUserUploadBook = async (req, res) => {
     });
   }
 };
+module.exports.getAllComments = async (req, res) => {
+  try {
+    const bookId = req.params.bookId;
+
+    const comments = await Comment.find({ bookid: bookId })
+      .populate("commentor", "name");
+
+    if (!comments || comments.length === 0) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No comments found for this book",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: comments,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};

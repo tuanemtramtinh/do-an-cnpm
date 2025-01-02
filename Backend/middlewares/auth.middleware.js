@@ -29,7 +29,6 @@ module.exports.requireAuth = async (req, res, next) => {
     }
 
     req.user = existUser;
-
     next();
   } catch (error) {
     console.log(error);

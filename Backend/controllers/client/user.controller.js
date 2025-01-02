@@ -1,11 +1,14 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const User = require("../../models/user.model");
+const Comment = require("../../models/comment.model");
+const Book = require("../../models/book.model");
 const messageHelper = require("../../helpers/message.helper");
 const { signAccessToken } = require("../../helpers/jwt.helper");
 const ForgotPassword = require("../../models/forgot-password.model");
 const { generateOTP } = require("../../helpers/generate.helper");
 const { sendMail } = require("../../helpers/mail.helper");
+
 
 module.exports.register = async (req, res) => {
   try {
@@ -292,5 +295,39 @@ module.exports.updatePassword = async (req, res) => {
     res.json(message);
   } catch (error) {
     console.log(error);
+  }
+};
+module.exports.createComment = async (req, res) => {
+  const { bookId, comment } = req.body;
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Book not found",
+      });
+    }
+
+    const newComment = new Comment({
+      comment,
+      commentor: req.user._id, 
+      bookid: bookId,
+    });    
+    
+    await newComment.save();
+
+    book.comment.push(newComment._id);
+    await book.save();
+
+    res.status(200).json({
+      status: "success",
+      data: newComment,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
   }
 };
