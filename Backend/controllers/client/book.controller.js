@@ -3,10 +3,9 @@ const Tag = require("../../models/tag.model");
 const User = require("../../models/user.model");
 const Chapter = require("../../models/chapter.model");
 const cloudinary = require("../../configs/cloudinary");
-const fs = require("fs");
-const path = require("path");
 const { returnMessage } = require("../../helpers/message.helper");
 const moment = require("moment");
+const Comment = require("../../models/comment.model");
 
 module.exports.getBook = async (req, res) => {
   try {
@@ -76,7 +75,7 @@ module.exports.getBook = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
+    res.status(500).json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
   }
 };
 
@@ -275,8 +274,10 @@ module.exports.getAllComments = async (req, res) => {
   try {
     const bookId = req.params.bookId;
 
-    const comments = await Comment.find({ bookid: bookId })
-      .populate("commentor", "name");
+    const comments = await Comment.find({ bookid: bookId }).populate({
+      path: "commentor",
+      select: "username avatar",
+    });
 
     if (!comments || comments.length === 0) {
       return res.status(404).json({
@@ -285,14 +286,33 @@ module.exports.getAllComments = async (req, res) => {
       });
     }
 
-    res.status(200).json({
-      status: "success",
-      data: comments,
-    });
+    const returnComments = [];
+
+    for (const item of comments) {
+      returnComments.push({
+        comment: item.comment,
+        userId: item.commentor.id,
+        username: item.commentor.username,
+        avatar: item.commentor.avatar,
+      });
+    }
+
+    res
+      .status(200)
+      .json(
+        returnMessage("Lấy danh sách bình luận thành công", returnComments, 200)
+      );
+
+    // res.status(200).json({
+    //   status: "success",
+    //   data: comments,
+    // });
   } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err.message,
-    });
+    console.log(err);
+    res.status(500).json(returnMessage("Lấy danh sách bình luận thất bại", null, 500));
+    // res.status(400).json({
+    //   status: "fail",
+    //   message: err.message,
+    // });
   }
 };

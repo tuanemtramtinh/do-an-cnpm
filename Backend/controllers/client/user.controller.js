@@ -45,7 +45,7 @@ module.exports.register = async (req, res) => {
     const token = await signAccessToken(data);
 
     if (token === -1) {
-      const message = messageHelper.eturnMessage(
+      const message = messageHelper.returnMessage(
         "Có lỗi server, vui lòng thử lại",
         null,
         500
@@ -102,7 +102,7 @@ module.exports.login = async (req, res) => {
     const token = await signAccessToken(data);
 
     if (token === -1) {
-      const message = messageHelper.eturnMessage(
+      const message = messageHelper.returnMessage(
         "Có lỗi server, vui lòng thử lại",
         null,
         500

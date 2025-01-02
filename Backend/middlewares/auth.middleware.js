@@ -14,6 +14,16 @@ module.exports.requireAuth = async (req, res, next) => {
 
     const decodedToken = await verifyAccessToken(token);
 
+    if (decodedToken === -1) {
+      const message = returnMessage(
+        "Token hết hạn, vui lòng đăng nhập lại",
+        null,
+        500
+      );
+      res.status(500).json(message);
+      return;
+    }
+
     const existUser = await User.findOne({
       _id: decodedToken.id,
     });
