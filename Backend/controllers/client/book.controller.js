@@ -10,18 +10,31 @@ const Comment = require("../../models/comment.model");
 module.exports.getBook = async (req, res) => {
   try {
     const keyword = req.query.keyword;
-
-    if (keyword === "bookId") {
-      const bookId = req.params.id;
-
-      const book = await Book.findById(bookId);
+    const bookId = req.query.bookId;
+    if (bookId) {
+      const book = await Book.findById(bookId).populate("tag").populate({
+        path: "translator",
+        select: "username avatar",
+      });
 
       if (!book) {
         res.json(returnMessage("Truyện không tồn tại", null, 500));
         return;
       }
 
-      res.json(returnMessage("Lấy truyện thành công", book, 200));
+      const finalBook = {
+        name: book.name,
+        author: book.author,
+        thumbnail: book.thumbnail,
+        description: book.description,
+        type: book.type,
+        language: book.language,
+        age_limit: book.age_limit,
+        translator: book.translator,
+        tag: book.tag,
+      };
+
+      res.json(returnMessage("Lấy truyện thành công", finalBook, 200));
       return;
     } else if (keyword === "highlight") {
       const limit = 5;
@@ -75,7 +88,9 @@ module.exports.getBook = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
+    res
+      .status(500)
+      .json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
   }
 };
 
@@ -309,7 +324,9 @@ module.exports.getAllComments = async (req, res) => {
     // });
   } catch (err) {
     console.log(err);
-    res.status(500).json(returnMessage("Lấy danh sách bình luận thất bại", null, 500));
+    res
+      .status(500)
+      .json(returnMessage("Lấy danh sách bình luận thất bại", null, 500));
     // res.status(400).json({
     //   status: "fail",
     //   message: err.message,
