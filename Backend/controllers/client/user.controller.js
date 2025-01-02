@@ -296,34 +296,8 @@ module.exports.updatePassword = async (req, res) => {
     console.log(error);
   }
 };
-
-module.exports.getAllComments = async (req, res) => {
-  try {
-    const bookId = req.params.bookId;
-
-    const comments = await Comment.find({ bookid: bookId })
-      .populate("commentor", "name");
-
-    if (!comments || comments.length === 0) {
-      return res.status(404).json({
-        status: "fail",
-        message: "No comments found for this book",
-      });
-    }
-
-    res.status(200).json({
-      status: "success",
-      data: comments,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err.message,
-    });
-  }
-};
 module.exports.createComment = async (req, res) => {
-  const { bookId, comment, commentor } = req.body;
+  const { bookId, comment } = req.body;
 
   try {
     const book = await Book.findById(bookId);
@@ -336,9 +310,10 @@ module.exports.createComment = async (req, res) => {
 
     const newComment = new Comment({
       comment,
-      commentor,
+      commentor: req.user._id, 
       bookid: bookId,
-    });
+    });    
+    
     await newComment.save();
 
     book.comment.push(newComment._id);

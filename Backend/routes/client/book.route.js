@@ -17,4 +17,6 @@ router.get("/get-all-chapter", controller.getAllChapter);
 router.patch("/update", controller.updateBook);
 
 router.get("/posted-manga-list", requireAuth, controller.getUserUploadBook);
+router.get("/getComment/:bookId", requireAuth, controller.getAllComments);
+
 module.exports = router;
