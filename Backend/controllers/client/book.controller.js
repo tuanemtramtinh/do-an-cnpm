@@ -241,6 +241,3 @@ module.exports.getUserUploadBook = async (req, res) => {
     });
   }
 };
-module.exports.getBookDetails = async (req, res) => {
-  
-}

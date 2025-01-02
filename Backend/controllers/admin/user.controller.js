@@ -47,15 +47,29 @@ module.exports.getAllUsers = async (req, res) => {
 
 module.exports.getAllComments = async (req, res) => {
     try {
-        const comments = await Comment.find().populate("commentor", "name"); 
-        res.status(200).json({
-        status: "success",
-        data: comments,
+      const bookId = req.params.bookId;
+      const book = await Book.findById(bookId)
+        .populate("comment", "comment commentor")
+        .populate({
+          path: "comment",
+          populate: { path: "commentor", select: "name" },
         });
+  
+      if (!book) {
+        return res.status(404).json({
+          status: "fail",
+          message: "Book not found",
+        });
+      }
+  
+      res.status(200).json({
+        status: "success",
+        data: book,
+      });
     } catch (err) {
-        res.status(400).json({
+      res.status(400).json({
         status: "fail",
         message: err.message,
-        });
+      });
     }
-};
+  };

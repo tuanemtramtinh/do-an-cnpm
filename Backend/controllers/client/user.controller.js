@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const User = require("../../models/user.model");
 const Comment = require("../../models/comment.model");
+const Book = require("../../models/book.model");
 const messageHelper = require("../../helpers/message.helper");
 const { signAccessToken } = require("../../helpers/jwt.helper");
 const ForgotPassword = require("../../models/forgot-password.model");
@@ -298,7 +299,18 @@ module.exports.updatePassword = async (req, res) => {
 
 module.exports.getAllComments = async (req, res) => {
   try {
-    const comments = await Comment.find().populate("commentor", "name"); 
+    const bookId = req.params.bookId;
+
+    const comments = await Comment.find({ bookid: bookId })
+      .populate("commentor", "name");
+
+    if (!comments || comments.length === 0) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No comments found for this book",
+      });
+    }
+
     res.status(200).json({
       status: "success",
       data: comments,
@@ -311,17 +323,30 @@ module.exports.getAllComments = async (req, res) => {
   }
 };
 module.exports.createComment = async (req, res) => {
-  const { comment, commentor } = req.body;
+  const { bookId, comment, commentor } = req.body;
+
   try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Book not found",
+      });
+    }
+
     const newComment = new Comment({
       comment,
       commentor,
+      bookid: bookId,
     });
     await newComment.save();
-    const populatedComment = await newComment.populate("commentor", "name");
+
+    book.comment.push(newComment._id);
+    await book.save();
+
     res.status(200).json({
       status: "success",
-      data: populatedComment,
+      data: newComment,
     });
   } catch (err) {
     res.status(400).json({

@@ -20,5 +20,5 @@ router.post(
   controller.updatePassword
 );
 router.post("/comment", controller.createComment);
-router.get("/getComment", controller.getAllComments);
+router.get("/getComment/:bookId", controller.getAllComments);
 module.exports = router;
