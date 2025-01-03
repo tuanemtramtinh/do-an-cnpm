@@ -39,6 +39,9 @@ module.exports.requireAuth = async (req, res, next) => {
     }
 
     req.user = existUser;
+    req.commentorId = existUser._id;
+    // console.log(req.commentorId);
+    // console.log(req.user);
     next();
   } catch (error) {
     console.log(error);

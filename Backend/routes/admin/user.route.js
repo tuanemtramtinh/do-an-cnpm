@@ -3,9 +3,9 @@ const router = express.Router();
 
 const controller = require("../../controllers/admin/user.controller");
 const authMiddleware = require("../../middlewares/auth.middleware");
-const isAdmin = require("../../middlewares/isAdmin.middleware");
+const checkRole = require("../../middlewares/role.middleware");
 
-router.post("/change-role/:id", isAdmin, controller.changeRole);
+router.post("/change-role/:id", authMiddleware.requireAuth, checkRole.checkRole, controller.changeRole);
 router.get("/getAlluser", authMiddleware.requireAuth, controller.getAllUsers);
 
 module.exports = router;
