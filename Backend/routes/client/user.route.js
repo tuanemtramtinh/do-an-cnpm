@@ -19,5 +19,5 @@ router.post(
   authMiddleware.requireAuth,
   controller.updatePassword
 );
-
+router.post("/comment", authMiddleware.requireAuth, controller.createComment);
 module.exports = router;

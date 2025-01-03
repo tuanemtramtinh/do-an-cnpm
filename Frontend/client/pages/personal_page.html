@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANGO</title>
     <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
     <link rel="stylesheet" href="../../assets/css/client/home_page.css">
-    <link rel="stylesheet" href="../../assets/css/client/mystyle.css">
-    <link rel="stylesheet" href="../../assets/css/client/base2.css">
-    <link rel="stylesheet" href="../../assets/css/client/chapter.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -36,51 +34,6 @@
             </div>
           </div>
         </div>
-        <!-- Content-->
-        <div class="container"><img class="cover-image" id="book-cover">
-          <div class="details">
-            <div class="title-section">
-              <div class="title" id="book-title"> </div>
-              <div class="author" id="book-author"></div>
-            </div>
-            <div class="info-section">
-              <div class="info-type">Type:</div>
-              <div class="icon-section">
-                <div class="icon-box" id="first-chapter"><span class="material-symbols-outlined" style="font-size: 37.5px">import_contacts</span></div>
-                <div class="icon-box"><span class="material-symbols-outlined" style="font-size: 37.5px">favorite</span></div>
-                <div class="icon-box"><span class="material-symbols-outlined" style="font-size: 37.5px">speaker_notes</span></div>
-              </div>
-              <div class="tags-section">
-                <div class="tags-label">Tags:</div>
-                <div class="tags-list" id="book-tags"></div>
-              </div>
-              <div class="public-date" id="book-date"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrapper">
-        <!-- Description-->
-        <div class="summary-section"><span class="summary-title">Tóm tắt truyện: </span><span class="summary-text" id="book-description"></span><a class="more-link">more</a></div>
-      </div>
-      <script src="../../assets/js/client/script.js"></script>
-      <script src="../../assets/js/client/test.js"></script>
-      <div class="footer">
-        <div class="footer__container"> <img class="footer__header" src="../../assets/img/tieude-logo.png">
-          <div class="footer__container-list">
-            <ul class="footer__container-list-item">  
-              <li class="footer__container-item">Giới thiệu</li>
-              <li class="footer__container-item">Thông báo</li>
-              <li class="footer__container-item">liên hệ: 0865.xxx.xxx</li>
-              <li class="footer__container-item">Email: xxxxxxxxxx@hcmut.edu.vn</li>
-            </ul>
-            <ul class="footer__container-list-text"> 
-              <li class="footer__container-item-text">Trang web này cung cấp nội dung truyện tranh chỉ với mục đích giải trí và không chịu trách nhiệm về bất kỳ nội dung quảng cáo, liên kết của bên thứ ba hiển thị trên trang web của chúng tôi.</li>
-              <li class="footer__container-item-text">Tất cả thông tin và hình ảnh trên website đều được thu thập từ internet. Chúng tôi không chịu trách nhiệm về bất kỳ nội dung nào. Nếu bạn hoặc tổ chức của bạn có vấn đề gì liên quan đến nội dung hiển thị trên website, vui lòng liên hệ với chúng tôi để được giải quyết.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="footer__container-copyright">Copyright © 2024 Mango</p>
       </div>
       <div class="modal js-modal">
         <div class="modal-container js-modal-container">
@@ -192,6 +145,47 @@
             }
         });
       </script>
+      <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
+        <div class="profile-info">
+          <h2 class="profile-name">Triệu Mẫn</h2>
+          <p class="profile-role">Vai trò: Uploader</p>
+          <p class="profile-join-date">Ngày gia nhập: 01/01/2024</p>
+        </div>
+      </div>
+      <div class="block-content"></div>
+      <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
+        <h2 class="personal-info-title">Thông tin cá nhân</h2>
+      </div>
+      <hr class="personal-info-divider">
+      <div class="personal-info-container">
+        <div class="personal-info-box"> 
+          <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
+          <p><strong>Username: </strong>kandy_2705</p>
+          <p><strong>SĐT: </strong>0123456789</p>
+          <p><strong>Ngày sinh: </strong>27/05/2004</p>
+        </div>
+      </div>
+      <div class="main-layout">
+        <div class="grid__column-3">
+          <div class="manga-section">
+            <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
+              <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
+            </div>
+            <hr class="manga-info-divider">
+          </div>
+        </div>
+        <div class="grid__column-1">
+          <div class="function-section">
+            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
+              <h2 class="function-section-title">Chức năng</h2>
+            </div>
+            <hr class="function-info-divider">
+            <button class="function-btn"> <img class="icon" src="../../assets/img/my-story-icon.png" alt="My Story Icon"><span>Truyện của tôi</span></button>
+            <button class="function-btn"><img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
+            <button class="function-btn"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></button>
+          </div>
+        </div>
+      </div>
     </body>
   </head>
 </html>

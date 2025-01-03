@@ -6,6 +6,21 @@ const controller = require("../../controllers/client/book.controller");
 const { requireAuth } = require("../../middlewares/auth.middleware");
 
 router.get("/", controller.getBook);
-router.post("/create", upload.single("thumbnail"), controller.createBook);
+
+// router.get("/:id", controller.getBookDetail);
+
+router.post(
+  "/create",
+  requireAuth,
+  upload.single("thumbnail"),
+  controller.createBook
+);
+
+router.get("/get-all-chapter", controller.getAllChapter);
+
+router.patch("/update", controller.updateBook);
+
+router.get("/posted-manga-list", requireAuth, controller.getUserUploadBook);
+router.get("/getComment/:bookId", requireAuth, controller.getAllComments);
 
 module.exports = router;

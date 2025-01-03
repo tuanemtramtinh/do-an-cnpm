@@ -1,0 +1,131 @@
+.header
+    .header__header-item
+        div.menu-list
+            div.menu-list-header
+                i.fa-solid.fa-bars
+            a(href="./home_page.html").header-logo-link
+                img(src="../../assets/img/logo.png").header__logo
+        div.header__search-bar
+            input(type="text" id="search_header").header__search-item 
+            label(for="search_header").header__search-link 
+                i.fa-solid.fa-magnifying-glass
+        div.header-list
+            button.header-item__login Thành viên
+            div.header__navbar-item.header__navbar-user
+                img(src="../../assets/img/truyen1.jpg", alt="").header__navbar-user-img
+                ul.header__navbar-user-menu
+                    li.header__navbar-user-item
+                        a(href="./personal_page.html") Trang cá nhân
+                    li.header__navbar-user-item.admin-link
+                        a(href="" ) Trang quản lý
+                    li.header__navbar-user-item.header__navbar-user-item--separate
+                        a(href="") 
+                            button#button-logout Đăng xuất
+
+.modal.js-modal
+    .modal-container.js-modal-container
+        .modal-close.js-modal-close
+            i.fa-solid.fa-xmark
+        header.modal-header
+            p Đăng nhập vào tài khoản 
+        .modal-body
+            .modal-form
+                form#form-1.form(action='', method='POST')
+                    div.form-group
+                        label.modal-label(for='username')
+                            | Tên người dùng
+                        input#username.modal-input(type='text', required=true)
+                        span.form-message
+                    div.form-group
+                        label.modal-label(for='password')
+                            | Mật khẩu
+                        input#password.modal-input(type='password', required=true)
+                        span.form-message
+                    div.modal-label-quenpass
+                        | Quên mật khẩu?
+                    button#button-login(type='submit', disabled=true)
+                        | Đăng nhập
+                p.modal-label-chuyendangky
+                    | Người dùng mới?
+                    button.modal-label-chuyendangky-trangmoi#dangky Đăng ký
+
+
+
+.modal-dangky.js-modal-dangky
+    .modal-container-dangky.js-modal-container-dangky
+        .modal-close-dangky.js-modal-close-dangky
+            i.fa-solid.fa-xmark
+        header.modal-header-dangky
+            p Đăng ký 
+        .modal-body-dangky
+            .modal-form-dangky
+                form#form-2.form(action='', method='POST')
+                    div.form-group2
+                        label.modal-label-dangky(for='username2')
+                            | Tên người dùng
+                            p *
+                        input#username2.modal-input-dangky(type='text', required=true)
+                        span.form-message
+                    div.form-group2
+                        label.modal-label-dangky(for='pass2')
+                            | Mật khẩu
+                            p *
+                        input#pass2.modal-input-dangky(type='password', required=true)
+                        span.form-message
+                    div.form-group2
+                        label.modal-label-dangky(for='daybd')
+                            | Ngày sinh
+                            p *
+                        input#daybd.modal-input-dangky(type='date', placeholder="dd/mm/yyyy", required=true)
+                        span.form-message
+                    div.form-group2
+                        label.modal-label-dangky(for='email')
+                            | Email
+                            p *
+                        input#email.modal-input-dangky(type='email', required=true)
+                        span.form-message
+                    div.form-group2
+                        label.modal-label-dangky(for='phone')
+                            | Số điện thoại
+                            p *
+                        input#phone.modal-input-dangky(type='tel', pattern='[0-9]{10}', required=true, placeholder="")
+                        span.form-message
+                    div.modal-label-result
+                        button#button-dangky(type='submit', disabled=true)
+                            | Đăng ký
+                p.modal-label-chuyendangky
+                    | Quay lại?
+                    button.modal-label-chuyendangky-trangmoi#dangnhap Đăng nhập
+
+script(src="../../assets/js/client/header.js") 
+script(src="../../assets/js/client/validator.js")
+script.
+    Validator({
+        form: '#form-1',
+        formGroupSelector: '.form-group',
+        errorSelector: '.form-message',
+        rules: [
+        Validator.isRequired('#username'),
+        Validator.minLength('#password', 6),
+        ],
+        onSubmit: function (data) {
+        console.log(data);
+        }
+    });
+
+
+    Validator({
+        form: '#form-2',
+        formGroupSelector: '.form-group2',
+        errorSelector: '.form-message',
+        rules: [
+        Validator.isRequired('#username2'),
+        Validator.minLength('#pass2', 6),
+        Validator.isEmail('#email'),
+        Validator.isPhone('#phone'),
+        Validator.isRequired('#daybd'),
+        ],
+        onSubmit: function (data) {
+        console.log(data);
+        }
+    });
