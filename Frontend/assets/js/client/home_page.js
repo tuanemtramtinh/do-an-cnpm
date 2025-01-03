@@ -214,14 +214,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const data = await response.json();
-
                 if (data.status === 200 && data.payload) {
                     const avatarUrl = data.payload.avatar;
                     if (avatarUrl) {
                         avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
                     } else {
                         console.error('Không tìm thấy URL ảnh đại diện trong payload.');
-                        avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                        avatarImg.src = '../../assets/img/truyen1.jpg'; 
                     }
 
                     if (data.payload.isAdmin) {
@@ -231,19 +230,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                     }
                 } else {
                     console.error('Lấy thông tin người dùng thất bại:', data.message);
-                    avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                    avatarImg.src = '../../assets/img/truyen1.jpg'; 
                 }
             } else {
                 console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
-                avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                avatarImg.src = '../../assets/img/truyen1.jpg'; 
             }
         } catch (error) {
             console.error('Lỗi khi lấy thông tin người dùng:', error);
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     } else {
         if (avatarImg) {
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     }
 
