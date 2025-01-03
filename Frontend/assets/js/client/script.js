@@ -37,6 +37,32 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => {
       console.error("Error fetching chapters:", error);
     });
+    
+  fetch(`http://4.194.248.208:3000/book?book=${bookId}`)
+  .then(response => response.json())
+  .then(data => {
+      if (data.status === 200 && Array.isArray(data.payload)) {
+      const book = data.payload.find(item => item._id === bookId);
+
+      if (book) {
+          document.getElementById('book-cover').src = book.thumbnail;
+          document.getElementById('book-banner').src = book.thumbnail;
+          document.getElementById('book-title').textContent = book.name || 'No title available';
+          document.getElementById('book-author').textContent = book.author || 'No author available';
+          document.getElementById('book-tags').textContent = 
+              Array.isArray(book.tag) 
+              ? book.tag.map(tag => tag.name).join(', ') 
+              : 'No tags available';
+          document.getElementById('book-date').textContent = `Updated at: ${book.updatedAt || 'No date available'}`;
+          document.getElementById('book-description').textContent = book.description;
+      } else {
+          console.error('Book not found with the provided bookId.');
+      }
+      } else {
+      console.error('Invalid API response structure.');
+      }
+  })
+  .catch(error => console.error('Error fetching data:', error));
 
   fetch('http://4.194.248.208:3000/book?keyword=highlight')
   .then(response => response.json())
@@ -84,7 +110,7 @@ document.querySelectorAll('.icon-box').forEach(box => {
   });
 });
 
-const importContactsIcon = document.getElementById("first-chapter");
+var importContactsIcon = document.getElementById("first-chapter");
 importContactsIcon.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const bookId = urlParams.get('bookId');
