@@ -1,8 +1,9 @@
-// const bookId = "67512a8bc706c61bb91d8c7c";
+var urlParams = new URLSearchParams(window.location.search);
+var bookId = urlParams.get('bookId');
+
 document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const bookId = urlParams.get('bookId');
-  fetch(`http://4.194.248.208:3000/book/get-all-chapter?id=${bookId}`)
+  
+  fetch(`https://api.mangocomic.io.vn/book/get-all-chapter?id=${bookId}`)
     .then(response => response.json())  
     .then(data => {
       if (data.status === 'success') {
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching chapters:", error);
     });
     
-  fetch(`http://4.194.248.208:3000/book?book=${bookId}`)
+  fetch(`https://api.mangocomic.io.vn/book?book=${bookId}`)
   .then(response => response.json())
   .then(data => {
       if (data.status === 200 && Array.isArray(data.payload)) {
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   .catch(error => console.error('Error fetching data:', error));
 
-  fetch('http://4.194.248.208:3000/book?keyword=highlight')
+  fetch('https://api.mangocomic.io.vn/book?keyword=highlight')
   .then(response => response.json())
   .then(data => {
     if (data.status === 200) {
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       relatedComicList.innerHTML = ''; 
 
       books.forEach(book => {
+        
         const listItem = document.createElement('li');
         listItem.classList.add('related-list-item');
 
@@ -112,12 +114,8 @@ document.querySelectorAll('.icon-box').forEach(box => {
 
 var importContactsIcon = document.getElementById("first-chapter");
 importContactsIcon.addEventListener("click", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const bookId = urlParams.get('bookId');
   window.location.href = `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
 });
-
-
 
 function openTab(evt, tabName) {
   const tabcontent = document.getElementsByClassName("tabcontent");
@@ -135,3 +133,39 @@ function openTab(evt, tabName) {
       evt.currentTarget.className += " active";
     }
 }
+
+fetch(`https://api.mangocomic.io.vn/book/getComment/${bookId}`)
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 200 && Array.isArray(data.payload)) {
+      const commentList = document.querySelector(".comment-list");
+
+      if (commentList) {
+        commentList.innerHTML = '';
+        data.payload.forEach((comment) => {
+          const commentItem = document.createElement("li");
+          commentItem.className = "comment-item";
+
+          commentItem.innerHTML = `
+            <img src="${comment.avatar}" alt="${comment.username}" class="avatar" />
+            <div class="comment-content">
+              <span class="username">${comment.username}</span>: 
+              <span class="comment-text">${comment.comment}</span>
+            </div>
+          `;
+
+          commentList.appendChild(commentItem);
+        });
+      } else {
+        console.error("Element with class 'comment-list' not found.");
+      }
+    } else {
+      console.error("Failed to fetch comments:", data.message);
+    }
+  })
+  .catch(error => {
+    console.error("Error fetching comments:", error);
+  });
+
+
+

@@ -1,9 +1,0 @@
-mixin profileSection(name, role, joinDate, avatar, extraContent)
-  .profile-section
-    img.profile-avatar(src=avatar alt="Profile Avatar")
-    .profile-info
-      h2.profile-name= name
-      p.profile-role Vai trò: #{role}
-      p.profile-join-date Ngày gia nhập: #{joinDate}
-    if extraContent
-      .profile-extra!= extraContent

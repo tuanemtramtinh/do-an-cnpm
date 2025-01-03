@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     if (isComicPage) {
       const comicResponse = await fetch(
-        `http://4.194.248.208:3000/chapter/get-comic?id=${bookId}&chapter_no=${currentChapterNo}`
+        `https://api.mangocomic.io.vn/chapter/get-comic?id=${bookId}&chapter_no=${currentChapterNo}`
       );
       const comicData = await comicResponse.json();
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } else if (isNovelPage) {
       const novelResponse = await fetch(
-        `http://4.194.248.208:3000/chapter/get-novel?id=${novelId}&chapter_no=${currentChapterNo}`
+        `https://api.mangocomic.io.vn/chapter/get-novel?id=${novelId}&chapter_no=${currentChapterNo}`
       );
       const novelData = await novelResponse.json();
       if (novelData.status === "success" && novelData.content) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // dropdown menu
   try {
-    const response = await fetch(`http://4.194.248.208:3000/book/get-all-chapter?id=${bookId}`);
+    const response = await fetch(`https://api.mangocomic.io.vn/book/get-all-chapter?id=${bookId}`);
     const data = await response.json();
 
     if (data.status === "success") {

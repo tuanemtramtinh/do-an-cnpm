@@ -1,6 +1,5 @@
-extends ../layouts/index.pug
+extends ../layouts/_index.pug
 include ../mixins/chapter-list.pug
-include ../mixins/card.pug
 
 block main
     .wrapper
@@ -13,10 +12,8 @@ block main
         .tabcontent(id="chapter" style="display:none")
             +chapterList(chapters)
         .tabcontent(id="comments" style="display:none")
-            p comment
+            ul.comment-list
         .tabcontent(id="related" style="display:none")
             ul.related_comic-list
-                each book in (books || [])
-                    +card(book.thumbnail, book.name)
 
         script(src="../../assets/js/client/script.js")

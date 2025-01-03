@@ -1,1 +1,0 @@
-window.location.href = "./client/pages/home_page.html";
