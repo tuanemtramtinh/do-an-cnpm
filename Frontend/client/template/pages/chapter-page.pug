@@ -3,7 +3,6 @@ include ../mixins/chapter-list.pug
 include ../mixins/manga-card.pug
 
 block main
-    // Tab structure
     .wrapper
         .tab
             button.tablinks(id="chapter-tab" onclick="openTab(event, 'chapter')") Chapter
@@ -17,7 +16,7 @@ block main
             p comment
         .tabcontent(id="related" style="display:none")
             ul.related_comic-list
-                each book in books
+                each book in (books || [])
                     +card(book.thumbnail, book.name)
 
         script(src="../../assets/js/client/script.js")
