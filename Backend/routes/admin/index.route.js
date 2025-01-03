@@ -1,6 +1,5 @@
-
+const userRoute = require("./user.route");
 
 module.exports.routesAdmin = (app) => {
-  const adminPrefix = process.env.ADMIN_PREFIX;
-
-}
+  app.use("/admin/user", userRoute);
+};

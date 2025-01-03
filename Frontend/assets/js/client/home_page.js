@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Lấy truyện nổi bật 
     try {
-        const response = await fetch('http://4.194.248.208:3000/book?keyword=highlight');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book?keyword=highlight');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Lấy danh sách truyện tranh
 
     try {
-        const response = await fetch('http://4.194.248.208:3000/book');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (token && avatarImg) {
         avatarImg.src = '../../assets/img/loading.gif';
         try {
-            const response = await fetch('http://4.194.248.208:3000/user/info', {
+            const response = await fetch('https://api.tuanemtramtinh.io.vn/user/info', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     async function sendEmail(email) {
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/forgot-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/forgot-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             return;
         }
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/send-otp", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/send-otp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/update-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/update-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

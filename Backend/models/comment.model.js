@@ -10,6 +10,10 @@ const commentSchema = mongoose.Schema({
     ref: "user",
     required: true,
   },
+  bookid: {
+    type: mongoose.Schema.ObjectId,
+    require: true,
+  }
 });
 
 const Comment = mongoose.model("comment", commentSchema);
