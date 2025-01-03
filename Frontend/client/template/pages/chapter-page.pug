@@ -1,0 +1,19 @@
+extends ../layouts/_index.pug
+include ../mixins/chapter-list.pug
+
+block main
+    .wrapper
+        .tab
+            button.tablinks(id="chapter-tab" onclick="openTab(event, 'chapter')") Chapter
+            button.tablinks(id="comments-tab" onclick="openTab(event, 'comments')") Comments
+            button.tablinks(id="related-tab" onclick="openTab(event, 'related')") Related
+
+        // Tab Content Sections
+        .tabcontent(id="chapter" style="display:none")
+            +chapterList(chapters)
+        .tabcontent(id="comments" style="display:none")
+            ul.comment-list
+        .tabcontent(id="related" style="display:none")
+            ul.related_comic-list
+
+        script(src="../../assets/js/client/script.js")
