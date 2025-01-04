@@ -20,6 +20,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 routesAdmin(app);
 routesClient(app);
+
+app.get("test", (req, res) => {
+  res.json("Hello");
+})
+
 app.listen(3000, () => {
   console.log("Server is listening on PORT 3000");
 });
