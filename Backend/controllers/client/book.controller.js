@@ -114,8 +114,16 @@ module.exports.getBook = async (req, res) => {
 
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
-  const { tagIDs, name, author, description, type, language, age_limit } =
-    req.body;
+  const {
+    tagIDs,
+    name,
+    author,
+    description,
+    type,
+    language,
+    age_limit,
+    status,
+  } = req.body;
   const thumbnail = req.file;
   try {
     const translator = await User.findOne({ _id: translatorID });
@@ -159,6 +167,7 @@ module.exports.createBook = async (req, res) => {
       language,
       age_limit,
       translator,
+      status,
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
@@ -262,18 +271,31 @@ module.exports.getUserUploadBook = async (req, res) => {
     const books = await Book.find({ translator: user._id }).sort({
       updatedAt: -1,
     });
-    let data = [];
-    books.map((book) => {
-      const newData = {
-        img: book.thumbnail,
-        name: book.name,
-        author: book.author,
-        tag: book.tag,
-        day_update: book.updatedAt,
-        language: book.language,
-      };
-      data.push(newData);
-    });
+    const data = await Promise.all(
+      books.map(async (book) => {
+        const chapters = await Chapter.find({ book: book._id });
+        const chapterData = chapters.slice(0, 5).map((chapter) => ({
+          chapter_no: chapter.chapter_no,
+          name: chapter.name,
+        }));
+        const tagIds = book.tag;
+        const tags = await Tag.find({ _id: { $in: tagIds } });
+        const tagData = tags.map((tag) => ({
+          id: tag._id,
+          name: tag.name,
+        }));
+        return {
+          img: book.thumbnail,
+          name: book.name,
+          author: book.author,
+          tag: tagData,
+          day_update: book.updatedAt,
+          language: book.language,
+          chapter: chapterData,
+        };
+      })
+    );
+
     res.status(200).json({
       status: "success",
       data: data,
