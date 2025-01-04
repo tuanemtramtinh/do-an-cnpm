@@ -12,7 +12,15 @@ block main
         .tabcontent(id="chapter" style="display:none")
             +chapterList(chapters)
         .tabcontent(id="comments" style="display:none")
-            ul.comment-list
+            .comment-section
+                ul.comment-list
+                form#comment-form
+                    img(src="../../assets/img/avatar.png").user-avatar
+                    .postCmtwrap
+                        textarea#comment-input(name="comment" placeholder="Viết bình luận..." rows="1" required)
+                        button(type="submit") 
+                            span.material-symbols-outlined send
+
         .tabcontent(id="related" style="display:none")
             ul.related_comic-list
 

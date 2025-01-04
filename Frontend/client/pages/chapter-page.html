@@ -27,9 +27,9 @@
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
-            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/avatar.png" alt="">
               <ul class="header__navbar-user-menu">
-                <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
                 <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
                 <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
                     <button id="button-logout">Đăng xuất</button></a></li>
@@ -206,7 +206,15 @@
           <div class="chapter-list"></div>
         </div>
         <div class="tabcontent" id="comments" style="display:none">
-          <ul class="comment-list"></ul>
+          <div class="comment-section">
+            <ul class="comment-list"></ul>
+            <form id="comment-form"><img class="user-avatar" src="../../assets/img/avatar.png">
+              <div class="postCmtwrap">
+                <textarea id="comment-input" name="comment" placeholder="Viết bình luận..." rows="1" required></textarea>
+                <button type="submit"> <span class="material-symbols-outlined">send</span></button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="tabcontent" id="related" style="display:none">
           <ul class="related_comic-list"></ul>
