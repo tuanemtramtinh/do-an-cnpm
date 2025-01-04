@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 routesAdmin(app);
 routesClient(app);
 
-app.get("test", (req, res) => {
+app.get("/test", (req, res) => {
   res.json("Hello");
 })
 
