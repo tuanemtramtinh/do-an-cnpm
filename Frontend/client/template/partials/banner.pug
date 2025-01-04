@@ -1,0 +1,48 @@
+.banner-wrapper
+      // Banner
+      .banner
+        .image-wrapper
+          img(id="book-banner")
+          .overlay
+        .stats
+          .stat-item
+            span.material-symbols-outlined(style="font-size: 25px") visibility
+            .stat-text 100K
+          .stat-item
+            span.material-symbols-outlined(style="font-size: 25px") forum
+            .stat-text 100K
+          .stat-item
+            span.material-symbols-outlined(style="font-size: 25px") favorite
+            .stat-text 100K
+
+      // Content
+      .container
+        img.cover-image(id="book-cover")
+        .details
+          .title-section
+            .title(id="book-title") 
+            .author(id="book-author")
+          .info-section
+            .info-type Type:
+            .icon-section
+              .icon-box(id="first-chapter")
+                span.material-symbols-outlined(style="font-size: 37.5px") import_contacts
+              .icon-box
+                span.material-symbols-outlined(style="font-size: 37.5px") favorite
+              .icon-box
+                span.material-symbols-outlined(style="font-size: 37.5px") speaker_notes
+            .tags-section
+              .tags-label Tags:
+              .tags-list(id="book-tags")
+            .public-date(id="book-date")
+.wrapper
+  // Description
+  .summary-section
+    span.summary-title Tóm tắt truyện: 
+    span.summary-text( id="book-description")
+    a.more-link more
+script(src="../../assets/js/client/script.js")
+script(src="../../assets/js/client/test.js")
+
+
+     

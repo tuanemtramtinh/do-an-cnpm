@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Lấy truyện nổi bật 
     try {
-        const response = await fetch('https://do-an-cnpm.onrender.com/book?keyword=highlight');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book?keyword=highlight');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', async function() {
             const mangaBackground = document.querySelector('.content-noibat');
 
             if(index === 0){
-                mangaLink.href = `/manga/${manga.id}`; 
+                mangaLink.href = `./chapter-page.html?bookId=${manga.id}`; 
                 mangaLink.setAttribute('data-id', manga.id); 
             }
             else{
                 if (mangaLink) {
-                    mangaLink.href = `/manga/${manga._id}`; 
+                    mangaLink.href = `./chapter-page.html?bookId=${manga._id}`; 
                     mangaLink.setAttribute('data-id', manga._id); 
                 }
             }
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Lấy danh sách truyện tranh
 
     try {
-        const response = await fetch('https://do-an-cnpm.onrender.com/book');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return `
                     <div class="col l-3 m-4 c-6">
                         <div class="content-chuamanga__item-manga">
-                            <a href="./manga/${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
+                            <a href="./chapter-page.html?bookId=${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
                                 <img src="${manga.thumbnail}" class="content-chuamanga__item-img" alt="${manga.name}">
                             </a>
                             <div class="content-chuamanga__item-container">
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (token && avatarImg) {
         avatarImg.src = '../../assets/img/loading.gif';
         try {
-            const response = await fetch('https://do-an-cnpm.onrender.com/user/info', {
+            const response = await fetch('https://api.tuanemtramtinh.io.vn/user/info', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -214,14 +214,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const data = await response.json();
-
                 if (data.status === 200 && data.payload) {
                     const avatarUrl = data.payload.avatar;
                     if (avatarUrl) {
                         avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
                     } else {
                         console.error('Không tìm thấy URL ảnh đại diện trong payload.');
-                        avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                        avatarImg.src = '../../assets/img/truyen1.jpg'; 
                     }
 
                     if (data.payload.isAdmin) {
@@ -231,19 +230,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                     }
                 } else {
                     console.error('Lấy thông tin người dùng thất bại:', data.message);
-                    avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                    avatarImg.src = '../../assets/img/truyen1.jpg'; 
                 }
             } else {
                 console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
-                avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                avatarImg.src = '../../assets/img/truyen1.jpg'; 
             }
         } catch (error) {
             console.error('Lỗi khi lấy thông tin người dùng:', error);
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     } else {
         if (avatarImg) {
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     }
 
@@ -331,7 +330,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     async function sendEmail(email) {
         try {
-            const response = await fetch("https://do-an-cnpm.onrender.com/user/forgot-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/forgot-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
@@ -361,7 +360,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             return;
         }
         try {
-            const response = await fetch("https://do-an-cnpm.onrender.com/user/send-otp", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/send-otp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -394,7 +393,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         try {
-            const response = await fetch("https://do-an-cnpm.onrender.com/user/update-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/update-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
