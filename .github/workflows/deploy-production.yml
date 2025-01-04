@@ -20,7 +20,7 @@ jobs:
         run: echo "${{secrets.ENV_PRODUCTION}}" > .env
       - run: npm i
   deploy:
-    runs:on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Executing remote ssh commands using password
