@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             renderCurrentManga(currentIndex);
         } else {
             console.error('Lấy dữ liệu truyện thất bại:', data.message);
-            alert('Lấy dữ liệu truyện nổi bật thất bại.');
+            // alert('Lấy dữ liệu truyện nổi bật thất bại.');
         }
     } catch (error) {
         console.error('Lỗi khi fetch truyện nổi bật:', error);
-        alert('Đã xảy ra lỗi khi lấy dữ liệu truyện nổi bật.');
+        // alert('Đã xảy ra lỗi khi lấy dữ liệu truyện nổi bật.');
     }
 
     console.log(mangaData);
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         } else {
             console.error('Lấy dữ liệu manga thất bại:', data.message);
-            alert('Lấy dữ liệu manga thất bại.');
+            // alert('Lấy dữ liệu manga thất bại.');
         }
 
         const tagButtons = document.querySelectorAll('.content-chuatag__item-tag');
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     } catch (error) {
         console.error('Lỗi khi fetch manga:', error);
-        alert('Đã xảy ra lỗi khi lấy dữ liệu manga.');
+        // alert('Đã xảy ra lỗi khi lấy dữ liệu manga.');
     }
 
     function renderMangaList(mangaList) {
@@ -264,6 +264,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     const changePassContainer = document.querySelector('.js-modal-changepass-container');
     const closeChangePassModal = document.querySelector('.js-modal-close-changepass');
     const chuyenchangePass = document.querySelector('#button-otp');
+    const dangNhapQuenMK = document.querySelector('#dangnhapquenmk');
+    const otpDangNhap = document.querySelector('#resendOtp');
+    const passDangNhap = document.querySelector('#resendpass');
+
 
     function showbuyticketquenpass() {
         modalquenpass.classList.add('open');
@@ -276,10 +280,21 @@ document.addEventListener('DOMContentLoaded', async function() {
         modalquenpass.classList.remove('open');
     }
 
+    function chuyenVeDangNhap(){
+        modalquenpass.classList.remove('open');
+        otpModal.classList.remove('open');
+        changePassModal.classList.remove('open');
+        modal.classList.add('open');
+    }
+
+
     for (const buyBtn of buyBtnsquenpass) {
         buyBtn.addEventListener('click', showbuyticketquenpass);
     }
 
+    dangNhapQuenMK.addEventListener('click', chuyenVeDangNhap);
+    otpDangNhap.addEventListener('click', chuyenVeDangNhap);
+    passDangNhap.addEventListener('click', chuyenVeDangNhap);
     tatquenpass.addEventListener('click', tatquenpassbuyticket);
     modalquenpass.addEventListener('click', tatquenpassbuyticket);
     modalquenpassContai.addEventListener('click', function(event) {

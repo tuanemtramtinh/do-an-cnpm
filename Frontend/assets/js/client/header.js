@@ -48,7 +48,6 @@ modalDangkyContai.addEventListener('click', function(event){
     event.stopPropagation()
 })
 
-
 /////////////////////////////////////////////////
 const buyBtnsTH = document.querySelectorAll('#dangnhap')
 
