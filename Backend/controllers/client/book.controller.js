@@ -114,8 +114,16 @@ module.exports.getBook = async (req, res) => {
 
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
-  const { tagIDs, name, author, description, type, language, age_limit } =
-    req.body;
+  const {
+    tagIDs,
+    name,
+    author,
+    description,
+    type,
+    language,
+    age_limit,
+    status,
+  } = req.body;
   const thumbnail = req.file;
   try {
     const translator = await User.findOne({ _id: translatorID });
@@ -159,6 +167,7 @@ module.exports.createBook = async (req, res) => {
       language,
       age_limit,
       translator,
+      status,
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
