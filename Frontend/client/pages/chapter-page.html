@@ -230,6 +230,103 @@
         </div>
         <p class="footer__container-copyright">Copyright © 2024 Mango</p>
       </div>
+      <div class="modal-quenpass js-modal-quenpass">
+        <div class="modal-quenpass-container js-modal-quenpass-container">
+          <div class="modal-close js-modal-close-quenpass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-quenpass-header">
+            <p>Tìm tài khoản </p>
+          </header>
+          <div class="modal-quenpass-body">
+            <div class="modal-quenpass-form">
+              <form class="form" id="form-3">
+                <div class="form-group-3">
+                  <label class="modal-quenpass-label" for="email2">Email</label>
+                  <input class="modal-quenpass-input" id="email2" type="email"><span class="form-message"></span>
+                </div>
+                <button id="button-quenpass">Tiếp tục</button>
+              </form>
+              <p class="modal-quenpass-label-chuyendangky">Quay về đăng nhập?
+                <button class="modal-quenpass-label-chuyendangky-trangmoi" id="dangnhapquenmk">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-otp js-modal-otp">
+        <div class="modal-otp-container js-modal-otp-container">
+          <div class="modal-close js-modal-close-otp"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-otp-header">
+            <p>Nhập mã OTP</p>
+          </header>
+          <div class="modal-otp-body">
+            <div class="modal-otp-form">
+              <form class="form test-form" id="form-group-3-2">
+                <div class="form-group-3-2">
+                  <label class="modal-otp-label" for="otpCode">Mã OTP</label>
+                  <input class="modal-otp-input" id="otpCode" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58">OTP chỉ có hạn trong 5 phút.</span>
+                </div>
+                <button id="button-otp">Xác nhận</button>
+              </form>
+              <p class="modal-otp-label-resend">Quay về đăng nhập?
+                <button class="modal-otp-label-resend-button" id="resendOtp">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-changepass js-modal-changepass">
+        <div class="modal-changepass-container js-modal-changepass-container">
+          <div class="modal-close js-modal-close-changepass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-changepass-header">
+            <p>Đổi mật khẩu</p>
+          </header>
+          <div class="modal-changepass-body">
+            <div class="modal-changepass-form">
+              <form class="form test-form2" id="form3-3">
+                <div class="form-group-3-3">
+                  <label class="modal-changepass-label" for="changepass">Nhập mật khẩu mới</label>
+                  <input class="modal-changepass-input" id="changepass" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58;"> </span>
+                </div>
+                <button id="button-changepass" type="submit">Đổi mật khẩu</button>
+              </form>
+              <p class="modal-changepass-label-resend">Quay về đăng nhập?
+                <button class="modal-changepass-label-resend-button" id="resendpass">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script src="../../assets/js/client/home_page.js"></script>
+      <script>
+        Validator({
+            form: '#form-3',
+            formGroupSelector: '.form-group-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isEmail('#email2')
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        Validator({
+            form: '#form3-3',
+            formGroupSelector: '#form-group-3-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.minLength('#changepass', 6)
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+                            
+                                 
+                            
+                    
+      </script>
     </body>
   </head>
 </html>

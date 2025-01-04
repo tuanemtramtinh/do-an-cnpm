@@ -22,4 +22,98 @@ html(lang="vi")
         block main
 
         include ../partials/footer.pug
+        .modal-quenpass.js-modal-quenpass
+            .modal-quenpass-container.js-modal-quenpass-container
+                .modal-close.js-modal-close-quenpass
+                    i.fa-solid.fa-xmark
+                header.modal-quenpass-header
+                    p Tìm tài khoản 
+                .modal-quenpass-body
+                    .modal-quenpass-form
+                        form#form-3.form
+                            div.form-group-3
+                                label.modal-quenpass-label(for='email2')
+                                    | Email
+                                input#email2.modal-quenpass-input(type='email')
+                                span.form-message
+                    
+                
+                            button#button-quenpass
+                                | Tiếp tục
+                        p.modal-quenpass-label-chuyendangky
+                            | Quay về đăng nhập?
+                            button.modal-quenpass-label-chuyendangky-trangmoi#dangnhapquenmk Đăng nhập
 
+        .modal-otp.js-modal-otp
+            .modal-otp-container.js-modal-otp-container
+                .modal-close.js-modal-close-otp
+                    i.fa-solid.fa-xmark
+                header.modal-otp-header
+                    p Nhập mã OTP
+                .modal-otp-body
+                    .modal-otp-form
+                        form#form-group-3-2.form.test-form
+                            .form-group-3-2
+                                label.modal-otp-label(for='otpCode')
+                                    | Mã OTP
+                                input#otpCode.modal-otp-input(type='text', style='margin-bottom: 4px;')
+                                span.form-message(style = 'color: #f33a58') OTP chỉ có hạn trong 5 phút.
+                            button#button-otp
+                                | Xác nhận
+                        p.modal-otp-label-resend
+                            | Quay về đăng nhập?
+                            button.modal-otp-label-resend-button#resendOtp Đăng nhập
+
+
+        .modal-changepass.js-modal-changepass
+            .modal-changepass-container.js-modal-changepass-container
+                .modal-close.js-modal-close-changepass
+                    i.fa-solid.fa-xmark
+                header.modal-changepass-header
+                    p Đổi mật khẩu
+                .modal-changepass-body
+                    .modal-changepass-form
+                        form#form3-3.form.test-form2
+                            .form-group-3-3
+                                label.modal-changepass-label(for='changepass')
+                                    | Nhập mật khẩu mới
+                                input#changepass.modal-changepass-input(type='text', style='margin-bottom: 4px;')
+                                span.form-message(style='color: #f33a58;') 
+                            button#button-changepass(type='submit')
+                                | Đổi mật khẩu
+                        p.modal-changepass-label-resend
+                            | Quay về đăng nhập?
+                            button.modal-changepass-label-resend-button#resendpass Đăng nhập
+
+
+
+
+
+        script(src="../../assets/js/client/validator.js")
+        script(src="../../assets/js/client/home_page.js")
+        script.
+            Validator({
+                form: '#form-3',
+                formGroupSelector: '.form-group-3',
+                errorSelector: '.form-message',
+                rules: [
+                Validator.isEmail('#email2')
+                ],
+                onSubmit: function (data) {
+                console.log(data);
+                }
+            });
+
+            Validator({
+                form: '#form3-3',
+                formGroupSelector: '#form-group-3-3',
+                errorSelector: '.form-message',
+                rules: [
+                Validator.minLength('#changepass', 6)
+                ],
+                onSubmit: function (data) {
+                console.log(data);
+                }
+            });
+                                
+                            
