@@ -9,7 +9,6 @@ const ForgotPassword = require("../../models/forgot-password.model");
 const { generateOTP } = require("../../helpers/generate.helper");
 const { sendMail } = require("../../helpers/mail.helper");
 
-
 module.exports.register = async (req, res) => {
   try {
     const { email, username, password, phone, dob } = req.body;
@@ -128,7 +127,9 @@ module.exports.login = async (req, res) => {
 module.exports.info = async (req, res) => {
   try {
     const dob = req.user.dob.toISOString().split("T")[0];
-
+    const role = req.user.isAdmin ? "Admin" : "Uploader";
+    const createdAt = req.user.createdAt.toISOString().split("T")[0];
+    
     const returnUser = {
       id: req.user.id,
       username: req.user.username,
@@ -137,6 +138,8 @@ module.exports.info = async (req, res) => {
       isAdmin: req.user.isAdmin,
       dob: dob,
       avatar: req.user.avatar,
+      role: role,
+      createdAt: createdAt,
     };
 
     res.json(
@@ -311,10 +314,10 @@ module.exports.createComment = async (req, res) => {
 
     const newComment = new Comment({
       comment,
-      commentor: req.user._id, 
+      commentor: req.user._id,
       bookid: bookId,
-    });    
-    
+    });
+
     await newComment.save();
 
     book.comment.push(newComment._id);
