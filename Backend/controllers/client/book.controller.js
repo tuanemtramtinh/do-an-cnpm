@@ -239,15 +239,13 @@ module.exports.updateBook = async (req, res) => {
       { $set: change },
       { new: true, runValidators: true }
     );
-    res.status(200).json({
-      status: "success",
-      updatedBook: updateBook,
-    });
+    res
+      .status(200)
+      .json(returnMessage("Cập nhật truyện thành công", updatedBook, 200));
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
+    res
+      .status(400)
+      .json(returnMessage("Cập nhật truyện không thành công", null, 400));
   }
 };
 
