@@ -114,9 +114,10 @@ module.exports.getBook = async (req, res) => {
 
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
-  const { tagIDs, name, author, description, type, language, age_limit } =
+  const { name, author, description, type, language, age_limit, status } =
     req.body;
   const thumbnail = req.file;
+  const tagIDs = JSON.parse(req.body.tagIDs);
   try {
     const translator = await User.findOne({ _id: translatorID });
     if (!translator)
@@ -159,6 +160,7 @@ module.exports.createBook = async (req, res) => {
       language,
       age_limit,
       translator,
+      status,
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
@@ -237,15 +239,13 @@ module.exports.updateBook = async (req, res) => {
       { $set: change },
       { new: true, runValidators: true }
     );
-    res.status(200).json({
-      status: "success",
-      updatedBook: updateBook,
-    });
+    res
+      .status(200)
+      .json(returnMessage("Cập nhật truyện thành công", updatedBook, 200));
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
+    res
+      .status(400)
+      .json(returnMessage("Cập nhật truyện không thành công", null, 400));
   }
 };
 
@@ -262,27 +262,36 @@ module.exports.getUserUploadBook = async (req, res) => {
     const books = await Book.find({ translator: user._id }).sort({
       updatedAt: -1,
     });
-    let data = [];
-    books.map((book) => {
-      const newData = {
-        img: book.thumbnail,
-        name: book.name,
-        author: book.author,
-        tag: book.tag,
-        day_update: book.updatedAt,
-        language: book.language,
-      };
-      data.push(newData);
-    });
-    res.status(200).json({
-      status: "success",
-      data: data,
-    });
+    const data = await Promise.all(
+      books.map(async (book) => {
+        const chapters = await Chapter.find({ book: book._id })
+          .sort({ chapter_no: -1 })
+          .limit(5);
+        const chapterData = chapters.map((chapter) => ({
+          chapter_no: chapter.chapter_no,
+          name: chapter.name,
+        }));
+        const tagIds = book.tag;
+        const tags = await Tag.find({ _id: { $in: tagIds } });
+        const tagData = tags.map((tag) => ({
+          id: tag._id,
+          name: tag.name,
+        }));
+        return {
+          img: book.thumbnail,
+          name: book.name,
+          author: book.author,
+          tag: tagData,
+          day_update: book.updatedAt,
+          language: book.language,
+          chapter: chapterData,
+        };
+      })
+    );
+
+    res.status(200).json(returnMessage("Trả về truyện thành công", data, 200));
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
+    res.status(400).json(returnMessage("Trả về không thành công", null, 400));
   }
 };
 module.exports.getAllComments = async (req, res) => {

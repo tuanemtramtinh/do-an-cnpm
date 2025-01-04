@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./Backend/index.js",
+    "start": "node ./Backend/index.js",
     "debug_server": "ndb ./Backend/index.js",
     "pug": "concurrently \"pug -w ./Frontend/admin/template -o ./Frontend/admin -P\" \"pug -w ./Frontend/client/template -o ./Frontend/client -P\""
   },

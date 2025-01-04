@@ -20,7 +20,8 @@ const uploadFileToCloudinary = (buffer, folderName) => {
 };
 
 module.exports.createChapterNovel = async (req, res) => {
-  const { chapter_no, uploader_ID, book_ID, name, content } = req.body;
+  const { chapter_no, book_ID, name, content } = req.body;
+  const uploader_ID = req.user.id;
   if (!chapter_no || !uploader_ID || !book_ID || !name || !content) {
     return res.status(400).json({
       status: "fail",
@@ -76,7 +77,8 @@ module.exports.createChapterNovel = async (req, res) => {
 };
 
 module.exports.createChapterComic = async (req, res) => {
-  const { chapter_no, uploader_ID, book_ID, name } = req.body;
+  const { chapter_no, book_ID, name } = req.body;
+  const uploader_ID = req.user.id;
   const files = req.files;
   try {
     const uploader = await User.findOne({ _id: uploader_ID });
