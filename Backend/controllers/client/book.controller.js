@@ -264,8 +264,10 @@ module.exports.getUserUploadBook = async (req, res) => {
     });
     const data = await Promise.all(
       books.map(async (book) => {
-        const chapters = await Chapter.find({ book: book._id });
-        const chapterData = chapters.slice(0, 5).map((chapter) => ({
+        const chapters = await Chapter.find({ book: book._id })
+          .sort({ chapter_no: -1 })
+          .limit(5);
+        const chapterData = chapters.map((chapter) => ({
           chapter_no: chapter.chapter_no,
           name: chapter.name,
         }));
@@ -279,9 +281,7 @@ module.exports.getUserUploadBook = async (req, res) => {
           img: book.thumbnail,
           name: book.name,
           author: book.author,
-          type: book.type,
           tag: tagData,
-          status: book.status,
           day_update: book.updatedAt,
           language: book.language,
           chapter: chapterData,
