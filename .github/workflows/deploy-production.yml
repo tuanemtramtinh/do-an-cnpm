@@ -19,4 +19,5 @@ jobs:
       - name: Create .env file
         run: echo "${{secrets.ENV_PRODUCTION}}" > .env
       - run: npm i
-      - run: npm run server
+      - run: npm start
+  deploy:
