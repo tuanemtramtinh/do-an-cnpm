@@ -114,17 +114,10 @@ module.exports.getBook = async (req, res) => {
 
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
-  const {
-    tagIDs,
-    name,
-    author,
-    description,
-    type,
-    language,
-    age_limit,
-    status,
-  } = req.body;
+  const { name, author, description, type, language, age_limit, status } =
+    req.body;
   const thumbnail = req.file;
+  const tagIDs = JSON.parse(req.body.tagIDs);
   try {
     const translator = await User.findOne({ _id: translatorID });
     if (!translator)
