@@ -20,4 +20,3 @@ jobs:
         run: echo "${{secrets.ENV_PRODUCTION}}" > .env
       - run: npm i
       - run: npm start
-  deploy:
