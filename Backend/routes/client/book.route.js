@@ -18,7 +18,7 @@ router.post(
 
 router.get("/get-all-chapter", controller.getAllChapter);
 
-router.patch("/update", controller.updateBook);
+router.patch("/update", requireAuth, controller.updateBook);
 
 router.get("/posted-manga-list", requireAuth, controller.getUserUploadBook);
 router.get("/getComment/:bookId", controller.getAllComments);

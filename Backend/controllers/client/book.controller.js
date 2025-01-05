@@ -211,7 +211,7 @@ module.exports.getAllChapter = async (req, res) => {
 
 module.exports.updateBook = async (req, res) => {
   const book_ID = req.query.book_id;
-  const user_ID = req.query.user_id;
+  const user_ID = req.user.id;
   const change = req.body;
   try {
     const book = await Book.findOne({ _id: book_ID });
@@ -241,7 +241,7 @@ module.exports.updateBook = async (req, res) => {
     );
     res
       .status(200)
-      .json(returnMessage("Cập nhật truyện thành công", updatedBook, 200));
+      .json(returnMessage("Cập nhật truyện thành công", updateBook, 200));
   } catch (error) {
     res
       .status(400)
