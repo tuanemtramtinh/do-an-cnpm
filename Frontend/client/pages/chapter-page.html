@@ -206,13 +206,21 @@
           <div class="chapter-list"></div>
         </div>
         <div class="tabcontent" id="comments" style="display:none">
-          <ul class="comment-list"></ul>
+          <div class="comment-section">
+            <ul class="comment-list"></ul>
+            <form id="comment-form"><img class="user-avatar" src="../../assets/img/avatar.png">
+              <div class="postCmtwrap">
+                <textarea id="comment-input" name="comment" placeholder="Viết bình luận..." rows="1" required></textarea>
+                <button type="submit"> <span class="material-symbols-outlined">send</span></button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="tabcontent" id="related" style="display:none">
           <ul class="related_comic-list"></ul>
         </div>
-        <script src="../../assets/js/client/script.js"></script>
       </div>
+      <script src="../../assets/js/client/script.js"></script>
       <div class="footer">
         <div class="footer__container"> <img class="footer__header" src="../../assets/img/tieude-logo.png">
           <div class="footer__container-list">
