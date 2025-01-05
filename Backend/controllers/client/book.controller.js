@@ -279,6 +279,9 @@ module.exports.getUserUploadBook = async (req, res) => {
         }));
         return {
           img: book.thumbnail,
+          type: book.type,
+          status: book.status,
+          age_limit: book.age_limit,
           name: book.name,
           author: book.author,
           tag: tagData,
