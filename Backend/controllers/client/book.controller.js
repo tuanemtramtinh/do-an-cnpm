@@ -212,7 +212,17 @@ module.exports.getAllChapter = async (req, res) => {
 module.exports.updateBook = async (req, res) => {
   const book_ID = req.params.id;
   const user_ID = req.user.id;
-  const change = req.body;
+  const { name, author, description, type, language, age_limit, status } =
+    req.body;
+  const change = {
+    name: name,
+    author: author,
+    description: description,
+    type: type,
+    language: language,
+    age_limit: age_limit,
+    status: status,
+  };
   console.log(change);
   try {
     const book = await Book.findOne({ _id: book_ID });
