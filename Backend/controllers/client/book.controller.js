@@ -212,8 +212,8 @@ module.exports.getAllChapter = async (req, res) => {
 module.exports.updateBook = async (req, res) => {
   const book_ID = req.params.id;
   const user_ID = req.user.id;
-  const change = JSON.parse(req.body);
-  console.log(change);
+  const change = req.body;
+  console.log(req.body);
   try {
     const book = await Book.findOne({ _id: book_ID });
     if (!book) {
