@@ -278,6 +278,7 @@ module.exports.getUserUploadBook = async (req, res) => {
           name: tag.name,
         }));
         return {
+          id: book._id,
           img: book.thumbnail,
           type: book.type,
           status: book.status,
