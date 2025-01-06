@@ -213,6 +213,7 @@ module.exports.updateBook = async (req, res) => {
   const book_ID = req.params.id;
   const user_ID = req.user.id;
   const change = req.body;
+  console.log(change);
   try {
     const book = await Book.findOne({ _id: book_ID });
     if (!book) {
