@@ -210,7 +210,7 @@ module.exports.getAllChapter = async (req, res) => {
 };
 
 module.exports.updateBook = async (req, res) => {
-  const book_ID = req.query.book_id;
+  const book_ID = req.query.id;
   const user_ID = req.user.id;
   const change = req.body;
   try {
