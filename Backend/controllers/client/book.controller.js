@@ -223,16 +223,20 @@ module.exports.updateBook = async (req, res) => {
     }
     const user = await User.findOne({ _id: user_ID });
     if (!user) {
-      return res.status(404).json({
-        status: "fail",
-        message: "missing or invalid user id",
-      });
+      return res
+        .status(404)
+        .json(returnMessage("Không tìm thấy user", null, 404));
     }
     if (!user.isAdmin && !book.translator.equals(user._id)) {
-      return res.status(404).json({
-        status: "fail",
-        message: "not have permission to change the book",
-      });
+      return res
+        .status(404)
+        .json(
+          returnMessage(
+            "User không có quyền sửa đổi truyện do không phải người up truyện này hoặc admin",
+            null,
+            404
+          )
+        );
     }
     const updateBook = await Book.findOneAndUpdate(
       { _id: book_ID },
