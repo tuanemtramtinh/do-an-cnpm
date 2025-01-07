@@ -226,26 +226,26 @@ async function getUserProfile() {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-  await updateUIBasedOnLogin();
-
-  const loginButton = document.querySelector("#button-login");
-
-  if (loginButton) {
-    loginButton.addEventListener("click", async function () {
+	await updateUIBasedOnLogin();
+  
+	const loginButton = document.querySelector("#button-login");
+    
+	if (loginButton) {
+	  loginButton.addEventListener("click", async function () {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
       await login(username, password);
-
+      location.reload();
       const modal = document.querySelector(".js-modal");
       if (modal) {
         setTimeout(() => {
-          modal.classList.remove("open");
+        modal.classList.remove("open");
         }, 200);
       }
-    });
-  } else {
-    console.error("Login button (#button-login) not found.");
-  }
+	  });
+	} else {
+	  console.error("Login button (#button-login) not found.");
+	}
 });
 
 ////////////////////////////////////////////////////////////////////////
