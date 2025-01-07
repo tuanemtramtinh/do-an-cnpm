@@ -4,15 +4,15 @@
             div.menu-list-header
                 i.fa-solid.fa-bars
             a(href="./home_page.html").header-logo-link
-                img(src="../../assets/img/logo.png").header__logo
+                img(src="../../assets/img/logo.png" alt="avt").header__logo
         div.header__search-bar
-            input(type="text" id="search_header").header__search-item 
+            input(type="text" id="search_header" aria-label='x').header__search-item 
             label(for="search_header").header__search-link 
                 i.fa-solid.fa-magnifying-glass
         div.header-list
             button.header-item__login Thành viên
             div.header__navbar-item.header__navbar-user
-                img(src="../../assets/img/truyen1.jpg" alt="").header__navbar-user-img
+                img(src="../../assets/img/truyen1.jpg" alt="avt").header__navbar-user-img
                 ul.header__navbar-user-menu
                     li.header__navbar-user-item
                         a(href="./personal_page.html") Trang cá nhân
@@ -34,7 +34,7 @@
                     div.form-group
                         label.modal-label(for='username')
                             | Tên người dùng
-                        input#username.modal-input(type='text', required=true)
+                        input#username.modal-input(type='text', required=true, aria-label='x')
                         span.form-message
                     div.form-group
                         label.modal-label(for='password')

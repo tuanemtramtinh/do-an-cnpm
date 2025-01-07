@@ -11,7 +11,7 @@ block container
 
     section.client--edit-manga
         .container
-            form(id="form-uploadManga"  action="")
+            form(id="form-uploadManga" action="" enctype="multipart/form-data")
                 .client--edit-manga__wrap
                     .client--edit-manga__top
                         .client--edit-manga__top--element
@@ -19,22 +19,21 @@ block container
                             select(id="languageUM" name="ngonNgu")
                                 option(value="VI" selected) Tiếng Việt
                                 option(value="EN") Tiếng Anh
-                                option(value="JP") Tiếng Nhật
                         .client--edit-manga__top--element
                             label(for="ageLimitUM") Giới hạn độ tuối:
                             select(id="ageLimitUM" name="gioiHanDoTuoi")
-                                option(value="Tiếng Việt" selected) Phù hợp với mọi lứa tuối
-                                option(value="Tiếng Anh") 8+
-                                option(value="Tiếng Anh") 10+
-                                option(value="Tiếng Anh") 12+
-                                option(value="Tiếng Nhật") 16+
-                                option(value="Tiếng Nhật") 18+
+                                option(value=0 selected) Phù hợp với mọi lứa tuối
+                                option(value=8) 8+
+                                option(value=10) 10+
+                                option(value=12) 12+
+                                option(value=16) 16+
+                                option(value=18) 18+
                     .client--edit-manga__middle
                         .client--edit-manga__middle--image
                             .client--edit-manga__middle--image-main
                                 img(src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
                             label.client--edit-manga__middle--image-button
-                                input(type="file" name="image")
+                                input(type="file" name="thumbnail")
                                 span(class="button") Chọn ảnh bìa
                             span(id="file-name" class="nameFile") No file chosen
 
@@ -55,8 +54,8 @@ block container
                                     .client--edit-manga__middle--form-element_title Kiểu: 
                                     .client--edit-manga__middle--form-element_form 
                                         select(id="typeOfMangaUM" name="type" aria-label="x")
-                                            option(value="Truyện tranh" selected) Truyện tranh
-                                            option(value="Tiểu thuyết") Tiểu thuyết
+                                            option(value="truyện tranh" selected) Truyện tranh
+                                            option(value="tiểu thuyết") Tiểu thuyết
 
                                 .client--edit-manga__middle--form-element 
                                     .client--edit-manga__middle--form-element_title Tình trạng: 
@@ -72,31 +71,31 @@ block container
                             .client--edit-manga__middle--tag-box
                                 .client--edit-manga__middle--tag-list
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="alphaMale" name="tagUM" value="Tổng tài")
+                                        input(type="checkbox" class="checkbox-round" tag-id="675125c7c706c61bb91d8c5e" id="alphaMale" name="tagUM" value="Tổng tài")
                                         label(for="alphaMale") Tổng tài
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="detective" name="tagUM" value="Trinh thám")
+                                        input(type="checkbox" class="checkbox-round" tag-id="673d82133a86786bbd0e762a" id="detective" name="tagUM" value="Trinh thám")
                                         label(for="detective") Trinh thám
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="love" name="tagUM" value="Tình cảm")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512646c706c61bb91d8c64" id="love" name="tagUM" value="Tình cảm")
                                         label(for="love") Tình cảm
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="advanture" name="tagUM" value="Phiêu lưu")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512652c706c61bb91d8c67" id="advanture" name="tagUM" value="Phiêu lưu")
                                         label(for="advanture") Phiêu lưu
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="act" name="tagUM" value="Hành động")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512658c706c61bb91d8c6a" id="act" name="tagUM" value="Hành động")
                                         label(for="act") Hành động
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="science" name="tagUM" value="Viễn tưởng")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512660c706c61bb91d8c6d" id="science" name="tagUM" value="Viễn tưởng")
                                         label(for="science") Viễn tưởng
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="horrified" name="tagUM" value="Kinh dị")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512669c706c61bb91d8c70" id="horrified" name="tagUM" value="Kinh dị")
                                         label(for="horrified") Kinh dị
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="realLive" name="tagUM" value="Đời thường")
+                                        input(type="checkbox" class="checkbox-round" tag-id="674058a1f8af6e47fd2d5780" id="realLive" name="tagUM" value="Đời thường")
                                         label(for="realLive") Đời thường
                                     .client--edit-manga__middle--tag-element-detail
-                                        input(type="checkbox" class="checkbox-round" id="funny" name="tagUM" value="Hài hước")
+                                        input(type="checkbox" class="checkbox-round" tag-id="67512671c706c61bb91d8c73" id="funny" name="tagUM" value="Hài hước")
                                         label(for="funny") Hài hước
 
                     .client--edit-manga__bottom
@@ -112,7 +111,5 @@ block container
                         button(type="submit" class="button button-submit") 
                             i(class="fa-solid fa-arrow-up-from-bracket")
                             .content Upload truyện
-    
-    script(src="https://unpkg.com/axios/dist/axios.min.js")
-    //- script(src="../assets/script/product-detail.js")
-    script(src = "../../assets/js/client/script.js")
+                            
+    script(src = "../../assets/js/client/scriptGQ.js")

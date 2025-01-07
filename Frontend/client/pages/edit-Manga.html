@@ -17,15 +17,15 @@
       <div class="header">
         <div class="header__header-item">
           <div class="menu-list">
-            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
           </div>
           <div class="header__search-bar">
-            <input class="header__search-item" type="text" id="search_header">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
             <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
-            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
               <ul class="header__navbar-user-menu">
                 <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
                 <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
@@ -47,7 +47,7 @@
               <form class="form" id="form-1" action="" method="POST">
                 <div class="form-group">
                   <label class="modal-label" for="username">Tên người dùng</label>
-                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
                 </div>
                 <div class="form-group">
                   <label class="modal-label" for="password">Mật khẩu</label>
@@ -146,10 +146,17 @@
             }
         });
       </script>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
+          </div>
+        </div>
+      </section>
       <div class="alert-list"></div>
       <section class="client--edit-manga">
         <div class="container">
-          <form id="form-edit" action="">
+          <form id="form-edit" action="" enctype="multipart/form-data">
             <div class="client--edit-manga__wrap">
               <div class="client--editManga__top">
                 <div class="client--editManga__top--right"> 
@@ -158,30 +165,29 @@
                     <select id="language" name="ngonNgu">
                       <option value="VI">Tiếng Việt</option>
                       <option value="EN">Tiếng Anh</option>
-                      <option value="JP">Tiếng Nhật</option>
                     </select>
                   </div>
                   <div class="client--edit-manga__top--element">
                     <label for="ageLimit">Giới hạn độ tuối:</label>
                     <select id="ageLimit" name="gioiHanDoTuoi">
-                      <option value="Phù hợp với mọi lứa tuối">Phù hợp với mọi lứa tuối</option>
-                      <option value="8+">8+</option>
-                      <option value="10+">10+</option>
-                      <option value="12+">12+</option>
-                      <option value="16+">16+</option>
-                      <option value="18+">18+</option>
+                      <option value="0">Phù hợp với mọi lứa tuối</option>
+                      <option value="8">8+</option>
+                      <option value="10">10+</option>
+                      <option value="12">12+</option>
+                      <option value="16">16+</option>
+                      <option value="18">18+</option>
                     </select>
                   </div>
                 </div>
                 <div class="client--editManga__top--left"> 
-                  <button class="button client--mangaWrittingCenter-element-bottom--delete"><i class="fa-regular fa-trash-can"></i>Xóa</button>
+                  <div class="button client--mangaWrittingCenter-element-bottom--delete"><i class="fa-regular fa-trash-can"></i>Xóa</div>
                 </div>
               </div>
               <div class="client--edit-manga__middle">
                 <div class="client--edit-manga__middle--image">
                   <div class="client--edit-manga__middle--image-main"><img src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG"></div>
                   <label class="client--edit-manga__middle--image-button">
-                    <input type="file" name="image"><span class="button">Chọn ảnh bìa</span>
+                    <input type="file" name="thumbnail"><span class="button">Chọn ảnh bìa</span>
                   </label><span class="nameFile" id="file-name">No file chosen</span>
                 </div>
                 <div class="client--edit-manga__middle--form">
@@ -227,39 +233,39 @@
                   <div class="client--edit-manga__middle--tag-box">
                     <div class="client--edit-manga__middle--tag-list">
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="alphaMale" name="tag" value="Tổng tài">
+                        <input class="checkbox-round" type="checkbox" tag-id="675125c7c706c61bb91d8c5e" id="alphaMale" name="tag" value="Tổng tài">
                         <label for="alphaMale">Tổng tài</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="detective" name="tag" value="Trinh thám">
+                        <input class="checkbox-round" type="checkbox" tag-id="673d82133a86786bbd0e762a" id="detective" name="tag" value="Trinh thám">
                         <label for="detective">Trinh thám</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="love" name="tag" value="Tình cảm">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512646c706c61bb91d8c64" id="love" name="tag" value="Tình cảm">
                         <label for="love">Tình cảm</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="advanture" name="tag" value="Phiêu lưu">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512652c706c61bb91d8c67" id="advanture" name="tag" value="Phiêu lưu">
                         <label for="advanture">Phiêu lưu</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="act" name="tag" value="Hành động">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512658c706c61bb91d8c6a" id="act" name="tag" value="Hành động">
                         <label for="act">Hành động</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="science" name="tag" value="Viễn tưởng">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512660c706c61bb91d8c6d" id="science" name="tag" value="Viễn tưởng">
                         <label for="science">Viễn tưởng</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="horrified" name="tag" value="Kinh dị">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512669c706c61bb91d8c70" id="horrified" name="tag" value="Kinh dị">
                         <label for="horrified">Kinh dị</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="realLife" name="tag" value="Đời thường">
+                        <input class="checkbox-round" type="checkbox" tag-id="674058a1f8af6e47fd2d5780" id="realLife" name="tag" value="Đời thường">
                         <label for="realLive">Đời thường</label>
                       </div>
                       <div class="client--edit-manga__middle--tag-element-detail">
-                        <input class="checkbox-round" type="checkbox" id="funny" name="tag" value="Hài hước">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512671c706c61bb91d8c73" id="funny" name="tag" value="Hài hước">
                         <label for="funny">Hài hước</label>
                       </div>
                     </div>
@@ -284,8 +290,7 @@
           </form>
         </div>
       </section>
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script src="../../assets/js/client/script.js"></script>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

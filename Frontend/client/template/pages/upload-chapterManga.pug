@@ -7,9 +7,11 @@ block container
 
     include ../partials/user-info.pug
 
+    .alert-list
+
     section.client--upload-chapterNovel 
         .container
-            form(id="form-edit"  action="")
+            form(id="form-add-chapterManga" action="" enctype="multipart/form-data")
                 .client--upload-chapterNovel__box
                     .client--upload-chapterNovel__top
                         a(href="chapter-list.html" class="button")
@@ -22,7 +24,7 @@ block container
                         .client--upload-chapterNovel__middle--element
                             .client--upload-chapterNovel__middle--element-title Chương số:
                             .client--upload-chapterNovel__middle--element-form
-                                input(type="text" name="numberOfChapter" placeholder ="1")
+                                input(type="number" name="numberOfChapter" placeholder ="1")
 
                         .client--upload-chapterNovel__middle--element
                             .client--upload-chapterNovel__middle--element-title Tiêu đề:
@@ -44,13 +46,17 @@ block container
                                     .client--edit-manga__middle--image-main
                                         img(src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
                                     label.client--edit-manga__middle--image-button
-                                        input(type="file" name="image")
+                                        input(type="file" name="images" multiple)
                                         span(class="button") Chọn ảnh bìa
                                     span(id="file-name" class="nameFile") No file chosen
 
 
                     .client--upload-chapterNovel__button
+                        a(href="mangaWrittingCenter.html" class="button") 
+                            i(class="fa-solid fa-arrow-left")
+                            .content Trang trước
                         button(type="submit" class="button button-submit") 
                             i(class="fa-solid fa-arrow-up-from-bracket")
                             .content Upload chương
 
+    script(src = "../../assets/js/client/scriptGQ.js")

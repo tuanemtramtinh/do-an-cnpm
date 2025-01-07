@@ -7,6 +7,8 @@ block container
 
     include ../partials/user-info.pug
 
+    .alert-list
+
     section.client--mangaWrittingCenter
         //- .client--mangaWrittingCenter-main
         .container
@@ -18,7 +20,7 @@ block container
                     //- .client--mangaWrittingCenter-right_search
                     form(action="#" class="form-search")
                         input(name="keyword" placeholder="Tìm kiếm...")
-                        button(aria-label="x")
+                        button(aria-label="..") 
                             i(class="fa-solid fa-magnifying-glass")
 
                     a(href="upload-Manga.html" class="button client--mangaWrittingCenter-right_button")
@@ -57,7 +59,4 @@ block container
                 //-                 i(class="fa-solid fa-bars")
                 //-                 .content Danh sách chương
                       
-
-    script(src="https://unpkg.com/axios/dist/axios.min.js")
-    //- script(src="../assets/script/product-detail.js")
-    script(src = "../../assets/js/client/script.js")
+    script(src = "../../assets/js/client/scriptGQ.js")

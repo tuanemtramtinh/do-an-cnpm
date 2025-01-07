@@ -17,15 +17,15 @@
       <div class="header">
         <div class="header__header-item">
           <div class="menu-list">
-            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
           </div>
           <div class="header__search-bar">
-            <input class="header__search-item" type="text" id="search_header">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
             <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
-            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
               <ul class="header__navbar-user-menu">
                 <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
                 <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
@@ -47,7 +47,7 @@
               <form class="form" id="form-1" action="" method="POST">
                 <div class="form-group">
                   <label class="modal-label" for="username">Tên người dùng</label>
-                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
                 </div>
                 <div class="form-group">
                   <label class="modal-label" for="password">Mật khẩu</label>
@@ -149,20 +149,14 @@
       <section class="client--user-info"> 
         <div class="container">
           <div class="client--user-info__wrap">
-            <div class="client--user-info__element">
-              <div class="client--user-info__element--image"><img src="../../assets/img/partials-userInfo-avatar.png" alt="avatar"></div>
-              <div class="client--user-info__element--content">
-                <div class="client--user-info__element--content-name">%Gia Qui%</div>
-                <div class="client--user-info__element--content-position">Vị trí: %Uploader%</div>
-                <div class="client--user-info__element--content-day">Ngày gia nhập: %17/12/2023%</div>
-              </div>
-            </div>
+            <div class="client--user-info__element" id="user-info"></div>
           </div>
         </div>
       </section>
+      <div class="alert-list"></div>
       <section class="client--upload-chapterNovel"> 
         <div class="container">
-          <form id="form-edit" action="">
+          <form id="form-add-chapterNovel" action="" enctype="multipart/form-data">
             <div class="client--upload-chapterNovel__box">
               <div class="client--upload-chapterNovel__top"><a class="button" href="chapter-list.html">
                   <div class="icon"><i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-bars"></i></div>
@@ -171,7 +165,7 @@
                 <div class="client--upload-chapterNovel__middle--element">
                   <div class="client--upload-chapterNovel__middle--element-title">Chương số:</div>
                   <div class="client--upload-chapterNovel__middle--element-form">
-                    <input type="text" name="numberOfChapter" placeholder="1">
+                    <input type="number" name="numberOfChapter" placeholder="1">
                   </div>
                 </div>
                 <div class="client--upload-chapterNovel__middle--element">
@@ -185,11 +179,12 @@
                 <div class="client--upload-chapterNovel__bottom--element">
                   <div class="client--upload-chapterNovel__bottom--element-title">Nội dung chương:</div>
                   <div class="client--upload-chapterNovel__bottom--element-form">
-                    <textarea id="content" name="contentOfChapter" aria-label="x"></textarea>
+                    <textarea id="content" name="contentOfChapter"></textarea>
                   </div>
                 </div>
               </div>
-              <div class="client--upload-chapterNovel__button">
+              <div class="client--upload-chapterNovel__button"><a class="button" href="mangaWrittingCenter.html"> <i class="fa-solid fa-arrow-left"></i>
+                  <div class="content">Trang trước</div></a>
                 <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
                   <div class="content">Upload chương</div>
                 </button>
@@ -198,6 +193,7 @@
           </form>
         </div>
       </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

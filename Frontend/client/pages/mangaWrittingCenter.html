@@ -17,15 +17,15 @@
       <div class="header">
         <div class="header__header-item">
           <div class="menu-list">
-            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
           </div>
           <div class="header__search-bar">
-            <input class="header__search-item" type="text" id="search_header">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
             <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
-            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
               <ul class="header__navbar-user-menu">
                 <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
                 <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
@@ -47,7 +47,7 @@
               <form class="form" id="form-1" action="" method="POST">
                 <div class="form-group">
                   <label class="modal-label" for="username">Tên người dùng</label>
-                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
                 </div>
                 <div class="form-group">
                   <label class="modal-label" for="password">Mật khẩu</label>
@@ -149,17 +149,11 @@
       <section class="client--user-info"> 
         <div class="container">
           <div class="client--user-info__wrap">
-            <div class="client--user-info__element">
-              <div class="client--user-info__element--image"><img src="../../assets/img/partials-userInfo-avatar.png" alt="avatar"></div>
-              <div class="client--user-info__element--content">
-                <div class="client--user-info__element--content-name">%Gia Qui%</div>
-                <div class="client--user-info__element--content-position">Vị trí: %Uploader%</div>
-                <div class="client--user-info__element--content-day">Ngày gia nhập: %17/12/2023%</div>
-              </div>
-            </div>
+            <div class="client--user-info__element" id="user-info"></div>
           </div>
         </div>
       </section>
+      <div class="alert-list"></div>
       <section class="client--mangaWrittingCenter">
         <div class="container">
           <div class="client--mangaWrittingCenter-head">
@@ -169,15 +163,14 @@
             <div class="client--mangaWrittingCenter-right">
               <form class="form-search" action="#">
                 <input name="keyword" placeholder="Tìm kiếm...">
-                <button aria-label="x"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button aria-label=".."> <i class="fa-solid fa-magnifying-glass"></i></button>
               </form><a class="button client--mangaWrittingCenter-right_button" href="upload-Manga.html"><i class="fa-solid fa-file-arrow-up"></i>Upload thêm truyện</a>
             </div>
           </div>
           <div class="client--mangaWrittingCenter-list" id="product-list"></div>
         </div>
       </section>
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script src="../../assets/js/client/script.js"></script>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

@@ -16,7 +16,7 @@
   font-weight: 700;
 }
 .button:hover {
-  background-color: #E3E3E3;
+  background-color: #e3e3e3c4;
 }
 
 .alert {
@@ -68,7 +68,7 @@
 }
 ._modal__main {
   width: 40%;
-  padding: 25px;
+  padding: 30px;
   border-radius: 8px;
   background-color: #fff;
   position: relative;
@@ -115,12 +115,13 @@
   color: #F40000;
 }
 ._modal__content__top--title {
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 34px;
   font-weight: 600;
   color: #003459;
 }
 ._modal__content__top--desc {
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 500;
   color: #667479;
@@ -141,9 +142,11 @@
 /* CLIENT-USERINFO */
 .client--user-info {
   background-color: #D9D9D9;
-  height: 350px;
+  height: 410px;
   display: flex;
   align-items: center;
+
+  position: relative;
 }
 .client--user-info__wrap {
 }
@@ -155,21 +158,32 @@
 .client--user-info__element--image img {
   width: 200px;
   height: auto;
+  position: absolute;
+  top: 130px;
 }
 .client--user-info__element--content-name {
   font-size: 40px;
   font-weight: 700;
   color: black;
+  position: absolute;
+  top: 180px;
+  left: 450px;
 }
 .client--user-info__element--content-position {
   font-size: 24px;
   font-weight: 500;
   color: #565656;
+  position: absolute;
+  top: 220px;
+  left: 450px;
 }
 .client--user-info__element--content-day {
   font-size: 20px;
   font-weight: 500;
   color: #565656;
+  position: absolute;
+  top: 250px;
+  left: 450px;
 }
 /* END CLIENT-USERINFO */
 
@@ -182,6 +196,7 @@
   border: 1px solid black;
   border-radius: 15px;
   padding: 0 40px;
+  margin-bottom: 40px;
 }
 
 .client--edit-manga__top {
@@ -274,8 +289,11 @@
   border: 1px solid #C9C9C9;
   border-radius: 10px;
   width: 220px;
-  height: 20px;
+  height: 40px;
   padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .client--edit-manga__middle--form-list {
@@ -294,13 +312,16 @@
   border: 1px solid #C9C9C9;
   border-radius: 10px;
   width: 220px;
-  height: 20px;
+  height: 40px;
   padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
 }
 .client--edit-manga__middle--form-element_form select {
   border: 1px solid #C9C9C9;
   border-radius: 10px;
-  width: 240px;
+  width: 220px;
   height: 40px;
   padding: 10px;
   font-size: 16px;
@@ -365,6 +386,9 @@
   border: 1px solid #C9C9C9;
   border-radius: 10px;
   padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .client--edit-manga__button {
@@ -377,7 +401,7 @@
 }
 .client--edit-manga__button button {
   width: 280px;
-  height: 68px;
+  height: 50px;
   border-radius: 25px;
   background-color: white;
   display: flex;
@@ -421,6 +445,7 @@
 /* CHAPTER-LIST */
 .client--chapter-list {
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 .client--chapter-list__main--content {
   display: flex;
@@ -470,6 +495,7 @@
 /* UPLOAD-CHAPTER-NOVEL */
 .client--upload-chapterNovel__box {
   margin-top: 40px;
+  margin-bottom: 40px;
   background-color: #EDEEF0;
   border: 1px solid black;
   border-radius: 15px;
@@ -531,10 +557,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+.client--upload-chapterNovel__button a {
+  width: 280px;
+  height: 48px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+.client--upload-chapterNovel__button a i {
+  font-size: 24px;
+  margin-right: 8px;
+}
+.client--upload-chapterNovel__button a .content {
+  font-size: 24px;
+  font-weight: 700;
 }
 .client--upload-chapterNovel__button button {
   width: 280px;
-  height: 68px;
+  height: 48px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 .client--upload-chapterNovel__button button i {
   margin-right: 8px;
@@ -604,6 +661,8 @@
   gap: 12px;
   margin-right: 20px;
   cursor: pointer;
+
+  position: relative;
 }
 .client--mangaWrittingCenter-right form button {
   font-size: 20px;
@@ -614,6 +673,11 @@
   border: 0;
   order: 1;
   cursor: pointer;
+}
+.client--mangaWrittingCenter-right form button i {
+  position: absolute;
+  right: 10px;
+  top: 12px;
 }
 .client--mangaWrittingCenter-right form input {
   border: 0;
@@ -722,6 +786,9 @@
   margin-right: 18px;
   color: white;
   background-color: black;
+}
+.client--mangaWrittingCenter-element-bottom--delete:hover {
+  background-color: #565656;
 }
 .client--mangaWrittingCenter-element-bottom--delete i {
   color: red;
