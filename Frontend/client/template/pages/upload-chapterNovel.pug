@@ -1,0 +1,48 @@
+extends ../layouts/index.pug
+
+block link
+    link(rel="stylesheet", href="../../assets/css/client/style_GiaQui.css")
+
+block container
+
+    include ../partials/user-info.pug
+
+    .alert-list
+
+    section.client--upload-chapterNovel 
+        .container
+            form(id="form-add-chapterNovel"  action="" enctype="multipart/form-data")
+                .client--upload-chapterNovel__box
+                    .client--upload-chapterNovel__top
+                        a(href="chapter-list.html" class="button")
+                            .icon
+                                i(class="fa-solid fa-ellipsis-vertical")
+                                i(class="fa-solid fa-bars")
+                            .content Danh sách chương
+                    .client--upload-chapterNovel__middle
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Chương số:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="number" name="numberOfChapter" placeholder ="1")
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Tiêu đề:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="text" name="nameOfChapter" placeholder ="Tiêu đề")
+
+                    .client--upload-chapterNovel__bottom
+                        .client--upload-chapterNovel__bottom--element
+                            .client--upload-chapterNovel__bottom--element-title Nội dung chương:
+                            .client--upload-chapterNovel__bottom--element-form
+                                textarea(id="content" name="contentOfChapter")
+
+                    .client--upload-chapterNovel__button
+                        a(href="mangaWrittingCenter.html" class="button") 
+                            i(class="fa-solid fa-arrow-left")
+                            .content Trang trước
+                        button(type="submit" class="button button-submit") 
+                            i(class="fa-solid fa-arrow-up-from-bracket")
+                            .content Upload chương
+
+    script(src = "../../assets/js/client/scriptGQ.js")

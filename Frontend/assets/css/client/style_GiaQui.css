@@ -1,0 +1,831 @@
+.container {
+  margin: 0 186px; 
+}
+
+
+.button {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.button:hover {
+  background-color: #e3e3e3c4;
+}
+
+.alert {
+  background-color: gray;
+  width: 300px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.alert-list {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.alert--success {
+  background-color: #52CE22;
+}
+.alert--error {
+  background-color: #F40000;
+}
+.alert__content {
+  font-size: 16px;
+  font-family: Arial;
+}
+.alert__close {
+  font-size: 20px;
+  cursor: pointer;
+}
+.alert__close:hover {
+  color: #0A0A0A;
+}
+
+._modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._modal__main {
+  width: 40%;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative;
+  z-index: 8;
+}
+._modal__close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 32px;
+  height: 32px;
+  background-color: #F40000;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+._modal__overlay {
+  background-color: rgba(0, 0, 0, 0.3960784314);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+._modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+._modal__content__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+._modal__content__top--icon {
+  font-size: 80px;
+  color: #F40000;
+}
+._modal__content__top--title {
+  margin-top: 15px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #003459;
+}
+._modal__content__top--desc {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #667479;
+}
+._modal__content__bottom {
+  display: flex;
+  gap: 20px;
+}
+._modal__bottom--Yes:hover {
+  background-color: #52CE22;
+  color: #FDFDFD;
+}
+._modal__bottom--No:hover {
+  color: #FDFDFD;
+  background-color: #F40000;
+}
+
+/* CLIENT-USERINFO */
+.client--user-info {
+  background-color: #D9D9D9;
+  height: 410px;
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+.client--user-info__wrap {
+}
+.client--user-info__element {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.client--user-info__element--image img {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: 130px;
+}
+.client--user-info__element--content-name {
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+  position: absolute;
+  top: 180px;
+  left: 450px;
+}
+.client--user-info__element--content-position {
+  font-size: 24px;
+  font-weight: 500;
+  color: #565656;
+  position: absolute;
+  top: 220px;
+  left: 450px;
+}
+.client--user-info__element--content-day {
+  font-size: 20px;
+  font-weight: 500;
+  color: #565656;
+  position: absolute;
+  top: 250px;
+  left: 450px;
+}
+/* END CLIENT-USERINFO */
+
+/* UPLOAD-MANGA */
+.client--edit-manga {
+  margin-top: 40px;
+}
+.client--edit-manga__wrap {
+  background-color: #EDEEF0;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+.client--edit-manga__top {
+  height: 100px;
+  display: flex;
+  gap: 105px;
+  align-items: center;
+  border-bottom: 2px solid black;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+.client--edit-manga__top--element label {
+  font-size: 18px;
+  font-weight: 500;
+}
+.client--edit-manga__top--element select {
+  width: 240px;
+  height: 40px;
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight:300;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.client--edit-manga__middle {
+  display: flex;
+  margin-top: 34px;
+  padding-bottom: 34px;
+  border-bottom: 2px solid black;
+}
+.client--edit-manga__middle--image {
+  width: 15%;
+}
+.client--edit-manga__middle--image-main {
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  /* justify-content: center; */
+}
+.client--edit-manga__middle--image-main img {
+  width: 145px;
+  height: auto;
+  object-fit: cover;
+}
+.client--edit-manga__middle--image-button {
+  /* width: 100%; */
+  /* display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  background-color: #CBCBCB;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 16px;
+  margin-bottom: 34px;
+  cursor: pointer; */
+  width: 100%;
+  display: inline-flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 16px;
+}
+.client--edit-manga__middle--image-button span {
+  font-size: 18px;
+  font-weight: 700;
+}
+.client--edit-manga__middle--image-button input[type="file"] {
+  display: none;
+}
+.client--edit-manga__middle--image .nameFile {
+  display: none;
+}
+
+.client--edit-manga__middle--form {
+  width: 50%;
+}
+.client--edit-manga__middle--form-main {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.client--edit-manga__middle--form-main_title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--edit-manga__middle--form-main_form input {
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  width: 220px;
+  height: 40px;
+  padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.client--edit-manga__middle--form-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.client--edit-manga__middle--form-element {
+}
+.client--edit-manga__middle--form-element_title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--edit-manga__middle--form-element_form input {
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  width: 220px;
+  height: 40px;
+  padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+}
+.client--edit-manga__middle--form-element_form select {
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  width: 220px;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight:300;
+  cursor: pointer;
+}
+
+.client--edit-manga__middle--tag {
+  width: 35%;
+}
+.client--edit-manga__middle--tag-title {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+.client--edit-manga__middle--tag-title .main {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--edit-manga__middle--tag-box {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+}
+.client--edit-manga__middle--tag-element-detail .checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.client--edit-manga__middle--tag-element-detail .checkbox-round:checked {
+  background-color: gray;
+}
+.client--edit-manga__middle--tag-element-detail label {
+  font-size: 16px;
+  font-weight:300;
+  cursor: pointer;
+}
+
+.client--edit-manga__bottom {  
+  margin-top: 60px;
+  border-bottom: 2px solid black;
+}
+.client--edit-manga__bottom--introduce { 
+  margin-bottom: 60px;
+}
+.client--edit-manga__bottom--introduce-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--edit-manga__bottom--introduce-content textarea {
+  width: calc(100% - 20px);
+  height: 340px;
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  padding: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.client--edit-manga__button {
+  margin-top: 40px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.client--edit-manga__button button {
+  width: 280px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+}
+.client--edit-manga__button a {
+  width: 280px;
+  height: 48px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  color: black;
+
+  text-decoration: none;
+}
+.client--edit-manga__button button i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+.client--edit-manga__button a i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+.client--edit-manga__button button .content {
+  font-size: 24px;
+  font-weight: 700;
+}
+.client--edit-manga__button a .content {
+  font-size: 24px;
+  font-weight: 700;
+}
+/* END UPLOAD-MANGA */
+
+/* CHAPTER-LIST */
+.client--chapter-list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.client--chapter-list__main--content {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 2px solid black;
+}
+.client--chapter-list__main--content-left {
+  display: flex;
+  font-size: 24px;
+  font-weight: 700;
+  gap: 16px;
+}
+.client--chapter-list__main--content-right {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+}
+
+.client--chapter-list__main--list {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+.client--chapter-list__main--list a {
+  text-decoration: none;
+}
+.client--chapter-list__main--element {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.client--chapter-list__main--element:hover {
+  background-color: #E3E3E3;
+}
+.client--chapter-list__main--element-content {
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  
+}
+/* END CHAPTER-LIST */
+
+/* UPLOAD-CHAPTER-NOVEL */
+.client--upload-chapterNovel__box {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #EDEEF0;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 0 40px;
+}
+.client--upload-chapterNovel__top {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+.client--upload-chapterNovel__top a {
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+.client--upload-chapterNovel__top a .icon {
+  margin-right: 8px;
+}
+.client--upload-chapterNovel__middle {
+  display: flex;
+  border-bottom: 2px solid black;
+  gap: 108px;
+}
+.client--upload-chapterNovel__middle--element {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+.client--upload-chapterNovel__middle--element-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--upload-chapterNovel__middle--element-form input {
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  width: 220px;
+  height: 30px;
+  padding: 5px;
+}
+.client--upload-chapterNovel__bottom {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+.client--upload-chapterNovel__bottom--element-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.client--upload-chapterNovel__bottom--element-form textarea {
+  width: calc(100% - 20px);
+  height: 340px;
+  border: 1px solid #C9C9C9;
+  border-radius: 10px;
+  padding: 10px;
+}
+.client--upload-chapterNovel__button {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.client--upload-chapterNovel__button a {
+  width: 280px;
+  height: 48px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+.client--upload-chapterNovel__button a i {
+  font-size: 24px;
+  margin-right: 8px;
+}
+.client--upload-chapterNovel__button a .content {
+  font-size: 24px;
+  font-weight: 700;
+}
+.client--upload-chapterNovel__button button {
+  width: 280px;
+  height: 48px;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #C9C9C9;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+.client--upload-chapterNovel__button button i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+.client--upload-chapterNovel__button button .content {
+  font-size: 24px;
+  font-weight: 700;
+}
+/* END UPLOAD-CHAPTER-NOVEL */
+
+/* UPLOAD-CHAPTER-MANGA */
+.client--upload-chapterManga__bottom {
+  margin-top: 60px;
+}
+.client--upload-chapterManga__bottom--element {
+  display: flex;
+  gap: 20px;
+}
+.client--upload-chapterManga__bottom--element-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.client--upload-chapterManga__bottom--element-notice {
+  width: 530px;
+  height: 170px;
+  padding: 10px;
+  background-color: #B3B3B3;
+} 
+.client--upload-chapterManga__bottom--element-box .client--edit-manga__middle--image {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+/* END UPLOAD-CHAPTER-MANGA */
+
+/* MANGA WRITING CENTER */
+.client--mangaWrittingCenter {
+  margin-top: 23px;
+}
+.client--mangaWrittingCenter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items:end;
+  border-bottom: 2px solid black;
+  padding-bottom: 16px;
+}
+.client--mangaWrittingCenter-left {
+  display: flex;
+  gap: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  /* margin-bottom: 16px; */
+}
+.client--mangaWrittingCenter-right {
+  display: flex;
+
+}
+.client--mangaWrittingCenter-right form {
+  background-color: #F3F4F6;
+  border: 1px solid black;
+  height: 44px;
+  width: 275px;
+  border-radius: 50px;
+  padding: 0 16px;
+  display: inline-flex;
+  gap: 12px;
+  margin-right: 20px;
+  cursor: pointer;
+
+  position: relative;
+}
+.client--mangaWrittingCenter-right form button {
+  font-size: 20px;
+  
+  /* color: $color-light-text; */
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  order: 1;
+  cursor: pointer;
+}
+.client--mangaWrittingCenter-right form button i {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+.client--mangaWrittingCenter-right form input {
+  border: 0;
+  outline: 0; 
+  color: black;
+  height: 100%;
+  background-color: transparent; 
+  padding:0 5px;
+  order: 0;
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+}
+.client--mangaWrittingCenter-right a {
+  background-color: #F3F4F6;
+  border-radius: 50px;
+  color: black;
+  text-decoration: none;
+}
+.client--mangaWrittingCenter-right a i {
+  margin-right: 8px;
+  padding-left: 5px;
+}
+
+.client--mangaWrittingCenter-list {
+  margin-top: 10px;
+}
+.client--mangaWrittingCenter-element {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 18px;
+  background-color: #F3F4F6;
+  margin-bottom: 20px;
+}
+.client--mangaWrittingCenter-element--right {
+  margin-right: 18px;
+}
+.client--mangaWrittingCenter-element--right img {
+  width: 150px;
+  aspect-ratio: 1/1;
+  display: block;
+}
+.client--mangaWrittingCenter-element--middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.client--mangaWrittingCenter-element--middle .client--mangaWrittingCenter-element-top {
+  margin-bottom: 15px;
+  display: flex;
+}
+.client--mangaWrittingCenter-element-top--language {
+  border: 1px solid black;
+  padding: 3px;
+  font-size: 12px;
+  margin-right: 20px;
+}
+.client--mangaWrittingCenter-element-top--name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+.client--mangaWrittingCenter-element-top--type {
+  padding: 3px 5px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid #758AE2;
+  border-radius: 50px;
+  background-color: #758AE2;
+}
+.client--mangaWrittingCenter-element--middle .client--mangaWrittingCenter-element-mid {
+  display: flex;
+  margin-bottom: 30px;
+}
+.client--mangaWrittingCenter-element-mid--status {
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid #E37F28;
+  border-radius: 50px;
+  background-color: #E37F28;
+  color: white;
+  margin-right: 10px;
+}
+.client--mangaWrittingCenter-element--middle .client--mangaWrittingCenter-element-mid--date {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.client--mangaWrittingCenter-element--middle .client--mangaWrittingCenter-element-bottom {
+  display: flex;
+}
+.client--mangaWrittingCenter-element--middle .client--mangaWrittingCenter-element-bottom a {
+  color: black;
+  text-decoration: none;
+}
+.client--mangaWrittingCenter-element-bottom--edit {
+  gap: 8px;
+  margin-right: 18px;
+}
+.client--mangaWrittingCenter-element-bottom--delete {
+  gap: 8px;
+  margin-right: 18px;
+  color: white;
+  background-color: black;
+}
+.client--mangaWrittingCenter-element-bottom--delete:hover {
+  background-color: #565656;
+}
+.client--mangaWrittingCenter-element-bottom--delete i {
+  color: red;
+}
+.client--mangaWrittingCenter-element--left {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+}
+.client--mangaWrittingCenter-element--left-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.client--mangaWrittingCenter-element--left-inner i {
+  color: black;
+}
+.client--mangaWrittingCenter-element--left-inner a {
+  text-decoration: none;
+}
+.client--mangaWrittingCenter-element--left-inner .content {
+  margin-left: 8px;
+  color: black;
+}
+/* END MANGA WRITING CENTER */
+
+/* EDIT MANGA */
+.client--editManga__top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+  height: 100px;
+  align-items: center;
+}
+.client--editManga__top--right {
+  display: flex;
+  gap: 32px;
+}
+/* END EDIT MANGA */

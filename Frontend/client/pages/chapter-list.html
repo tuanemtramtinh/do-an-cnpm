@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../assets/css/client/base.css">
     <link rel="stylesheet" href="../../assets/css/client/home_page.css">
     <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="../../assets/css/client/style_GiaQui.css">
     <body>
       <div class="header">
         <div class="header__header-item">
@@ -145,47 +146,26 @@
             }
         });
       </script>
-      <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
-        <div class="profile-info">
-          <h2 class="profile-name">Triệu Mẫn</h2>
-          <p class="profile-role">Vai trò: Uploader</p>
-          <p class="profile-join-date">Ngày gia nhập: 01/01/2024</p>
-        </div>
-      </div>
-      <div class="block-content"></div>
-      <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
-        <h2 class="personal-info-title">Thông tin cá nhân</h2>
-      </div>
-      <hr class="personal-info-divider">
-      <div class="personal-info-container">
-        <div class="personal-info-box"> 
-          <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
-          <p><strong>Username: </strong>kandy_2705</p>
-          <p><strong>SĐT: </strong>0123456789</p>
-          <p><strong>Ngày sinh: </strong>27/05/2004</p>
-        </div>
-      </div>
-      <div class="main-layout">
-        <div class="grid__column-3">
-          <div class="manga-section">
-            <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
-              <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
-            </div>
-            <hr class="manga-info-divider">
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
           </div>
         </div>
-        <div class="grid__column-1">
-          <div class="function-section">
-            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
-              <h2 class="function-section-title">Chức năng</h2>
+      </section>
+      <section class="client--chapter-list"> 
+        <div class="container"> 
+          <div class="client--chapter-list__main">
+            <div class="client--chapter-list__main--content">
+              <div class="client--chapter-list__main--content-left"><i class="fa-solid fa-book-open"></i>
+                <div class="content">Danh sách chương</div>
+              </div><a class="client--chapter-list__main--content-right" href="mangaWrittingCenter.html"><i class="fa-solid fa-chevron-left"></i></a>
             </div>
-            <hr class="function-info-divider">
-            <button class="function-btn"> <img class="icon" src="../../assets/img/my-story-icon.png" alt="My Story Icon"><span>Truyện của tôi</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></button>
+            <div class="client--chapter-list__main--list" id="chapter-list"></div>
           </div>
         </div>
-      </div>
+      </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

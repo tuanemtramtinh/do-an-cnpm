@@ -1,46 +1,46 @@
-const buyBtns = document.querySelectorAll('.header-item__login')
-const modal = document.querySelector('.js-modal')
-const modalContai = document.querySelector('.js-modal-container')
-const tat=document.querySelector('.js-modal-close')
+const buyBtns = document.querySelectorAll(".header-item__login");
+const modal = document.querySelector(".js-modal");
+const modalContai = document.querySelector(".js-modal-container");
+const tat = document.querySelector(".js-modal-close");
 
-function showbuyticket(){
-    modal.classList.add('open')
+function showbuyticket() {
+  modal.classList.add("open");
 }
 
-function tatbuyticket(){
-    modal.classList.remove('open')
+function tatbuyticket() {
+
+  modal.classList.remove("open");
 }
 
-for(const buyBtn of buyBtns){
-    buyBtn.addEventListener('click', showbuyticket)
-} 
+for (const buyBtn of buyBtns) {
+  buyBtn.addEventListener("click", showbuyticket);
+}
 
-tat.addEventListener('click',tatbuyticket)
-modal.addEventListener('click',tatbuyticket)
-modalContai.addEventListener('click', function(event){
-    event.stopPropagation()
-})
+tat.addEventListener("click", tatbuyticket);
+modal.addEventListener("click", tatbuyticket);
+modalContai.addEventListener("click", function (event) {
+  event.stopPropagation();
+});
 
 //////////////////////////////////////////////////////////////////////
 
+const buyBtnsDangky = document.querySelectorAll("#dangky");
+const modalDangky = document.querySelector(".js-modal-dangky");
+const modalDangkyContai = document.querySelector(".js-modal-container-dangky");
+const tatDangky = document.querySelector(".js-modal-close-dangky");
 
-const buyBtnsDangky = document.querySelectorAll('#dangky')
-const modalDangky = document.querySelector('.js-modal-dangky')
-const modalDangkyContai = document.querySelector('.js-modal-container-dangky')
-const tatDangky=document.querySelector('.js-modal-close-dangky')
-
-function showbuyticketDangky(){
-    modalDangky.classList.add('open')
-    modal.classList.remove('open')
+function showbuyticketDangky() {
+  modalDangky.classList.add("open");
+  modal.classList.remove("open");
 }
 
-function tatDangkybuyticket(){
-    modalDangky.classList.remove('open')
+function tatDangkybuyticket() {
+  modalDangky.classList.remove("open");
 }
 
-for(const buyBtn of buyBtnsDangky){
-    buyBtn.addEventListener('click', showbuyticketDangky)
-} 
+for (const buyBtn of buyBtnsDangky) {
+  buyBtn.addEventListener("click", showbuyticketDangky);
+}
 
 tatDangky.addEventListener('click',tatDangkybuyticket)
 modalDangky.addEventListener('click',tatDangkybuyticket)
@@ -49,82 +49,89 @@ modalDangkyContai.addEventListener('click', function(event){
 })
 
 /////////////////////////////////////////////////
-const buyBtnsTH = document.querySelectorAll('#dangnhap')
+const buyBtnsTH = document.querySelectorAll("#dangnhap");
 
-function showbuyticket(){
-    modal.classList.add('open')
-    modalDangky.classList.remove('open')
+console.log(buyBtnsTH);
+
+function showbuyticket() {
+  modal.classList.add("open");
+  modalDangky.classList.remove("open");
 }
 
-function tatbuyticket(){
-    modal.classList.remove('open')
+function tatbuyticket() {
+  modal.classList.remove("open");
 }
 
-for(const buyBtn of buyBtnsTH){
-    buyBtn.addEventListener('click', showbuyticket)
-} 
+for (const buyBtn of buyBtnsTH) {
+  buyBtn.addEventListener("click", showbuyticket);
+}
 
-tat.addEventListener('click',tatbuyticket)
-modal.addEventListener('click',tatbuyticket)
-modalContai.addEventListener('click', function(event){
-    event.stopPropagation()
-})
-
-document.addEventListener('DOMContentLoaded', function() {
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-    const loginButton = document.getElementById('button-login');
-
-    function validateInputs() {
-        const isUsernameFilled = usernameInput.value.trim() !== '';
-        const isPasswordFilled = passwordInput.value.trim() !== '';
-
-        if (isUsernameFilled && isPasswordFilled) {
-            loginButton.disabled = false;
-        } else {
-            loginButton.disabled = true;
-            // alert("Vui lòng nhập đầy đủ.");
-        }
-    }
-
-    usernameInput.addEventListener('input', validateInputs);
-    passwordInput.addEventListener('input', validateInputs);
-
-    validateInputs();
+tat.addEventListener("click", tatbuyticket);
+modal.addEventListener("click", tatbuyticket);
+modalContai.addEventListener("click", function (event) {
+  event.stopPropagation();
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const loginButton = document.getElementById("button-login");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form-2');
-    const usernameInput = document.getElementById('username2');
-    const passwordInput = document.getElementById('pass2');
-    const daybdInput = document.getElementById('daybd');
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
-    const registerButton = document.getElementById('button-dangky');
+  function validateInputs() {
+    const isUsernameFilled = usernameInput.value.trim() !== "";
+    const isPasswordFilled = passwordInput.value.trim() !== "";
 
-    function validateInputs() {
-        const isUsernameFilled = usernameInput.value.trim() !== '';
-        const isPasswordFilled = passwordInput.value.trim() !== '';
-        const isDaybdFilled = daybdInput.value.trim() !== '';
-        const isEmailValid = emailInput.checkValidity();
-        const isPhoneValid = phoneInput.checkValidity();
-
-        if (isUsernameFilled && isPasswordFilled && isDaybdFilled && isEmailValid && isPhoneValid) {
-            registerButton.disabled = false;
-        } else {
-            registerButton.disabled = true;
-            // alert("Vui lòng nhập đầy đủ.");
-        }
+    if (isUsernameFilled && isPasswordFilled) {
+      loginButton.disabled = false;
+    } else {
+      loginButton.disabled = true;
+      // alert("Vui lòng nhập đầy đủ.");
     }
+  }
 
-    usernameInput.addEventListener('input', validateInputs);
-    passwordInput.addEventListener('input', validateInputs);
-    daybdInput.addEventListener('input', validateInputs);
-    emailInput.addEventListener('input', validateInputs);
-    phoneInput.addEventListener('input', validateInputs);
+  usernameInput.addEventListener("input", validateInputs);
+  passwordInput.addEventListener("input", validateInputs);
 
-    validateInputs();
+  validateInputs();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form-2");
+  const usernameInput = document.getElementById("username2");
+  const passwordInput = document.getElementById("pass2");
+  const daybdInput = document.getElementById("daybd");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+  const registerButton = document.getElementById("button-dangky");
+
+  function validateInputs() {
+    const isUsernameFilled = usernameInput.value.trim() !== "";
+    const isPasswordFilled = passwordInput.value.trim() !== "";
+    const isDaybdFilled = daybdInput.value.trim() !== "";
+    const isEmailValid = emailInput.checkValidity();
+    const isPhoneValid = phoneInput.checkValidity();
+
+    if (
+      isUsernameFilled &&
+      isPasswordFilled &&
+      isDaybdFilled &&
+      isEmailValid &&
+      isPhoneValid
+    ) {
+      registerButton.disabled = false;
+    } else {
+      registerButton.disabled = true;
+      // alert("Vui lòng nhập đầy đủ.");
+    }
+  }
+
+  usernameInput.addEventListener("input", validateInputs);
+  passwordInput.addEventListener("input", validateInputs);
+  daybdInput.addEventListener("input", validateInputs);
+  emailInput.addEventListener("input", validateInputs);
+  phoneInput.addEventListener("input", validateInputs);
+
+  validateInputs();
 });
 
 /////////////////////////////////////////////////////////
@@ -139,114 +146,107 @@ async function login(username, password) {
 			body: JSON.stringify({ username, password }),
 		});
 
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data.payload.token);
-            if (data.payload.token) {
-                localStorage.setItem('token', data.payload.token); 
-                updateUIBasedOnLogin();
-                console.log('Đăng nhập thành công!');
-            } else {
-                console.error('Không nhận được token.');
-                alert('Đăng nhập thất bại: Không nhận được token.');
-            }
-        } else {
-            const errorData = await response.json();
-            console.error('Đăng nhập thất bại:', errorData.message);
-            alert(`Đăng nhập thất bại: ${errorData.message}`);
-        }
-    } catch (error) {
-        console.error('Lỗi:', error);
-        alert('Đã xảy ra lỗi trong quá trình đăng nhập.');
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data.payload.token);
+      if (data.payload.token) {
+        localStorage.setItem("token", data.payload.token);
+        updateUIBasedOnLogin();
+        console.log("Đăng nhập thành công!");
+      } else {
+        console.error("Không nhận được token.");
+        alert("Đăng nhập thất bại: Không nhận được token.");
+      }
+    } else {
+      const errorData = await response.json();
+      console.error("Đăng nhập thất bại:", errorData.message);
+      alert(`Đăng nhập thất bại: ${errorData.message}`);
     }
-
+  } catch (error) {
+    console.error("Lỗi:", error);
+    alert("Đã xảy ra lỗi trong quá trình đăng nhập.");
+  }
 }
 
 function parseJwt(token) {
-	try {
-		const base64Url = token.split(".")[1];
-		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-		const jsonPayload = decodeURIComponent(
-			atob(base64)
-				.split("")
-				.map(function (c) {
-					return (
-						"%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)
-					);
-				})
-				.join("")
-		);
-		return JSON.parse(jsonPayload);
-	} catch (e) {
-		console.error("Token không hợp lệ:", e);
-		return null;
-	}
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.error("Token không hợp lệ:", e);
+    return null;
+  }
 }
 
-
 async function updateUIBasedOnLogin() {
-    const token = localStorage.getItem('token');
-    if (token) {
-        const userInfo = parseJwt(token);
-        if(userInfo){
-            document.querySelector(".header-item__login").style.display = 'none';
-            document.querySelector(".header__navbar-user").style.display = 'flex';
-        }
-		const logoutButton = document.querySelector("#button-logout");
-		if (logoutButton) {
-			logoutButton.addEventListener("click", function () {
-				localStorage.removeItem("token");
-				updateUIBasedOnLogin();
-				console.log("Đăng xuất thành công!");
-				window.location.href = "../pages/home_page.html";
-			});
-		} else {
-			console.error("Không tìm thấy nút đăng xuất.");
-		}
-	} else {
-        document.querySelector(".header-item__login").style.display = 'block';
-            document.querySelector(".header__navbar-user").style.display = 'none';
+  const token = localStorage.getItem("token");
+  if (token) {
+    const userInfo = parseJwt(token);
+    if (userInfo) {
+      document.querySelector(".header-item__login").style.display = "none";
+      document.querySelector(".header__navbar-user").style.display = "flex";
     }
-    await getUserProfile();
-
+    const logoutButton = document.querySelector("#button-logout");
+    if (logoutButton) {
+      logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("token");
+        updateUIBasedOnLogin();
+        console.log("Đăng xuất thành công!");
+        window.location.href = "../pages/home_page.html";
+      });
+    } else {
+      console.error("Không tìm thấy nút đăng xuất.");
+    }
+  } else {
+    document.querySelector(".header-item__login").style.display = "block";
+    document.querySelector(".header__navbar-user").style.display = "none";
+  }
+  await getUserProfile();
 }
 
 async function getUserProfile() {
-	try {
-		const token = localStorage.getItem("token");
-		if (!token) {
-			console.error("No token found. Please log in first.");
-			return;
-		}
-    } catch (error) {
-		console.error("Error fetching user profile:", error);
-	}
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("No token found. Please log in first.");
+      return;
+    }
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-	await updateUIBasedOnLogin();
-  
-	const loginButton = document.querySelector("#button-login");
-    
-	if (loginButton) {
-	  loginButton.addEventListener("click", async function () {
-		const username = document.getElementById("username").value;
-		const password = document.getElementById("password").value;
-		await login(username, password);
-        
-		const modal = document.querySelector(".js-modal");
-		if (modal) {
-		  setTimeout(() => {
-			modal.classList.remove("open");
-		  }, 200);
-		}
-	  });
-	} else {
-	  console.error("Login button (#button-login) not found.");
-	}
+  await updateUIBasedOnLogin();
+
+  const loginButton = document.querySelector("#button-login");
+
+  if (loginButton) {
+    loginButton.addEventListener("click", async function () {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      await login(username, password);
+
+      const modal = document.querySelector(".js-modal");
+      if (modal) {
+        setTimeout(() => {
+          modal.classList.remove("open");
+        }, 200);
+      }
+    });
+  } else {
+    console.error("Login button (#button-login) not found.");
+  }
 });
-
-
 
 ////////////////////////////////////////////////////////////////////////
 // dang ky tai khoan moi
@@ -284,33 +284,25 @@ async function dangky(email, username, password, dob, phone) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    await updateUIBasedOnLogin();
+  await updateUIBasedOnLogin();
 
+  const dangkyButton = document.querySelector("#button-dangky");
+  if (dangkyButton) {
+    dangkyButton.addEventListener("click", async function () {
+      const email = document.getElementById("email").value;
+      const username = document.getElementById("username2").value;
+      const password = document.getElementById("pass2").value;
+      const dob = document.getElementById("daybd").value;
+      const phone = document.getElementById("phone").value;
 
-    const dangkyButton = document.querySelector("#button-dangky");
-    if (dangkyButton) {
-        dangkyButton.addEventListener("click", async function () {
-            const email = document.getElementById("email").value;
-            const username = document.getElementById("username2").value;
-            const password = document.getElementById("pass2").value;
-            const dob = document.getElementById("daybd").value;
-            const phone = document.getElementById("phone").value;
+      await dangky(email, username, password, dob, phone);
 
-            await dangky(
-                email,
-                username,
-                password,
-                dob,
-                phone
-            );
-
-            setTimeout(() => {
-                const modal = document.querySelector(".js-modal-dangky");
-                if (modal) {
-                    modal.classList.remove("open");
-                }
-            }, 200);
-        });
-    }
+      setTimeout(() => {
+        const modal = document.querySelector(".js-modal-dangky");
+        if (modal) {
+          modal.classList.remove("open");
+        }
+      }, 200);
+    });
+  }
 });
-
