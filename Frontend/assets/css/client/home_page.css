@@ -10,7 +10,7 @@ html{
     width: 100%;
     height: var(--header-height);
     background: var(--nav-color);
-    z-index: 2;
+    z-index: 100;
 }
 .menu-list{
     display: flex;

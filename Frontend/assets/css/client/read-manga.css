@@ -11,7 +11,7 @@
   z-index: 99;
 }
 
-.control-container.hidden {
+.control-container._hidden {
   top: -200px; 
 }
 
