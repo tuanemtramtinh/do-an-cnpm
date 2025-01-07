@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     if (isNovelPage) {
-      // Fetch novel content
       const novelResponse = await fetch(
         `https://api.mangocomic.io.vn/chapter/get-novel?id=${novelId}&chapter_no=${currentChapterNo}`
       );
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Failed to fetch novel content:", novelData);
       }
     } else {
-      // Fetch comic content
       const comicResponse = await fetch(
         `https://api.mangocomic.io.vn/chapter/get-comic?id=${bookId}&chapter_no=${currentChapterNo}`
       );
