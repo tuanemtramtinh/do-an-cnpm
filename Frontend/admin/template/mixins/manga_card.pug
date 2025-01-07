@@ -1,0 +1,27 @@
+mixin mangaCard(title, author, genres, coverImg, likes, comments, rating)
+  .manga-card
+    img.manga-cover(src=coverImg alt="Manga Cover")
+    .manga-details
+      h3.manga-title= title
+      p.manga-author= author
+      p.manga-genres
+        | Thể loại
+        each genre in genres
+          span.manga-genre= genre
+      .manga-actions
+        button.manga-edit
+          i.fa-solid.fa-pen
+          | Chỉnh sửa
+        button.manga-detail
+          i.fa-solid.fa-bars
+          | Chi tiết
+    .manga-stats
+      div.manga-stat
+        i.fa-solid.fa-heart
+        | #{likes}
+      div.manga-stat
+        i.fa-solid.fa-comment
+        | #{comments}
+      div.manga-stat
+        i.fa-solid.fa-star
+        | #{rating}
