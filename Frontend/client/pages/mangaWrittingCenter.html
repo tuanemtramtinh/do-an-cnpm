@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../assets/css/client/base.css">
     <link rel="stylesheet" href="../../assets/css/client/home_page.css">
     <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="../../assets/css/client/style_GiaQui.css">
     <body>
       <div class="header">
         <div class="header__header-item">
@@ -145,6 +146,31 @@
             }
         });
       </script>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
+          </div>
+        </div>
+      </section>
+      <div class="alert-list"></div>
+      <section class="client--mangaWrittingCenter">
+        <div class="container">
+          <div class="client--mangaWrittingCenter-head">
+            <div class="client--mangaWrittingCenter-left"><i class="fa-solid fa-book-open"></i>
+              <div class="content">Thông tin truyện upload</div>
+            </div>
+            <div class="client--mangaWrittingCenter-right">
+              <form class="form-search" action="#">
+                <input name="keyword" placeholder="Tìm kiếm...">
+                <button aria-label=".."> <i class="fa-solid fa-magnifying-glass"></i></button>
+              </form><a class="button client--mangaWrittingCenter-right_button" href="upload-Manga.html"><i class="fa-solid fa-file-arrow-up"></i>Upload thêm truyện</a>
+            </div>
+          </div>
+          <div class="client--mangaWrittingCenter-list" id="product-list"></div>
+        </div>
+      </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

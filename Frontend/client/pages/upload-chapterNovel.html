@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../assets/css/client/base.css">
     <link rel="stylesheet" href="../../assets/css/client/home_page.css">
     <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="../../assets/css/client/style_GiaQui.css">
     <body>
       <div class="header">
         <div class="header__header-item">
@@ -145,6 +146,54 @@
             }
         });
       </script>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
+          </div>
+        </div>
+      </section>
+      <div class="alert-list"></div>
+      <section class="client--upload-chapterNovel"> 
+        <div class="container">
+          <form id="form-add-chapterNovel" action="" enctype="multipart/form-data">
+            <div class="client--upload-chapterNovel__box">
+              <div class="client--upload-chapterNovel__top"><a class="button" href="chapter-list.html">
+                  <div class="icon"><i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-bars"></i></div>
+                  <div class="content">Danh sách chương</div></a></div>
+              <div class="client--upload-chapterNovel__middle">
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Chương số:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="number" name="numberOfChapter" placeholder="1">
+                  </div>
+                </div>
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Tiêu đề:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="text" name="nameOfChapter" placeholder="Tiêu đề">
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterNovel__bottom">
+                <div class="client--upload-chapterNovel__bottom--element">
+                  <div class="client--upload-chapterNovel__bottom--element-title">Nội dung chương:</div>
+                  <div class="client--upload-chapterNovel__bottom--element-form">
+                    <textarea id="content" name="contentOfChapter"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterNovel__button"><a class="button" href="mangaWrittingCenter.html"> <i class="fa-solid fa-arrow-left"></i>
+                  <div class="content">Trang trước</div></a>
+                <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                  <div class="content">Upload chương</div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
     </body>
   </head>
 </html>

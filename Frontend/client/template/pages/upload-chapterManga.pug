@@ -1,0 +1,62 @@
+extends ../layouts/index.pug
+
+block link
+    link(rel="stylesheet", href="../../assets/css/client/style_GiaQui.css")
+
+block container
+
+    include ../partials/user-info.pug
+
+    .alert-list
+
+    section.client--upload-chapterNovel 
+        .container
+            form(id="form-add-chapterManga" action="" enctype="multipart/form-data")
+                .client--upload-chapterNovel__box
+                    .client--upload-chapterNovel__top
+                        a(href="chapter-list.html" class="button")
+                            .icon
+                                i(class="fa-solid fa-ellipsis-vertical")
+                                i(class="fa-solid fa-bars")
+                            .content Danh sách chương
+                    .client--upload-chapterNovel__middle
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Chương số:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="number" name="numberOfChapter" placeholder ="1")
+
+                        .client--upload-chapterNovel__middle--element
+                            .client--upload-chapterNovel__middle--element-title Tiêu đề:
+                            .client--upload-chapterNovel__middle--element-form
+                                input(type="text" name="nameOfChapter" placeholder ="Tiêu đề")
+
+                    .client--upload-chapterManga__bottom
+                        .client--upload-chapterManga__bottom--element
+                            .client--upload-chapterManga__bottom--element-title Trang truyện:
+                            .client--upload-chapterManga__bottom--element-box
+                                .client--upload-chapterManga__bottom--element-notice Lưu ý:
+                                    ul 
+                                        li Không vượt quá 50 ảnh/chương.
+                                        li Tổng dung lượng của các ảnh trong một chương không được phép vượt quá 15MB.
+                                        li Chiều rộng 720 pixel tới 1200 pixel, độ phân giải 72 dpi.
+                                        li Đặt tên file theo thứ tự trang truyện hiển thị.
+                                        li Các ảnh phải có cùng chiều rộng (width).
+                                .client--edit-manga__middle--image
+                                    .client--edit-manga__middle--image-main
+                                        img(src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG")
+                                    label.client--edit-manga__middle--image-button
+                                        input(type="file" name="images" multiple)
+                                        span(class="button") Chọn ảnh bìa
+                                    span(id="file-name" class="nameFile") No file chosen
+
+
+                    .client--upload-chapterNovel__button
+                        a(href="mangaWrittingCenter.html" class="button") 
+                            i(class="fa-solid fa-arrow-left")
+                            .content Trang trước
+                        button(type="submit" class="button button-submit") 
+                            i(class="fa-solid fa-arrow-up-from-bracket")
+                            .content Upload chương
+
+    script(src = "../../assets/js/client/scriptGQ.js")
