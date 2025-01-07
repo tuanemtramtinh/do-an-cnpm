@@ -42,11 +42,11 @@ for (const buyBtn of buyBtnsDangky) {
   buyBtn.addEventListener("click", showbuyticketDangky);
 }
 
-tatDangky.addEventListener("click", tatDangkybuyticket);
-modalDangky.addEventListener("click", tatDangkybuyticket);
-modalDangkyContai.addEventListener("click", function (event) {
-  event.stopPropagation();
-});
+tatDangky.addEventListener('click',tatDangkybuyticket)
+modalDangky.addEventListener('click',tatDangkybuyticket)
+modalDangkyContai.addEventListener('click', function(event){
+    event.stopPropagation()
+})
 
 /////////////////////////////////////////////////
 const buyBtnsTH = document.querySelectorAll("#dangnhap");
@@ -137,14 +137,14 @@ document.addEventListener("DOMContentLoaded", function () {
 /////////////////////////////////////////////////////////
 // xu ly xac thuc nguoi dung
 async function login(username, password) {
-  // console.log(username);
-  // console.log(password);
-  try {
-    const response = await fetch("http://4.194.248.208:3000/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
+    // console.log(username);
+    // console.log(password);
+	try {
+		const response = await fetch("https://api.tuanemtramtinh.io.vn/user/login", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username, password }),
+		});
 
     if (response.ok) {
       const data = await response.json();
@@ -251,32 +251,36 @@ document.addEventListener("DOMContentLoaded", async function () {
 ////////////////////////////////////////////////////////////////////////
 // dang ky tai khoan moi
 async function dangky(email, username, password, dob, phone) {
-  try {
-    const response = await fetch("http://4.194.248.208:3000/user/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        username,
-        password,
-        dob,
-        phone,
-      }),
-    });
-    console.log(response);
-    if (response.ok) {
-      const data = await response.json();
+	try {
+		const response = await fetch(
+			"https://api.tuanemtramtinh.io.vn/user/register",
+			{
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					email,
+                    username,
+                    password,
+                    dob,
+                    phone,
+				}),
+			}
+		);
+        console.log(response);
+		if (response.ok) {
+			const data = await response.json();
+            
+			alert("Đăng ký thành công");
 
-      alert("Đăng ký thành công");
-    } else {
-      const errorData = await response.json();
-      console.error("Đăng ký thất bại:", errorData.message);
-      alert(`Đăng ký thất bại: ${errorData.message}`);
-    }
-  } catch (error) {
-    console.error("Lỗi:", error);
-    alert("Đã xảy ra lỗi trong quá trình đăng ký.");
-  }
+		} else {
+			const errorData = await response.json();
+			console.error("Đăng ký thất bại:", errorData.message);
+			alert(`Đăng ký thất bại: ${errorData.message}`);
+		}
+	} catch (error) {
+		console.error("Lỗi:", error);
+		alert("Đã xảy ra lỗi trong quá trình đăng ký.");
+	}
 }
 
 document.addEventListener("DOMContentLoaded", async function () {

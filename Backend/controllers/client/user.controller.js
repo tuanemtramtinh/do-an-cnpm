@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const User = require("../../models/user.model");
+const Comment = require("../../models/comment.model");
+const Book = require("../../models/book.model");
 const messageHelper = require("../../helpers/message.helper");
 const { signAccessToken } = require("../../helpers/jwt.helper");
 const ForgotPassword = require("../../models/forgot-password.model");
@@ -42,7 +44,7 @@ module.exports.register = async (req, res) => {
     const token = await signAccessToken(data);
 
     if (token === -1) {
-      const message = messageHelper.eturnMessage(
+      const message = messageHelper.returnMessage(
         "Có lỗi server, vui lòng thử lại",
         null,
         500
@@ -99,7 +101,7 @@ module.exports.login = async (req, res) => {
     const token = await signAccessToken(data);
 
     if (token === -1) {
-      const message = messageHelper.eturnMessage(
+      const message = messageHelper.returnMessage(
         "Có lỗi server, vui lòng thử lại",
         null,
         500
@@ -125,7 +127,9 @@ module.exports.login = async (req, res) => {
 module.exports.info = async (req, res) => {
   try {
     const dob = req.user.dob.toISOString().split("T")[0];
-
+    const role = req.user.isAdmin ? "Admin" : "Uploader";
+    const createdAt = req.user.createdAt.toISOString().split("T")[0];
+    
     const returnUser = {
       id: req.user.id,
       username: req.user.username,
@@ -134,6 +138,8 @@ module.exports.info = async (req, res) => {
       isAdmin: req.user.isAdmin,
       dob: dob,
       avatar: req.user.avatar,
+      role: role,
+      createdAt: createdAt,
     };
 
     res.json(
@@ -292,5 +298,39 @@ module.exports.updatePassword = async (req, res) => {
     res.json(message);
   } catch (error) {
     console.log(error);
+  }
+};
+module.exports.createComment = async (req, res) => {
+  const { bookId, comment } = req.body;
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Book not found",
+      });
+    }
+
+    const newComment = new Comment({
+      comment,
+      commentor: req.user._id,
+      bookid: bookId,
+    });
+
+    await newComment.save();
+
+    book.comment.push(newComment._id);
+    await book.save();
+
+    res.status(200).json({
+      status: "success",
+      data: newComment,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
   }
 };

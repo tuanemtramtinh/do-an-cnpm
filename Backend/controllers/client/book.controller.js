@@ -3,16 +3,40 @@ const Tag = require("../../models/tag.model");
 const User = require("../../models/user.model");
 const Chapter = require("../../models/chapter.model");
 const cloudinary = require("../../configs/cloudinary");
-const fs = require("fs");
-const path = require("path");
 const { returnMessage } = require("../../helpers/message.helper");
 const moment = require("moment");
+const Comment = require("../../models/comment.model");
 
 module.exports.getBook = async (req, res) => {
   try {
     const keyword = req.query.keyword;
+    const bookId = req.query.bookId;
+    if (bookId) {
+      const book = await Book.findById(bookId).populate("tag").populate({
+        path: "translator",
+        select: "username avatar",
+      });
 
-    if (keyword === "highlight") {
+      if (!book) {
+        res.json(returnMessage("Truyện không tồn tại", null, 500));
+        return;
+      }
+
+      const finalBook = {
+        name: book.name,
+        author: book.author,
+        thumbnail: book.thumbnail,
+        description: book.description,
+        type: book.type,
+        language: book.language,
+        age_limit: book.age_limit,
+        translator: book.translator,
+        tag: book.tag,
+      };
+
+      res.json(returnMessage("Lấy truyện thành công", finalBook, 200));
+      return;
+    } else if (keyword === "highlight") {
       const limit = 5;
 
       const books = await Book.find({})
@@ -64,15 +88,36 @@ module.exports.getBook = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
+    res
+      .status(500)
+      .json(returnMessage("Lấy danh sách truyện thất bại", null, 500));
   }
 };
 
+// module.exports.getBookDetail = async (req, res) => {
+//   try {
+//     const bookId = req.params.id;
+
+//     const book = await Book.findById(bookId);
+
+//     if (!book) {
+//       res.json(returnMessage("Không tìm thấy truyện", null, 404));
+//       return;
+//     }
+
+//     res.json(returnMessage("Lấy chi tiết truyện thành công", book, 200));
+//   } catch (error) {
+//     console.log(error);
+//     res.json(returnMessage("Lấy chi tiết truyện thất bại", null, 500));
+//   }
+// };
+
 module.exports.createBook = async (req, res) => {
   const translatorID = req.user.id;
-  const { tagIDs, name, author, description, type, language, age_limit } =
+  const { name, author, description, type, language, age_limit, status } =
     req.body;
   const thumbnail = req.file;
+  const tagIDs = JSON.parse(req.body.tagIDs);
   try {
     const translator = await User.findOne({ _id: translatorID });
     if (!translator)
@@ -115,6 +160,7 @@ module.exports.createBook = async (req, res) => {
       language,
       age_limit,
       translator,
+      status,
       tag: validTags.map((tag) => tag.id),
     });
     await newBook.save();
@@ -164,8 +210,8 @@ module.exports.getAllChapter = async (req, res) => {
 };
 
 module.exports.updateBook = async (req, res) => {
-  const book_ID = req.query.book_id;
-  const user_ID = req.query.user_id;
+  const book_ID = req.params.id;
+  const user_ID = req.user.id;
   const change = req.body;
   try {
     const book = await Book.findOne({ _id: book_ID });
@@ -177,31 +223,33 @@ module.exports.updateBook = async (req, res) => {
     }
     const user = await User.findOne({ _id: user_ID });
     if (!user) {
-      return res.status(404).json({
-        status: "fail",
-        message: "missing or invalid user id",
-      });
+      return res
+        .status(404)
+        .json(returnMessage("Không tìm thấy user", null, 404));
     }
     if (!user.isAdmin && !book.translator.equals(user._id)) {
-      return res.status(404).json({
-        status: "fail",
-        message: "not have permission to change the book",
-      });
+      return res
+        .status(404)
+        .json(
+          returnMessage(
+            "User không có quyền sửa đổi truyện do không phải người up truyện này hoặc admin",
+            null,
+            404
+          )
+        );
     }
     const updateBook = await Book.findOneAndUpdate(
       { _id: book_ID },
       { $set: change },
       { new: true, runValidators: true }
     );
-    res.status(200).json({
-      status: "success",
-      updatedBook: updateBook,
-    });
+    res
+      .status(200)
+      .json(returnMessage("Cập nhật truyện thành công", updateBook, 200));
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
+    res
+      .status(400)
+      .json(returnMessage("Cập nhật truyện không thành công", null, 400));
   }
 };
 
@@ -218,26 +266,87 @@ module.exports.getUserUploadBook = async (req, res) => {
     const books = await Book.find({ translator: user._id }).sort({
       updatedAt: -1,
     });
-    let data = [];
-    books.map((book) => {
-      const newData = {
-        img: book.thumbnail,
-        name: book.name,
-        author: book.author,
-        tag: book.tag,
-        day_update: book.updatedAt,
-        language: book.language,
-      };
-      data.push(newData);
-    });
-    res.status(200).json({
-      status: "success",
-      data: data,
-    });
+    const data = await Promise.all(
+      books.map(async (book) => {
+        const chapters = await Chapter.find({ book: book._id })
+          .sort({ chapter_no: -1 })
+          .limit(5);
+        const chapterData = chapters.map((chapter) => ({
+          chapter_no: chapter.chapter_no,
+          name: chapter.name,
+        }));
+        const tagIds = book.tag;
+        const tags = await Tag.find({ _id: { $in: tagIds } });
+        const tagData = tags.map((tag) => ({
+          id: tag._id,
+          name: tag.name,
+        }));
+        return {
+          id: book._id,
+          img: book.thumbnail,
+          type: book.type,
+          status: book.status,
+          age_limit: book.age_limit,
+          name: book.name,
+          author: book.author,
+          tag: tagData,
+          day_update: book.updatedAt,
+          language: book.language,
+          chapter: chapterData,
+        };
+      })
+    );
+
+    res.status(200).json(returnMessage("Trả về truyện thành công", data, 200));
   } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
+    res.status(400).json(returnMessage("Trả về không thành công", null, 400));
+  }
+};
+module.exports.getAllComments = async (req, res) => {
+  try {
+    const bookId = req.params.bookId;
+
+    const comments = await Comment.find({ bookid: bookId }).populate({
+      path: "commentor",
+      select: "username avatar",
     });
+
+    if (!comments || comments.length === 0) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No comments found for this book",
+      });
+    }
+
+    const returnComments = [];
+
+    for (const item of comments) {
+      returnComments.push({
+        comment: item.comment,
+        userId: item.commentor.id,
+        username: item.commentor.username,
+        avatar: item.commentor.avatar,
+      });
+    }
+
+    res
+      .status(200)
+      .json(
+        returnMessage("Lấy danh sách bình luận thành công", returnComments, 200)
+      );
+
+    // res.status(200).json({
+    //   status: "success",
+    //   data: comments,
+    // });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json(returnMessage("Lấy danh sách bình luận thất bại", null, 500));
+    // res.status(400).json({
+    //   status: "fail",
+    //   message: err.message,
+    // });
   }
 };

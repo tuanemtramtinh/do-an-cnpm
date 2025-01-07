@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Lấy truyện nổi bật 
     try {
-        const response = await fetch('http://4.194.248.208:3000/book?keyword=highlight');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book?keyword=highlight');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             renderCurrentManga(currentIndex);
         } else {
             console.error('Lấy dữ liệu truyện thất bại:', data.message);
-            alert('Lấy dữ liệu truyện nổi bật thất bại.');
+            // alert('Lấy dữ liệu truyện nổi bật thất bại.');
         }
     } catch (error) {
         console.error('Lỗi khi fetch truyện nổi bật:', error);
-        alert('Đã xảy ra lỗi khi lấy dữ liệu truyện nổi bật.');
+        // alert('Đã xảy ra lỗi khi lấy dữ liệu truyện nổi bật.');
     }
 
     console.log(mangaData);
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', async function() {
             const mangaBackground = document.querySelector('.content-noibat');
 
             if(index === 0){
-                mangaLink.href = `/manga/${manga.id}`; 
+                mangaLink.href = `./chapter-page.html?bookId=${manga.id}`; 
                 mangaLink.setAttribute('data-id', manga.id); 
             }
             else{
                 if (mangaLink) {
-                    mangaLink.href = `/manga/${manga._id}`; 
+                    mangaLink.href = `./chapter-page.html?bookId=${manga._id}`; 
                     mangaLink.setAttribute('data-id', manga._id); 
                 }
             }
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Lấy danh sách truyện tranh
 
     try {
-        const response = await fetch('http://4.194.248.208:3000/book');
+        const response = await fetch('https://api.tuanemtramtinh.io.vn/book');
         const data = await response.json();
 
         if (data.status === 200 && data.payload) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         } else {
             console.error('Lấy dữ liệu manga thất bại:', data.message);
-            alert('Lấy dữ liệu manga thất bại.');
+            // alert('Lấy dữ liệu manga thất bại.');
         }
 
         const tagButtons = document.querySelectorAll('.content-chuatag__item-tag');
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     } catch (error) {
         console.error('Lỗi khi fetch manga:', error);
-        alert('Đã xảy ra lỗi khi lấy dữ liệu manga.');
+        // alert('Đã xảy ra lỗi khi lấy dữ liệu manga.');
     }
 
     function renderMangaList(mangaList) {
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return `
                     <div class="col l-3 m-4 c-6">
                         <div class="content-chuamanga__item-manga">
-                            <a href="./manga/${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
+                            <a href="./chapter-page.html?bookId=${mangaId}" class="content-chuamanga__item-chitiet" value="${mangaId}">
                                 <img src="${manga.thumbnail}" class="content-chuamanga__item-img" alt="${manga.name}">
                             </a>
                             <div class="content-chuamanga__item-container">
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (token && avatarImg) {
         avatarImg.src = '../../assets/img/loading.gif';
         try {
-            const response = await fetch('http://4.194.248.208:3000/user/info', {
+            const response = await fetch('https://api.tuanemtramtinh.io.vn/user/info', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -214,14 +214,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const data = await response.json();
-
                 if (data.status === 200 && data.payload) {
                     const avatarUrl = data.payload.avatar;
                     if (avatarUrl) {
                         avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
                     } else {
                         console.error('Không tìm thấy URL ảnh đại diện trong payload.');
-                        avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                        avatarImg.src = '../../assets/img/truyen1.jpg'; 
                     }
 
                     if (data.payload.isAdmin) {
@@ -231,19 +230,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                     }
                 } else {
                     console.error('Lấy thông tin người dùng thất bại:', data.message);
-                    avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                    avatarImg.src = '../../assets/img/truyen1.jpg'; 
                 }
             } else {
                 console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
-                avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+                avatarImg.src = '../../assets/img/truyen1.jpg'; 
             }
         } catch (error) {
             console.error('Lỗi khi lấy thông tin người dùng:', error);
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     } else {
         if (avatarImg) {
-            avatarImg.src = '../../assets/img/default-avatar.jpg'; 
+            avatarImg.src = '../../assets/img/truyen1.jpg'; 
         }
     }
 
@@ -265,6 +264,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     const changePassContainer = document.querySelector('.js-modal-changepass-container');
     const closeChangePassModal = document.querySelector('.js-modal-close-changepass');
     const chuyenchangePass = document.querySelector('#button-otp');
+    const dangNhapQuenMK = document.querySelector('#dangnhapquenmk');
+    const otpDangNhap = document.querySelector('#resendOtp');
+    const passDangNhap = document.querySelector('#resendpass');
+
 
     function showbuyticketquenpass() {
         modalquenpass.classList.add('open');
@@ -277,10 +280,21 @@ document.addEventListener('DOMContentLoaded', async function() {
         modalquenpass.classList.remove('open');
     }
 
+    function chuyenVeDangNhap(){
+        modalquenpass.classList.remove('open');
+        otpModal.classList.remove('open');
+        changePassModal.classList.remove('open');
+        modal.classList.add('open');
+    }
+
+
     for (const buyBtn of buyBtnsquenpass) {
         buyBtn.addEventListener('click', showbuyticketquenpass);
     }
 
+    dangNhapQuenMK.addEventListener('click', chuyenVeDangNhap);
+    otpDangNhap.addEventListener('click', chuyenVeDangNhap);
+    passDangNhap.addEventListener('click', chuyenVeDangNhap);
     tatquenpass.addEventListener('click', tatquenpassbuyticket);
     modalquenpass.addEventListener('click', tatquenpassbuyticket);
     modalquenpassContai.addEventListener('click', function(event) {
@@ -331,7 +345,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     async function sendEmail(email) {
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/forgot-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/forgot-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
@@ -361,7 +375,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             return;
         }
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/send-otp", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/send-otp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -394,7 +408,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         try {
-            const response = await fetch("http://4.194.248.208:3000/user/update-password", {
+            const response = await fetch("https://api.tuanemtramtinh.io.vn/user/update-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

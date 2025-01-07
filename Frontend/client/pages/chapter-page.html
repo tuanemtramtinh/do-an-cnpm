@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANGO</title>
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/base2.css">
+    <link rel="stylesheet" href="../../assets/css/client/mystyle.css">
+    <link rel="stylesheet" href="../../assets/css/client/chapter.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <body>
+      <div class="header">
+        <div class="header__header-item">
+          <div class="menu-list">
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+          </div>
+          <div class="header__search-bar">
+            <input class="header__search-item" type="text" id="search_header">
+            <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
+          </div>
+          <div class="header-list">
+            <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <div class="banner-wrapper">
+        <!-- Banner-->
+        <div class="banner">
+          <div class="image-wrapper"><img id="book-banner">
+            <div class="overlay"></div>
+          </div>
+          <div class="stats">
+            <div class="stat-item"><span class="material-symbols-outlined" style="font-size: 25px">visibility</span>
+              <div class="stat-text">100K</div>
+            </div>
+            <div class="stat-item"><span class="material-symbols-outlined" style="font-size: 25px">forum</span>
+              <div class="stat-text">100K</div>
+            </div>
+            <div class="stat-item"><span class="material-symbols-outlined" style="font-size: 25px">favorite</span>
+              <div class="stat-text">100K</div>
+            </div>
+          </div>
+        </div>
+        <!-- Content-->
+        <div class="container"><img class="cover-image" id="book-cover">
+          <div class="details">
+            <div class="title-section">
+              <div class="title" id="book-title"> </div>
+              <div class="author" id="book-author"></div>
+            </div>
+            <div class="info-section">
+              <div class="info-type">Type:</div>
+              <div class="icon-section">
+                <div class="icon-box" id="first-chapter"><span class="material-symbols-outlined" style="font-size: 37.5px">import_contacts</span></div>
+                <div class="icon-box"><span class="material-symbols-outlined" style="font-size: 37.5px">favorite</span></div>
+                <div class="icon-box"><span class="material-symbols-outlined" style="font-size: 37.5px">speaker_notes</span></div>
+              </div>
+              <div class="tags-section">
+                <div class="tags-label">Tags:</div>
+                <div class="tags-list" id="book-tags"></div>
+              </div>
+              <div class="public-date" id="book-date"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <!-- Description-->
+        <div class="summary-section"><span class="summary-title">Tóm tắt truyện: </span><span class="summary-text" id="book-description"></span><a class="more-link">more</a></div>
+      </div>
+      <script src="../../assets/js/client/script.js"></script>
+      <script src="../../assets/js/client/test.js"></script>
+      <div class="wrapper">
+        <div class="tab">
+          <button class="tablinks" id="chapter-tab" onclick="openTab(event, 'chapter')">Chapter</button>
+          <button class="tablinks" id="comments-tab" onclick="openTab(event, 'comments')">Comments</button>
+          <button class="tablinks" id="related-tab" onclick="openTab(event, 'related')">Related</button>
+        </div>
+        <!-- Tab Content Sections-->
+        <div class="tabcontent" id="chapter" style="display:none">
+          <div class="chapter-list"></div>
+        </div>
+        <div class="tabcontent" id="comments" style="display:none">
+          <div class="comment-section">
+            <ul class="comment-list"></ul>
+            <form id="comment-form"><img class="user-avatar" src="../../assets/img/avatar.png">
+              <div class="postCmtwrap">
+                <textarea id="comment-input" name="comment" placeholder="Viết bình luận..." rows="1" required></textarea>
+                <button type="submit"> <span class="material-symbols-outlined">send</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="tabcontent" id="related" style="display:none">
+          <ul class="related_comic-list"></ul>
+        </div>
+      </div>
+      <script src="../../assets/js/client/script.js"></script>
+      <div class="footer">
+        <div class="footer__container"> <img class="footer__header" src="../../assets/img/tieude-logo.png">
+          <div class="footer__container-list">
+            <ul class="footer__container-list-item">  
+              <li class="footer__container-item">Giới thiệu</li>
+              <li class="footer__container-item">Thông báo</li>
+              <li class="footer__container-item">liên hệ: 0865.xxx.xxx</li>
+              <li class="footer__container-item">Email: xxxxxxxxxx@hcmut.edu.vn</li>
+            </ul>
+            <ul class="footer__container-list-text"> 
+              <li class="footer__container-item-text">Trang web này cung cấp nội dung truyện tranh chỉ với mục đích giải trí và không chịu trách nhiệm về bất kỳ nội dung quảng cáo, liên kết của bên thứ ba hiển thị trên trang web của chúng tôi.</li>
+              <li class="footer__container-item-text">Tất cả thông tin và hình ảnh trên website đều được thu thập từ internet. Chúng tôi không chịu trách nhiệm về bất kỳ nội dung nào. Nếu bạn hoặc tổ chức của bạn có vấn đề gì liên quan đến nội dung hiển thị trên website, vui lòng liên hệ với chúng tôi để được giải quyết.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer__container-copyright">Copyright © 2024 Mango</p>
+      </div>
+      <div class="modal-quenpass js-modal-quenpass">
+        <div class="modal-quenpass-container js-modal-quenpass-container">
+          <div class="modal-close js-modal-close-quenpass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-quenpass-header">
+            <p>Tìm tài khoản </p>
+          </header>
+          <div class="modal-quenpass-body">
+            <div class="modal-quenpass-form">
+              <form class="form" id="form-3">
+                <div class="form-group-3">
+                  <label class="modal-quenpass-label" for="email2">Email</label>
+                  <input class="modal-quenpass-input" id="email2" type="email"><span class="form-message"></span>
+                </div>
+                <button id="button-quenpass">Tiếp tục</button>
+              </form>
+              <p class="modal-quenpass-label-chuyendangky">Quay về đăng nhập?
+                <button class="modal-quenpass-label-chuyendangky-trangmoi" id="dangnhapquenmk">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-otp js-modal-otp">
+        <div class="modal-otp-container js-modal-otp-container">
+          <div class="modal-close js-modal-close-otp"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-otp-header">
+            <p>Nhập mã OTP</p>
+          </header>
+          <div class="modal-otp-body">
+            <div class="modal-otp-form">
+              <form class="form test-form" id="form-group-3-2">
+                <div class="form-group-3-2">
+                  <label class="modal-otp-label" for="otpCode">Mã OTP</label>
+                  <input class="modal-otp-input" id="otpCode" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58">OTP chỉ có hạn trong 5 phút.</span>
+                </div>
+                <button id="button-otp">Xác nhận</button>
+              </form>
+              <p class="modal-otp-label-resend">Quay về đăng nhập?
+                <button class="modal-otp-label-resend-button" id="resendOtp">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-changepass js-modal-changepass">
+        <div class="modal-changepass-container js-modal-changepass-container">
+          <div class="modal-close js-modal-close-changepass"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-changepass-header">
+            <p>Đổi mật khẩu</p>
+          </header>
+          <div class="modal-changepass-body">
+            <div class="modal-changepass-form">
+              <form class="form test-form2" id="form3-3">
+                <div class="form-group-3-3">
+                  <label class="modal-changepass-label" for="changepass">Nhập mật khẩu mới</label>
+                  <input class="modal-changepass-input" id="changepass" type="text" style="margin-bottom: 4px;"><span class="form-message" style="color: #f33a58;"> </span>
+                </div>
+                <button id="button-changepass" type="submit">Đổi mật khẩu</button>
+              </form>
+              <p class="modal-changepass-label-resend">Quay về đăng nhập?
+                <button class="modal-changepass-label-resend-button" id="resendpass">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script src="../../assets/js/client/home_page.js"></script>
+      <script>
+        Validator({
+            form: '#form-3',
+            formGroupSelector: '.form-group-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isEmail('#email2')
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        Validator({
+            form: '#form3-3',
+            formGroupSelector: '#form-group-3-3',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.minLength('#changepass', 6)
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+                            
+                                 
+                            
+                    
+      </script>
+    </body>
+  </head>
+</html>
