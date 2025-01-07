@@ -140,7 +140,7 @@ async function login(username, password) {
     // console.log(username);
     // console.log(password);
 	try {
-		const response = await fetch("https://api.tuanemtramtinh.io.vn/user/login", {
+		const response = await fetch("https://api.mangocomic.io.vn/user/login", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ username, password }),
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 async function dangky(email, username, password, dob, phone) {
 	try {
 		const response = await fetch(
-			"https://api.tuanemtramtinh.io.vn/user/register",
+			"https://api.mangocomic.io.vn/user/register",
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },

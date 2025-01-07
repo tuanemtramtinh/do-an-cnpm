@@ -4,52 +4,250 @@ extends ../layouts/index.pug
 //- Import các mixins cần thiết
 include ../mixins/profile_section.pug
 include ../mixins/profile_info.pug
+include ../mixins/manga_card.pug
 
 block container
-  //- Phần thông tin chung (profile section)
-  +profileSection("Triệu Mẫn", "Uploader", "01/01/2024", "../../assets/img/Boss Combat.jpg")
-  
-  //- Phần thông tin cá nhân
-  .block-content
-  //- Phần tiêu đề và icon nằm ngoài box
-  .personal-info-header
-      img.icon-user(src="../../assets/img/icon.png" alt="User Icon")
-      h2.personal-info-title Thông tin cá nhân
-  hr.personal-info-divider
-
-  //- Box chứa thông tin cá nhân
-  .personal-info-container
-    +personalInfoBox(
-      "man.ngotrieuman27@hcmut.edu.vn",
-      "kandy_2705",
-      "0123456789",
-      "27/05/2004"
-    )
-
-
-  //- Danh sách truyện đã đăng 
-  .main-layout
-    .grid__column-3
-      .manga-section
-        .manga-section-title-header
-          img.mangaicon(src="../../assets/img/mangaicon.png" alt="Manga Icon")
-          h2.manga-section-title Danh sách truyện đã đăng
-        hr.manga-info-divider
+  div.personal_page
+    //- Phần thông tin chung (profile section)
+    +profileSection("", "", "", "../../assets/img/Boss Combat.jpg","")
     
+    //- Phần thông tin cá nhân
+    .block-content
+    //- Phần tiêu đề và icon nằm ngoài box
+    .personal-info-header
+        img.icon-user(src="../../assets/img/icon.png" alt="User Icon")
+        h2.personal-info-title Thông tin cá nhân
+    hr.personal-info-divider
 
-    //- Chức năng
-    .grid__column-1
-      .function-section
-        .function-section-title-header
-          img.functionicon(src="../../assets/img/Function.png" alt="Function Icon")
-          h2.function-section-title Chức năng
-        hr.function-info-divider
-        button.function-btn 
-          img.icon(src="../../assets/img/my-story-icon.png" alt="My Story Icon")
-          span Truyện của tôi
-        button.function-btn
-          img.icon(src="../../assets/img/favorite-icon.png" alt="Favorite Icon")
-          span Truyện yêu thích
-        button.function-btn
-          img.icon(src="../../assets/img/write-center-icon.png" alt="Write Center Icon")
-          span Trung tâm viết truyện
+    //- Box chứa thông tin cá nhân
+    .personal-info-container
+      +personalInfoBox(
+        "man.ngotrieuman27@hcmut.edu.vn",
+        "kandy_2705",
+        "0123456789",
+        "27/05/2004"
+      )
+
+
+    //- Danh sách truyện đã đăng 
+    .main-layout
+      .grid__column-3
+        .manga-section
+          .manga-section-title-header
+            img.mangaicon(src="../../assets/img/mangaicon.png" alt="Manga Icon")
+            h2.manga-section-title Danh sách truyện đã đăng
+          hr.manga-info-divider  
+
+          div.content-chuamanga-personal_page.open(id="myMangaList")
+            div.content-chuamanga__list-rank(style="magrin-right: -17px !important; width: 100% !important")    
+              div.content-chuamanga__item-rank
+                  div.content-chuamanga__item-rank-noidung
+                      img(src="../../assets/img/truyen1.jpg", alt="").content-chuamanga__item-rank-img
+                      div.content-chuamanga__item-rank-thongtinhienthi
+                          div.content-chuamanga__item-rank-thongtintren
+                              div.content-chuamanga__item-rank-thongtintrai
+                                  h3.content-chuamanga__item-rank-tieude Made in Abyss
+                                  p.content-chuamanga__item-rank-tag-author Tastu Yukinobu 
+                                  p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                  ul.content-chuamanga__item-rank-tag-list 
+                                      li.content-chuamanga__item-rank-tag-item Phiêu lưu
+                                      li.content-chuamanga__item-rank-tag-item Hành động
+                                      li.content-chuamanga__item-rank-tag-item Viễn tưởng
+                              div.content-chuamanga__item-rank-thongtinphai
+                                  div.content-chuamanga__item-rank-like
+                                      i.fa-regular.fa-heart
+                                      p.content-chuamanga__item-rank-num-like 20
+                                  div.content-chuamanga__item-rank-cmt
+                                      i.fa-regular.fa-comment-dots
+                                      p.content-chuamanga__item-rank-num-like 10
+                          p.content-chuamanga__item-rank-xemthem Xem thêm
+                          ul.content-chuamanga__item-rank-thongtinduoi  
+                              li.content-chuamanga__item-rank-chap Chapter 6
+                              li.content-chuamanga__item-rank-chap Chapter 5
+                              li.content-chuamanga__item-rank-chap Chapter 4
+                              li.content-chuamanga__item-rank-chap Chapter 3
+                              li.content-chuamanga__item-rank-chap Chapter 2
+            div.content-chuamanga__list-rank    
+                div.content-chuamanga__item-rank
+                    div.content-chuamanga__item-rank-noidung
+                        img(src="../../assets/img/truyen_2.webp", alt="").content-chuamanga__item-rank-img
+                        div.content-chuamanga__item-rank-thongtinhienthi
+                            div.content-chuamanga__item-rank-thongtintren
+                                div.content-chuamanga__item-rank-thongtintrai
+                                    h3.content-chuamanga__item-rank-tieude Tổng Tài Tại Thượng
+                                    p.content-chuamanga__item-rank-tag-author ICiyuan
+                                    p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                    ul.content-chuamanga__item-rank-tag-list 
+                                        li.content-chuamanga__item-rank-tag-item Tình cảm
+                                        li.content-chuamanga__item-rank-tag-item Tổng tài
+                                        li.content-chuamanga__item-rank-tag-item Đời thường
+                                div.content-chuamanga__item-rank-thongtinphai
+                                    div.content-chuamanga__item-rank-like
+                                        i.fa-regular.fa-heart
+                                        p.content-chuamanga__item-rank-num-like 16
+                                    div.content-chuamanga__item-rank-cmt
+                                        i.fa-regular.fa-comment-dots
+                                        p.content-chuamanga__item-rank-num-like 10
+                            p.content-chuamanga__item-rank-xemthem Xem thêm
+                            ul.content-chuamanga__item-rank-thongtinduoi  
+                                li.content-chuamanga__item-rank-chap Chapter 171
+                                li.content-chuamanga__item-rank-chap Chapter 170
+                                li.content-chuamanga__item-rank-chap Chapter 169
+                                li.content-chuamanga__item-rank-chap Chapter 168
+                                li.content-chuamanga__item-rank-chap Chapter 167
+            div.content-chuamanga__list-rank    
+                div.content-chuamanga__item-rank
+                    div.content-chuamanga__item-rank-noidung
+                        img(src="../../assets/img/truyen3.jpg", alt="").content-chuamanga__item-rank-img
+                        div.content-chuamanga__item-rank-thongtinhienthi
+                            div.content-chuamanga__item-rank-thongtintren
+                                div.content-chuamanga__item-rank-thongtintrai
+                                    h3.content-chuamanga__item-rank-tieude Attack on Titan
+                                    p.content-chuamanga__item-rank-tag-author  Isayama Hajime 
+                                    p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                    ul.content-chuamanga__item-rank-tag-list 
+                                        li.content-chuamanga__item-rank-tag-item Hành động
+                                        li.content-chuamanga__item-rank-tag-item Viễn tưởng
+                                div.content-chuamanga__item-rank-thongtinphai
+                                    div.content-chuamanga__item-rank-like
+                                        i.fa-regular.fa-heart
+                                        p.content-chuamanga__item-rank-num-like 10
+                                    div.content-chuamanga__item-rank-cmt
+                                        i.fa-regular.fa-comment-dots
+                                        p.content-chuamanga__item-rank-num-like 4
+                            p.content-chuamanga__item-rank-xemthem Xem thêm
+                            ul.content-chuamanga__item-rank-thongtinduoi  
+                                li.content-chuamanga__item-rank-chap Chapter 34
+                                li.content-chuamanga__item-rank-chap Chapter 33
+                                li.content-chuamanga__item-rank-chap Chapter 32
+                                li.content-chuamanga__item-rank-chap Chapter 31
+                                li.content-chuamanga__item-rank-chap Chapter 30
+
+
+          div.content-chuamanga-personal_page.hidden(id="favoriteMangaList")
+            div.content-chuamanga__list-rank(style="magrin-right: -17px !important; width: 100% !important")    
+              div.content-chuamanga__item-rank
+                  div.content-chuamanga__item-rank-noidung
+                      img(src="../../assets/img/truyen1.jpg", alt="").content-chuamanga__item-rank-img
+                      div.content-chuamanga__item-rank-thongtinhienthi
+                          div.content-chuamanga__item-rank-thongtintren
+                              div.content-chuamanga__item-rank-thongtintrai
+                                  h3.content-chuamanga__item-rank-tieude Made In Abyss
+                                  p.content-chuamanga__item-rank-tag-author Tastu Yukinobu 
+                                  p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                  ul.content-chuamanga__item-rank-tag-list 
+                                      li.content-chuamanga__item-rank-tag-item Phiêu lưu
+                                      li.content-chuamanga__item-rank-tag-item Hành động
+                                      li.content-chuamanga__item-rank-tag-item Viễn tưởng
+                              div.content-chuamanga__item-rank-thongtinphai
+                                  div.content-chuamanga__item-rank-like
+                                      i.fa-regular.fa-heart
+                                      p.content-chuamanga__item-rank-num-like 20
+                                  div.content-chuamanga__item-rank-cmt
+                                      i.fa-regular.fa-comment-dots
+                                      p.content-chuamanga__item-rank-num-like 10
+                          p.content-chuamanga__item-rank-xemthem Xem thêm
+                          ul.content-chuamanga__item-rank-thongtinduoi  
+                              li.content-chuamanga__item-rank-chap Chapter 6
+                              li.content-chuamanga__item-rank-chap Chapter 5
+                              li.content-chuamanga__item-rank-chap Chapter 4
+                              li.content-chuamanga__item-rank-chap Chapter 3
+                              li.content-chuamanga__item-rank-chap Chapter 2
+            div.content-chuamanga__list-rank    
+                div.content-chuamanga__item-rank
+                    div.content-chuamanga__item-rank-noidung
+                        img(src="../../assets/img/truyen_2.webp", alt="").content-chuamanga__item-rank-img
+                        div.content-chuamanga__item-rank-thongtinhienthi
+                            div.content-chuamanga__item-rank-thongtintren
+                                div.content-chuamanga__item-rank-thongtintrai
+                                    h3.content-chuamanga__item-rank-tieude Tổng Tài Tại Thượng
+                                    p.content-chuamanga__item-rank-tag-author ICiyuan
+                                    p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                    ul.content-chuamanga__item-rank-tag-list 
+                                        li.content-chuamanga__item-rank-tag-item Tình cảm
+                                        li.content-chuamanga__item-rank-tag-item Tổng tài
+                                        li.content-chuamanga__item-rank-tag-item Đời thường
+                                div.content-chuamanga__item-rank-thongtinphai
+                                    div.content-chuamanga__item-rank-like
+                                        i.fa-regular.fa-heart
+                                        p.content-chuamanga__item-rank-num-like 16
+                                    div.content-chuamanga__item-rank-cmt
+                                        i.fa-regular.fa-comment-dots
+                                        p.content-chuamanga__item-rank-num-like 10
+                            p.content-chuamanga__item-rank-xemthem Xem thêm
+                            ul.content-chuamanga__item-rank-thongtinduoi  
+                                li.content-chuamanga__item-rank-chap Chapter 171
+                                li.content-chuamanga__item-rank-chap Chapter 170
+                                li.content-chuamanga__item-rank-chap Chapter 169
+                                li.content-chuamanga__item-rank-chap Chapter 168
+                                li.content-chuamanga__item-rank-chap Chapter 167
+            div.content-chuamanga__list-rank    
+                div.content-chuamanga__item-rank
+                    div.content-chuamanga__item-rank-noidung
+                        img(src="../../assets/img/truyen3.jpg", alt="").content-chuamanga__item-rank-img
+                        div.content-chuamanga__item-rank-thongtinhienthi
+                            div.content-chuamanga__item-rank-thongtintren
+                                div.content-chuamanga__item-rank-thongtintrai
+                                    h3.content-chuamanga__item-rank-tieude Attack on Titan
+                                    p.content-chuamanga__item-rank-tag-author  Isayama Hajime 
+                                    p.content-chuamanga__item-rank-tag-theloai Thể loại
+                                    ul.content-chuamanga__item-rank-tag-list 
+                                        li.content-chuamanga__item-rank-tag-item Hành động
+                                        li.content-chuamanga__item-rank-tag-item Viễn tưởng
+                                div.content-chuamanga__item-rank-thongtinphai
+                                    div.content-chuamanga__item-rank-like
+                                        i.fa-regular.fa-heart
+                                        p.content-chuamanga__item-rank-num-like 10
+                                    div.content-chuamanga__item-rank-cmt
+                                        i.fa-regular.fa-comment-dots
+                                        p.content-chuamanga__item-rank-num-like 4
+                            p.content-chuamanga__item-rank-xemthem Xem thêm
+                            ul.content-chuamanga__item-rank-thongtinduoi  
+                                li.content-chuamanga__item-rank-chap Chapter 34
+                                li.content-chuamanga__item-rank-chap Chapter 33
+                                li.content-chuamanga__item-rank-chap Chapter 32
+                                li.content-chuamanga__item-rank-chap Chapter 31
+                                li.content-chuamanga__item-rank-chap Chapter 30
+      //- Chức năng
+      .grid__column-1
+        .function-section
+          .function-section-title-header
+            img.functionicon(src="../../assets/img/Function.png" alt="Function Icon")
+            h2.function-section-title Chức năng
+          hr.function-info-divider
+          button.function-btn(onclick="toggleMangaList('myMangaList')") 
+            i.fa-solid.fa-pencil
+            span Truyện của tôi
+          button.function-btn(onclick="toggleMangaList('favoriteMangaList')") 
+            img.icon(src="../../assets/img/favorite-icon.png" alt="Favorite Icon")
+            span Truyện yêu thích
+          button.function-btn
+            a(href="./mangaWrittingCenter.html").mangacenter
+              img.icon(src="../../assets/img/write-center-icon.png" alt="Write Center Icon")
+              span Trung tâm viết truyện
+
+
+    .static-info-header
+        img.static-user(src="../../assets/img/Static.png" alt="Static Icon")
+        h2.static-info-title Số liệu
+    hr.static-info-divider
+
+    div.statistics
+        .statistics-container
+            .stat-box
+                h3.stat-number 9999
+                p.stat-label
+                    i.fa-solid.fa-globe
+                    | Lượt xem
+            .stat-box
+                h3.stat-number 9999
+                p.stat-label
+                    i.fa-solid.fa-globe
+                    | Lượt xem
+            .stat-box
+                h3.stat-number 9999
+                p.stat-label
+                    i.fa-solid.fa-globe
+                    | Lượt xem
+
+    script(src="../../assets/js/client/personal_page.js")

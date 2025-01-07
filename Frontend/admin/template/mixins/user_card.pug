@@ -1,0 +1,20 @@
+mixin userCard(name, role, email, status)
+  .user-card
+    img.user-avatar(src="../../assets/img/Boss Combat.jpg" alt="Avatar")
+    .user-details
+      h3.user-name= name
+      p.user-email= email
+      //- Button đóng vai trò trigger cho dropdown
+      button.user-role(onclick="toggleDropdown(this)") #{role}
+      //- Dropdown danh sách role
+      ul.user-role-dropdown
+        li.user-role-dropdown-item(onclick="changeRole('Admin', this)") Admin
+        li.user-role-dropdown-item(onclick="changeRole('Uploader', this)") Uploader
+        li.user-role-dropdown-item(onclick="changeRole('User', this)") User
+    .user-status
+      button.status-btn.active
+        i.fa-solid.fa-circle
+        |   #{status}
+      button.delete-btn
+        i.fa-solid.fa-trash
+        |  Xóa
