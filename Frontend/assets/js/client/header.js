@@ -201,7 +201,7 @@ async function updateUIBasedOnLogin() {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
         console.log("Đăng xuất thành công!");
-        window.location.href = "../pages/home_page.html";
+        window.location.href = "./home_page.html";
       });
     } else {
       console.error("Không tìm thấy nút đăng xuất.");
