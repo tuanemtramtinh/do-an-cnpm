@@ -514,10 +514,35 @@ if(formUploadManga) {
 
 
 // Thêm chapter mới cho truyện tranh (comic) - XONG, còn hiện ảnh lên giao diện nữa
+
+const loadingPage = document.querySelector(".loading-page");
+const previewImage = document.querySelector(".preview-image");
+const uploadImages = document.querySelector('input[name="images"]');
+const deletePreviewImage = document.querySelector(".preview-image-delete");
+if (previewImage){
+    uploadImages.addEventListener("change", (e) => {
+        const files = uploadImages.files;
+        for (let i = 0; i < files.length; i++){
+            const image = document.createElement("img");
+            image.src = URL.createObjectURL(files[i]);
+            previewImage.appendChild(image);
+        }
+    })
+}
+
+if (deletePreviewImage) {
+    console.log(deletePreviewImage);
+    deletePreviewImage.addEventListener("click", (e) => {
+        uploadImages.value="";
+        previewImage.innerHTML="";
+    })
+}
+
 const formAddChapterManga = document.querySelector("#form-add-chapterManga");
 if(formAddChapterManga) {
     formAddChapterManga.addEventListener("submit", (event) => {
         event.preventDefault();
+        loadingPage.classList.remove("hidden");
 
         const params = new URL(window.location.href).searchParams;
         const id = params.get("id"); // Đảm bảo tham số là "id" thay vì "Id"
@@ -588,6 +613,9 @@ if(formAddChapterManga) {
             }
         })
         .then(result => {
+            loadingPage.classList.add("hidden");
+            uploadImages.value="";
+            previewImage.innerHTML="";
             showAlert("Thêm chương mới thành công!");
             formAddChapterManga.reset();
             // thumbnailPreview.src = "";

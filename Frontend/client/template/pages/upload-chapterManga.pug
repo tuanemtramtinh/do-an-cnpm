@@ -7,6 +7,9 @@ block container
 
     include ../partials/user-info.pug
 
+    div(class="loading-page hidden" id="loading-page")
+        div(class="spinner")
+
     .alert-list
 
     section.client--upload-chapterNovel 
@@ -24,7 +27,7 @@ block container
                         .client--upload-chapterNovel__middle--element
                             .client--upload-chapterNovel__middle--element-title Chương số:
                             .client--upload-chapterNovel__middle--element-form
-                                input(type="number" name="numberOfChapter" placeholder ="1")
+                                input(type="number" name="numberOfChapter" placeholder ="1" min=1)
 
                         .client--upload-chapterNovel__middle--element
                             .client--upload-chapterNovel__middle--element-title Tiêu đề:
@@ -50,6 +53,11 @@ block container
                                         span(class="button") Chọn ảnh bìa
                                     span(id="file-name" class="nameFile") No file chosen
 
+                    div(class="preview-image-title")
+                            | Xem trước
+                            span(class="preview-image-delete") Xoá
+                    div(class="preview-image")
+                        
 
                     .client--upload-chapterNovel__button
                         a(href="mangaWrittingCenter.html" class="button") 
@@ -58,5 +66,8 @@ block container
                         button(type="submit" class="button button-submit") 
                             i(class="fa-solid fa-arrow-up-from-bracket")
                             .content Upload chương
+            
+                    
+
 
     script(src = "../../assets/js/client/scriptGQ.js")

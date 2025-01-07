@@ -153,6 +153,9 @@
           </div>
         </div>
       </section>
+      <div class="loading-page hidden" id="loading-page">
+        <div class="spinner"></div>
+      </div>
       <div class="alert-list"></div>
       <section class="client--upload-chapterNovel"> 
         <div class="container">
@@ -165,7 +168,7 @@
                 <div class="client--upload-chapterNovel__middle--element">
                   <div class="client--upload-chapterNovel__middle--element-title">Chương số:</div>
                   <div class="client--upload-chapterNovel__middle--element-form">
-                    <input type="number" name="numberOfChapter" placeholder="1">
+                    <input type="number" name="numberOfChapter" placeholder="1" min="1">
                   </div>
                 </div>
                 <div class="client--upload-chapterNovel__middle--element">
@@ -197,6 +200,8 @@
                   </div>
                 </div>
               </div>
+              <div class="preview-image-title">Xem trước<span class="preview-image-delete">Xoá</span></div>
+              <div class="preview-image"></div>
               <div class="client--upload-chapterNovel__button"><a class="button" href="mangaWrittingCenter.html"> <i class="fa-solid fa-arrow-left"></i>
                   <div class="content">Trang trước</div></a>
                 <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
