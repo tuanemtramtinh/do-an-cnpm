@@ -1,0 +1,10 @@
+mixin tagCard(tagName, status)
+  .tag-card
+    p.tag-name= tagName
+      .status-and-delete
+        button.status-btn(class=(status === "Hoạt động" ? "active" : "inactive"))
+            i.fa-solid.fa-circle(class=(status === "Hoạt động" ? "active" : "inactive"))
+            | #{status}
+        button.delete-btn
+          i.fa-solid.fa-trash
+          |  Xóa

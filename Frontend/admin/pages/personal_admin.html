@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANGO</title>
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <body>
+      <div class="header">
+        <div class="header__header-item">
+          <div class="menu-list">
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+          </div>
+          <div class="header__search-bar">
+            <input class="header__search-item" type="text" id="search_header">
+            <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
+          </div>
+          <div class="header-list">
+            <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <div class="admin_page"> 
+        <div class="admin-section">
+          <div class="admin-section-header"><img class="admin-setting" src="../../assets/img/setting.png" alt="Setting Icon">
+            <h2 class="admin-setting-title">Trang Quản Lý</h2>
+          </div>
+        </div>
+        <div class="admin-layout">
+          <div class="admin-sidebar">
+            <div class="function-admin-section">
+              <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
+                <h2 class="function-section-title">Chức năng</h2>
+              </div>
+            </div>
+            <hr class="function-info-divider">
+            <button class="function-btn" data-section="manga" onclick="showSection('manga')"><img class="functionicon" src="../../assets/img/mangaiconwhite.png" alt="Manga Icon"><span>Truyện tranh</span></button>
+            <button class="function-btn" data-section="tag"><img class="functionicon" src="../../assets/img/tag-icon.png" alt="Tag Icon"><span>Tag</span></button>
+            <button class="function-btn" data-section="user" onclick="showSection('user')"><img class="functionicon" src="../../assets/img/userwhite.png" alt="User Icon"><span>Người dùng</span></button>
+          </div>
+          <div class="admin-user-management hidden" id="userSection">
+            <div class="user-management-section">
+              <div class="user-management-header"><img class="usericon" src="../../assets/img/icon.png" alt="User Icon">
+                <h2 class="user-management-title">Người dùng</h2>
+              </div>
+              <hr class="user-divider">
+              <input class="user-search" type="text" placeholder="Tìm kiếm...">
+              <div class="user-list"></div>
+            </div>
+          </div>
+          <div class="admin-user-management hidden" id="mangaSection">
+            <div class="user-management-header"><img class="usericon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
+              <h2 class="user-management-title">Truyện tranh</h2>
+            </div>
+            <hr class="user-divider">
+            <input class="user-search" type="text" placeholder="Tìm kiếm...">
+            <div class="manga-list">
+              <div class="manga-card"><img class="manga-cover" src="../../assets/img/dandadan.webp" alt="Manga Cover"/>
+                <div class="manga-details">
+                  <h3 class="manga-title">Alya Sometimes Hides Her Feelings in Russian</h3>
+                  <p class="manga-author">Sansan Sun, Tenamachi Saho</p>
+                  <p class="manga-genres">Thể loại<span class="manga-genre">Sci-Fi</span><span class="manga-genre">Monster</span><span class="manga-genre">Action</span><span class="manga-genre">Comedy</span><span class="manga-genre">Romance</span>
+                  </p>
+                  <div class="manga-actions">
+                    <button class="manga-edit"><i class="fa-solid fa-pen"></i>Chỉnh sửa</button>
+                    <button class="manga-detail"><i class="fa-solid fa-bars"></i>Chi tiết</button>
+                  </div>
+                </div>
+                <div class="manga-stats">
+                  <div class="manga-stat"><i class="fa-solid fa-heart"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-comment"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-star"></i>4.8</div>
+                </div>
+              </div>
+              <div class="manga-card"><img class="manga-cover" src="../../assets/img/dandadan.webp" alt="Manga Cover"/>
+                <div class="manga-details">
+                  <h3 class="manga-title">Alya Sometimes Hides Her Feelings in Russian</h3>
+                  <p class="manga-author">Sansan Sun, Tenamachi Saho</p>
+                  <p class="manga-genres">Thể loại<span class="manga-genre">Sci-Fi</span><span class="manga-genre">Monster</span><span class="manga-genre">Action</span><span class="manga-genre">Comedy</span><span class="manga-genre">Romance</span>
+                  </p>
+                  <div class="manga-actions">
+                    <button class="manga-edit"><i class="fa-solid fa-pen"></i>Chỉnh sửa</button>
+                    <button class="manga-detail"><i class="fa-solid fa-bars"></i>Chi tiết</button>
+                  </div>
+                </div>
+                <div class="manga-stats">
+                  <div class="manga-stat"><i class="fa-solid fa-heart"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-comment"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-star"></i>4.8</div>
+                </div>
+              </div>
+              <div class="manga-card"><img class="manga-cover" src="../../assets/img/dandadan.webp" alt="Manga Cover"/>
+                <div class="manga-details">
+                  <h3 class="manga-title">Alya Sometimes Hides Her Feelings in Russian</h3>
+                  <p class="manga-author">Sansan Sun, Tenamachi Saho</p>
+                  <p class="manga-genres">Thể loại<span class="manga-genre">Sci-Fi</span><span class="manga-genre">Monster</span><span class="manga-genre">Action</span><span class="manga-genre">Comedy</span><span class="manga-genre">Romance</span>
+                  </p>
+                  <div class="manga-actions">
+                    <button class="manga-edit"><i class="fa-solid fa-pen"></i>Chỉnh sửa</button>
+                    <button class="manga-detail"><i class="fa-solid fa-bars"></i>Chi tiết</button>
+                  </div>
+                </div>
+                <div class="manga-stats">
+                  <div class="manga-stat"><i class="fa-solid fa-heart"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-comment"></i>9999</div>
+                  <div class="manga-stat"><i class="fa-solid fa-star"></i>4.8</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="admin-user-management hidden" id="tagSection">
+            <div class="user-management-header"><img class="usericon" src="../../assets/img/Tagg.png" alt="Manga Icon">
+              <h2 class="user-management-title">Tag</h2>
+            </div>
+            <hr class="user-divider">
+            <div class="management-controls">
+              <input class="management-search" type="text" placeholder="Tìm kiếm...">
+              <button class="add-tag-btn">+ Tạo tag</button>
+            </div>
+            <div class="tag-list">
+              <div class="tag-card">
+                <p class="tag-name">Kinh dị
+                  <div class="status-and-delete">
+                    <button class="status-btn active"><i class="fa-solid fa-circle active"></i>Hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+              <div class="tag-card">
+                <p class="tag-name">Siêu nhiên
+                  <div class="status-and-delete">
+                    <button class="status-btn inactive"><i class="fa-solid fa-circle inactive"></i>Dừng hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+              <div class="tag-card">
+                <p class="tag-name">Hài hước
+                  <div class="status-and-delete">
+                    <button class="status-btn inactive"><i class="fa-solid fa-circle inactive"></i>Dừng hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+              <div class="tag-card">
+                <p class="tag-name">Cảm động
+                  <div class="status-and-delete">
+                    <button class="status-btn active"><i class="fa-solid fa-circle active"></i>Hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+              <div class="tag-card">
+                <p class="tag-name">Isekai
+                  <div class="status-and-delete">
+                    <button class="status-btn active"><i class="fa-solid fa-circle active"></i>Hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+              <div class="tag-card">
+                <p class="tag-name">Trinh thám
+                  <div class="status-and-delete">
+                    <button class="status-btn inactive"><i class="fa-solid fa-circle inactive"></i>Dừng hoạt động</button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i> Xóa</button>
+                  </div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/admin/script.js"></script>
+    </body>
+  </head>
+</html>

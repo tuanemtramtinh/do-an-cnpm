@@ -1,204 +1,432 @@
-
-<!-- default.pug--><!DOCTYPE html>
-<html lang="vi">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <title>MANGO</title>
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <body>
+      <div class="header">
+        <div class="header__header-item">
+          <div class="menu-list">
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+          </div>
+          <div class="header__search-bar">
+            <input class="header__search-item" type="text" id="search_header">
+            <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
+          </div>
+          <div class="header-list">
+            <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <div class="personal_page">
+        <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
+          <div class="profile-info">
+            <h2 class="profile-name"></h2>
+            <p class="profile-role">Vai trò: </p>
+            <p class="profile-join-date">Ngày gia nhập: </p>
+          </div>
+        </div>
+        <div class="block-content"></div>
+        <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
+          <h2 class="personal-info-title">Thông tin cá nhân</h2>
+        </div>
+        <hr class="personal-info-divider">
+        <div class="personal-info-container">
+          <div class="personal-info-box"> 
+            <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
+            <p><strong>Username: </strong>kandy_2705</p>
+            <p><strong>SĐT: </strong>0123456789</p>
+            <p><strong>Ngày sinh: </strong>27/05/2004</p>
+          </div>
+        </div>
+        <div class="main-layout">
+          <div class="grid__column-3">
+            <div class="manga-section">
+              <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
+                <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
+              </div>
+              <hr class="manga-info-divider">
+              <div class="content-chuamanga-personal_page open" id="myMangaList">
+                <div class="content-chuamanga__list-rank" style="magrin-right: -17px !important; width: 100% !important">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen1.jpg" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Made in Abyss</h3>
+                            <p class="content-chuamanga__item-rank-tag-author">Tastu Yukinobu </p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Phiêu lưu</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">20</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 6</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 5</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 4</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 3</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 2</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content-chuamanga__list-rank">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen_2.webp" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Tổng Tài Tại Thượng</h3>
+                            <p class="content-chuamanga__item-rank-tag-author">ICiyuan</p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Tình cảm</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Tổng tài</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Đời thường</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">16</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 171</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 170</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 169</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 168</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 167</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content-chuamanga__list-rank">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen3.jpg" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Attack on Titan</h3>
+                            <p class="content-chuamanga__item-rank-tag-author"> Isayama Hajime </p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">4</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 34</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 33</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 32</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 31</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 30</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-chuamanga-personal_page hidden" id="favoriteMangaList">
+                <div class="content-chuamanga__list-rank" style="magrin-right: -17px !important; width: 100% !important">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen1.jpg" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Made In Abyss</h3>
+                            <p class="content-chuamanga__item-rank-tag-author">Tastu Yukinobu </p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Phiêu lưu</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">20</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 6</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 5</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 4</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 3</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 2</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content-chuamanga__list-rank">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen_2.webp" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Tổng Tài Tại Thượng</h3>
+                            <p class="content-chuamanga__item-rank-tag-author">ICiyuan</p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Tình cảm</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Tổng tài</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Đời thường</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">16</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 171</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 170</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 169</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 168</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 167</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content-chuamanga__list-rank">   
+                  <div class="content-chuamanga__item-rank">
+                    <div class="content-chuamanga__item-rank-noidung"><img class="content-chuamanga__item-rank-img" src="../../assets/img/truyen3.jpg" alt="">
+                      <div class="content-chuamanga__item-rank-thongtinhienthi">
+                        <div class="content-chuamanga__item-rank-thongtintren">
+                          <div class="content-chuamanga__item-rank-thongtintrai">
+                            <h3 class="content-chuamanga__item-rank-tieude">Attack on Titan</h3>
+                            <p class="content-chuamanga__item-rank-tag-author"> Isayama Hajime </p>
+                            <p class="content-chuamanga__item-rank-tag-theloai">Thể loại</p>
+                            <ul class="content-chuamanga__item-rank-tag-list"> 
+                              <li class="content-chuamanga__item-rank-tag-item">Hành động</li>
+                              <li class="content-chuamanga__item-rank-tag-item">Viễn tưởng</li>
+                            </ul>
+                          </div>
+                          <div class="content-chuamanga__item-rank-thongtinphai">
+                            <div class="content-chuamanga__item-rank-like"><i class="fa-regular fa-heart"></i>
+                              <p class="content-chuamanga__item-rank-num-like">10</p>
+                            </div>
+                            <div class="content-chuamanga__item-rank-cmt"><i class="fa-regular fa-comment-dots"></i>
+                              <p class="content-chuamanga__item-rank-num-like">4</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="content-chuamanga__item-rank-xemthem">Xem thêm</p>
+                        <ul class="content-chuamanga__item-rank-thongtinduoi"> 
+                          <li class="content-chuamanga__item-rank-chap">Chapter 34</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 33</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 32</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 31</li>
+                          <li class="content-chuamanga__item-rank-chap">Chapter 30</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid__column-1">
+            <div class="function-section">
+              <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
+                <h2 class="function-section-title">Chức năng</h2>
+              </div>
+              <hr class="function-info-divider">
+              <button class="function-btn" onclick="toggleMangaList('myMangaList')"> <i class="fa-solid fa-pencil"></i><span>Truyện của tôi</span></button>
+              <button class="function-btn" onclick="toggleMangaList('favoriteMangaList')"> <img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
+              <button class="function-btn"><a class="mangacenter" href="/mangaWrittingCenter.html"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></a></button>
+            </div>
+          </div>
+        </div>
+        <div class="static-info-header"><img class="static-user" src="../../assets/img/Static.png" alt="Static Icon">
+          <h2 class="static-info-title">Số liệu</h2>
+        </div>
+        <hr class="static-info-divider">
+        <div class="statistics">
+          <div class="statistics-container">
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+          </div>
+        </div>
+        <script src="../../assets/js/client/personal_page.js"></script>
+      </div>
+    </body>
   </head>
-  <body><!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MANGO</title>
-        <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
-        <link rel="stylesheet" href="../../assets/css/client/base.css">
-        <link rel="stylesheet" href="../../assets/css/client/home_page.css">
-        <link rel="stylesheet" href="../../assets/css/client/grid.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-        <body>
-          <div class="header">
-            <div class="header__header-item">
-              <div class="menu-list">
-                <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
-              </div>
-              <div class="header__search-bar">
-                <input class="header__search-item" type="text" id="search_header">
-                <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
-              </div>
-              <div class="header-list">
-                <button class="header-item__login">Thành viên</button>
-                <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
-                  <ul class="header__navbar-user-menu">
-                    <li class="header__navbar-user-item"><a href="">Trang cá nhân</a></li>
-                    <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
-                    <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
-                        <button id="button-logout">Đăng xuất</button></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal js-modal">
-            <div class="modal-container js-modal-container">
-              <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
-              <header class="modal-header">
-                <p>Đăng nhập vào tài khoản </p>
-              </header>
-              <div class="modal-body">
-                <div class="modal-form">
-                  <form class="form" id="form-1" action="" method="POST">
-                    <div class="form-group">
-                      <label class="modal-label" for="username">Tên người dùng</label>
-                      <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
-                    </div>
-                    <div class="form-group">
-                      <label class="modal-label" for="password">Mật khẩu</label>
-                      <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
-                    </div>
-                    <div class="modal-label-quenpass">Quên mật khẩu?</div>
-                    <button id="button-login" type="submit" disabled>Đăng nhập</button>
-                  </form>
-                  <p class="modal-label-chuyendangky">Người dùng mới?
-                    <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-dangky js-modal-dangky">
-            <div class="modal-container-dangky js-modal-container-dangky">
-              <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
-              <header class="modal-header-dangky">
-                <p>Đăng ký </p>
-              </header>
-              <div class="modal-body-dangky">
-                <div class="modal-form-dangky">
-                  <form class="form" id="form-2" action="" method="POST">
-                    <div class="form-group2">
-                      <label class="modal-label-dangky" for="username2">Tên người dùng
-                        <p>*</p>
-                      </label>
-                      <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
-                    </div>
-                    <div class="form-group2">
-                      <label class="modal-label-dangky" for="pass2">Mật khẩu
-                        <p>*</p>
-                      </label>
-                      <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
-                    </div>
-                    <div class="form-group2">
-                      <label class="modal-label-dangky" for="daybd">Ngày sinh
-                        <p>*</p>
-                      </label>
-                      <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
-                    </div>
-                    <div class="form-group2">
-                      <label class="modal-label-dangky" for="email">Email
-                        <p>*</p>
-                      </label>
-                      <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
-                    </div>
-                    <div class="form-group2">
-                      <label class="modal-label-dangky" for="phone">Số điện thoại
-                        <p>*</p>
-                      </label>
-                      <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
-                    </div>
-                    <div class="modal-label-result">
-                      <button id="button-dangky" type="submit" disabled>Đăng ký</button>
-                    </div>
-                  </form>
-                  <p class="modal-label-chuyendangky">Quay lại?
-                    <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <script src="../../assets/js/client/header.js"> </script>
-          <script src="../../assets/js/client/validator.js"></script>
-          <script>
-            Validator({
-                form: '#form-1',
-                formGroupSelector: '.form-group',
-                errorSelector: '.form-message',
-                rules: [
-                Validator.isRequired('#username'),
-                Validator.minLength('#password', 6),
-                ],
-                onSubmit: function (data) {
-                console.log(data);
-                }
-            });
-            
-            
-            Validator({
-                form: '#form-2',
-                formGroupSelector: '.form-group2',
-                errorSelector: '.form-message',
-                rules: [
-                Validator.isRequired('#username2'),
-                Validator.minLength('#pass2', 6),
-                Validator.isEmail('#email'),
-                Validator.isPhone('#phone'),
-                Validator.isRequired('#daybd'),
-                ],
-                onSubmit: function (data) {
-                console.log(data);
-                }
-            });
-          </script>
-        </body>
-      </head>
-    </html>
-    <div class="main-content">
-      <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
-        <div class="profile-info">
-          <h2 class="profile-name">Triệu Mẫn</h2>
-          <p class="profile-role">Vai trò: Uploader</p>
-          <p class="profile-join-date">Ngày gia nhập: 01/01/2024</p>
-        </div>
-      </div>
-      <div class="block-content"></div>
-      <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
-        <h2 class="personal-info-title">Thông tin cá nhân</h2>
-      </div>
-      <hr class="personal-info-divider">
-      <div class="personal-info-container">
-        <div class="personal-info-box"> 
-          <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
-          <p><strong>Username: </strong>kandy_2705</p>
-          <p><strong>SĐT: </strong>0123456789</p>
-          <p><strong>Ngày sinh: </strong>27/05/2004</p>
-        </div>
-      </div>
-      <div class="main-layout">
-        <div class="grid__column-3">
-          <div class="manga-section">
-            <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
-              <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
-            </div>
-            <hr class="manga-info-divider">
-          </div>
-        </div>
-        <div class="grid__column-1">
-          <div class="function-section">
-            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
-              <h2 class="function-section-title">Chức năng</h2>
-            </div>
-            <hr class="function-info-divider">
-            <button class="function-btn"> <img class="icon" src="../../assets/img/my-story-icon.png" alt="My Story Icon"><span>Truyện của tôi</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
 </html>
