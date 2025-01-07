@@ -48,7 +48,17 @@ fetch(`https://api.mangocomic.io.vn/book?bookId=${bookId}`)
               const chapterLink = book.type === 'truyện tiểu thuyết'
                 ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=${chapter.chapter_no}`
                 : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=${chapter.chapter_no}`;
-              
+              var importContactsIcon = document.getElementById("first-chapter");
+              if (importContactsIcon) {
+                importContactsIcon.addEventListener("click", () => {
+                  const firstChapterLink = book.type === "truyện tiểu thuyết"
+                    ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=1`
+                    : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
+                  
+                  window.location.href = firstChapterLink;
+                });
+              }
+                
               chapterItem.addEventListener("click", () => {
                 window.location.href = chapterLink;
               });
@@ -119,10 +129,6 @@ document.querySelectorAll('.icon-box').forEach(box => {
   });
 });
 
-var importContactsIcon = document.getElementById("first-chapter");
-importContactsIcon.addEventListener("click", () => {
-  window.location.href = `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
-});
 
 function openTab(evt, tabName) {
   const tabcontent = document.getElementsByClassName("tabcontent");
