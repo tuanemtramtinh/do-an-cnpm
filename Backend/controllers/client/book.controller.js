@@ -32,6 +32,8 @@ module.exports.getBook = async (req, res) => {
         age_limit: book.age_limit,
         translator: book.translator,
         tag: book.tag,
+        updatedAt: moment(book.updatedAt).format("DD-MM-YYYY"),
+        status: book.status
       };
 
       res.json(returnMessage("Lấy truyện thành công", finalBook, 200));
