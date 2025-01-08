@@ -99,9 +99,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.addEventListener("scroll", () => {
       const currentScrollTop = window.scrollY;
       if (currentScrollTop > lastScrollTop) {
-        controlContainer.classList.add("hidden");
+        controlContainer.classList.add("_hidden");
       } else {
-        controlContainer.classList.remove("hidden");
+        controlContainer.classList.remove("_hidden");
       }
       lastScrollTop = currentScrollTop;
     });
