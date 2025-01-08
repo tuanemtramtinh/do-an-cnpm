@@ -553,7 +553,7 @@ html{
     /* margin-top: 14px; */
     cursor: pointer;
     height: 44px;
-    padding-top: 7px;
+    padding-top: 14px;
   }
   .content-chuamanga__list-chonloc-item:hover{
     background: rgba(0, 0, 0, 0.7);

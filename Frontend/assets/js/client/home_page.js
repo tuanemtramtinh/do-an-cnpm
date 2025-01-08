@@ -197,54 +197,54 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
         // Lấy avatar 
-    const token = localStorage.getItem('token');
-    const avatarImg = document.querySelector('.header__navbar-user-img');
-    const adminLink = document.querySelector('.header__navbar-user-item.admin-link'); 
+    // const token = localStorage.getItem('token');
+    // const avatarImg = document.querySelector('.header__navbar-user-img');
+    // const adminLink = document.querySelector('.header__navbar-user-item.admin-link'); 
 
-    if (token && avatarImg) {
-        avatarImg.src = '../../assets/img/loading.gif';
-        try {
-            const response = await fetch('https://api.tuanemtramtinh.io.vn/user/info', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
+    // if (token && avatarImg) {
+    //     avatarImg.src = '../../assets/img/loading.gif';
+    //     try {
+    //         const response = await fetch('https://api.tuanemtramtinh.io.vn/user/info', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Authorization': `Bearer ${token}`,
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         });
 
-            if (response.ok) {
-                const data = await response.json();
-                if (data.status === 200 && data.payload) {
-                    const avatarUrl = data.payload.avatar;
-                    if (avatarUrl) {
-                        avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
-                    } else {
-                        console.error('Không tìm thấy URL ảnh đại diện trong payload.');
-                        avatarImg.src = '../../assets/img/truyen1.jpg'; 
-                    }
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             if (data.status === 200 && data.payload) {
+    //                 const avatarUrl = data.payload.avatar;
+    //                 if (avatarUrl) {
+    //                     avatarImg.src = `${avatarUrl}?t=${new Date().getTime()}`; 
+    //                 } else {
+    //                     console.error('Không tìm thấy URL ảnh đại diện trong payload.');
+    //                     avatarImg.src = '../../assets/img/truyen1.jpg'; 
+    //                 }
 
-                    if (data.payload.isAdmin) {
-                        if (adminLink) {
-                            adminLink.style.display = 'list-item'; 
-                        }
-                    }
-                } else {
-                    console.error('Lấy thông tin người dùng thất bại:', data.message);
-                    avatarImg.src = '../../assets/img/truyen1.jpg'; 
-                }
-            } else {
-                console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
-                avatarImg.src = '../../assets/img/truyen1.jpg'; 
-            }
-        } catch (error) {
-            console.error('Lỗi khi lấy thông tin người dùng:', error);
-            avatarImg.src = '../../assets/img/truyen1.jpg'; 
-        }
-    } else {
-        if (avatarImg) {
-            avatarImg.src = '../../assets/img/truyen1.jpg'; 
-        }
-    }
+    //                 if (data.payload.isAdmin) {
+    //                     if (adminLink) {
+    //                         adminLink.style.display = 'list-item'; 
+    //                     }
+    //                 }
+    //             } else {
+    //                 console.error('Lấy thông tin người dùng thất bại:', data.message);
+    //                 avatarImg.src = '../../assets/img/truyen1.jpg'; 
+    //             }
+    //         } else {
+    //             console.error('Lấy thông tin người dùng thất bại với mã phản hồi:', response.status);
+    //             avatarImg.src = '../../assets/img/truyen1.jpg'; 
+    //         }
+    //     } catch (error) {
+    //         console.error('Lỗi khi lấy thông tin người dùng:', error);
+    //         avatarImg.src = '../../assets/img/truyen1.jpg'; 
+    //     }
+    // } else {
+    //     if (avatarImg) {
+    //         avatarImg.src = '../../assets/img/truyen1.jpg'; 
+    //     }
+    // }
 
 
     ///////////////////////////////////////////////////////////////
