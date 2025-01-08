@@ -4,7 +4,11 @@ const trangCaNhan = document.querySelector(".header__navbar-user-item a");
 trangCaNhan.href = "../../client/pages/personal_page.html";
 
 const trangChu = document.querySelector(".header-logo-link");
-trangChu.href = "../../client/pages/home_page.html";
+trangChu.href = "../../client/pages/home_page.html"
+
+const dangXuat = document.querySelector(".header__navbar-user-item--separate a");
+
+dangXuat.href = "../../client/pages/home_page.html"
 
 // Hàm toggle hiển thị/ẩn dropdown
 function toggleDropdown(button) {
