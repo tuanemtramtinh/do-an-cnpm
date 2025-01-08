@@ -304,6 +304,7 @@ if (formEdit) {
       // Sự kiện submit form editManga
       formEdit.addEventListener("submit", (event) => {
         event.preventDefault();
+        loadingPage.classList.remove("hidden");
 
         // const thumbnailInput = formEdit.querySelector('input[name="thumbnail"]');
         // thumbnailInput.addEventListener("change", (event) => {
@@ -400,6 +401,7 @@ if (formEdit) {
           })
           .then((result) => {
             console.log(result);
+            loadingPage.classList.add("hidden");
             showAlert("Cập nhật truyện thành công!");
           })
           .catch((error) => {
@@ -664,7 +666,7 @@ const formAddChapterNovel = document.querySelector("#form-add-chapterNovel");
 if (formAddChapterNovel) {
   formAddChapterNovel.addEventListener("submit", (event) => {
     event.preventDefault();
-
+    loadingPage.classList.remove("hidden");
     const params = new URL(window.location.href).searchParams;
     const id = params.get("id"); // Đảm bảo tham số là "id" thay vì "Id"
 
@@ -731,6 +733,7 @@ if (formAddChapterNovel) {
         }
       })
       .then((result) => {
+        loadingPage.classList.add("hidden");
         showAlert("Thêm chương mới thành công!");
         formAddChapterNovel.reset();
       })
