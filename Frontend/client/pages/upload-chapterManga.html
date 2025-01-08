@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANGO</title>
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="../../assets/css/client/style_GiaQui.css">
+    <body>
+      <div class="header">
+        <div class="header__header-item">
+          <div class="menu-list">
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
+          </div>
+          <div class="header__search-bar">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
+            <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
+          </div>
+          <div class="header-list">
+            <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
+          </div>
+        </div>
+      </section>
+      <div class="loading-page hidden" id="loading-page">
+        <div class="spinner"></div>
+      </div>
+      <div class="alert-list"></div>
+      <section class="client--upload-chapterNovel"> 
+        <div class="container">
+          <form id="form-add-chapterManga" action="" enctype="multipart/form-data">
+            <div class="client--upload-chapterNovel__box">
+              <div class="client--upload-chapterNovel__top"><a class="button" href="chapter-list.html">
+                  <div class="icon"><i class="fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-bars"></i></div>
+                  <div class="content">Danh sách chương</div></a></div>
+              <div class="client--upload-chapterNovel__middle">
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Chương số:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="number" name="numberOfChapter" placeholder="1" min="1">
+                  </div>
+                </div>
+                <div class="client--upload-chapterNovel__middle--element">
+                  <div class="client--upload-chapterNovel__middle--element-title">Tiêu đề:</div>
+                  <div class="client--upload-chapterNovel__middle--element-form">
+                    <input type="text" name="nameOfChapter" placeholder="Tiêu đề">
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterManga__bottom">
+                <div class="client--upload-chapterManga__bottom--element">
+                  <div class="client--upload-chapterManga__bottom--element-title">Trang truyện:</div>
+                  <div class="client--upload-chapterManga__bottom--element-box">
+                    <div class="client--upload-chapterManga__bottom--element-notice">Lưu ý:
+                      <ul> 
+                        <li>Không vượt quá 50 ảnh/chương.</li>
+                        <li>Tổng dung lượng của các ảnh trong một chương không được phép vượt quá 15MB.</li>
+                        <li>Chiều rộng 720 pixel tới 1200 pixel, độ phân giải 72 dpi.</li>
+                        <li>Đặt tên file theo thứ tự trang truyện hiển thị.</li>
+                        <li>Các ảnh phải có cùng chiều rộng (width).</li>
+                      </ul>
+                    </div>
+                    <div class="client--edit-manga__middle--image">
+                      <div class="client--edit-manga__middle--image-main"><img src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG"></div>
+                      <label class="client--edit-manga__middle--image-button">
+                        <input type="file" name="images" multiple><span class="button">Chọn ảnh bìa</span>
+                      </label><span class="nameFile" id="file-name">No file chosen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="client--upload-chapterNovel__button"><a class="button" href="mangaWrittingCenter.html"> <i class="fa-solid fa-arrow-left"></i>
+                  <div class="content">Trang trước</div></a>
+                <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                  <div class="content">Upload chương</div>
+                </button>
+              </div>
+              <div class="preview-image-title">Xem trước<span class="preview-image-delete">Xoá</span></div>
+              <div class="preview-image"></div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
+    </body>
+  </head>
+</html>

@@ -1,11 +1,24 @@
-mixin mangaCard(title, cover, rating, chapters)
-  .manga-card
-    img.manga-cover(src=cover, alt="Manga Cover")
-    .manga-details
-      h4= title
-      p Tác giả: Tên tác giả
-      p Đánh giá: #{rating}
-      .chapters-list
-        each chapter, index in chapters
-          .chapter
-            span Chapter #{index + 1}: #{chapter}
+//- mixin mangaCard(title, author, genres, image, likes, comments, chapters)
+//-   .manga-card
+//-     .manga-card-content
+//-       img.manga-card-img(src=image alt="Manga Cover")
+//-       .manga-card-details
+//-         .manga-card-header
+//-           .manga-card-info-left
+//-             h3.manga-card-title= title
+//-             p.manga-card-author= author
+//-             ul.manga-card-tags
+//-               each genre in genres
+//-                 li.manga-card-tag= genre
+//-           .manga-card-info
+//-             .manga-card-likes
+//-               i.fa-regular.fa-heart
+//-               span= likes
+//-             .manga-card-comments
+//-               i.fa-regular.fa-comment-dots
+//-               span= comments
+//-         .manga-card-chapters
+//-           ul
+//-             each chapter in chapters
+//-               li.manga-card-chapter= chapter
+

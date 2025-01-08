@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANGO</title>
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
+    <link rel="stylesheet" href="../../assets/css/client/style_GiaQui.css">
+    <body>
+      <div class="header">
+        <div class="header__header-item">
+          <div class="menu-list">
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
+          </div>
+          <div class="header__search-bar">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
+            <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
+          </div>
+          <div class="header-list">
+            <button class="header-item__login">Thành viên</button>
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
+              <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
+                <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate"><a href=""> 
+                    <button id="button-logout">Đăng xuất</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header">
+            <p>Đăng nhập vào tài khoản </p>
+          </header>
+          <div class="modal-body">
+            <div class="modal-form">
+              <form class="form" id="form-1" action="" method="POST">
+                <div class="form-group">
+                  <label class="modal-label" for="username">Tên người dùng</label>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                  <label class="modal-label" for="password">Mật khẩu</label>
+                  <input class="modal-input" id="password" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="modal-label-quenpass">Quên mật khẩu?</div>
+                <button id="button-login" type="submit" disabled>Đăng nhập</button>
+              </form>
+              <p class="modal-label-chuyendangky">Người dùng mới?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangky">Đăng ký</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-dangky js-modal-dangky">
+        <div class="modal-container-dangky js-modal-container-dangky">
+          <div class="modal-close-dangky js-modal-close-dangky"><i class="fa-solid fa-xmark"></i></div>
+          <header class="modal-header-dangky">
+            <p>Đăng ký </p>
+          </header>
+          <div class="modal-body-dangky">
+            <div class="modal-form-dangky">
+              <form class="form" id="form-2" action="" method="POST">
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="username2">Tên người dùng
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="username2" type="text" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="pass2">Mật khẩu
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="pass2" type="password" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="daybd">Ngày sinh
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="daybd" type="date" placeholder="dd/mm/yyyy" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="email">Email
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="email" type="email" required><span class="form-message"></span>
+                </div>
+                <div class="form-group2">
+                  <label class="modal-label-dangky" for="phone">Số điện thoại
+                    <p>*</p>
+                  </label>
+                  <input class="modal-input-dangky" id="phone" type="tel" pattern="[0-9]{10}" required placeholder=""><span class="form-message"></span>
+                </div>
+                <div class="modal-label-result">
+                  <button id="button-dangky" type="submit" disabled>Đăng ký</button>
+                </div>
+              </form>
+              <p class="modal-label-chuyendangky">Quay lại?
+                <button class="modal-label-chuyendangky-trangmoi" id="dangnhap">Đăng nhập</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../../assets/js/client/header.js"> </script>
+      <script src="../../assets/js/client/validator.js"></script>
+      <script>
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username'),
+            Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+        
+        
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group2',
+            errorSelector: '.form-message',
+            rules: [
+            Validator.isRequired('#username2'),
+            Validator.minLength('#pass2', 6),
+            Validator.isEmail('#email'),
+            Validator.isPhone('#phone'),
+            Validator.isRequired('#daybd'),
+            ],
+            onSubmit: function (data) {
+            console.log(data);
+            }
+        });
+      </script>
+      <section class="client--user-info"> 
+        <div class="container">
+          <div class="client--user-info__wrap">
+            <div class="client--user-info__element" id="user-info"></div>
+          </div>
+        </div>
+      </section>
+      <div class="alert-list"></div>
+      <section class="client--edit-manga">
+        <div class="container">
+          <form id="form-edit" action="" enctype="multipart/form-data">
+            <div class="client--edit-manga__wrap">
+              <div class="client--editManga__top">
+                <div class="client--editManga__top--right"> 
+                  <div class="client--edit-manga__top--element">
+                    <label for="language">Ngôn ngữ:</label>
+                    <select id="language" name="ngonNgu">
+                      <option value="VI">Tiếng Việt</option>
+                      <option value="EN">Tiếng Anh</option>
+                    </select>
+                  </div>
+                  <div class="client--edit-manga__top--element">
+                    <label for="ageLimit">Giới hạn độ tuối:</label>
+                    <select id="ageLimit" name="gioiHanDoTuoi">
+                      <option value="0">Phù hợp với mọi lứa tuối</option>
+                      <option value="8">8+</option>
+                      <option value="10">10+</option>
+                      <option value="12">12+</option>
+                      <option value="16">16+</option>
+                      <option value="18">18+</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="client--editManga__top--left"> 
+                  <div class="button client--mangaWrittingCenter-element-bottom--delete"><i class="fa-regular fa-trash-can"></i>Xóa</div>
+                </div>
+              </div>
+              <div class="client--edit-manga__middle">
+                <div class="client--edit-manga__middle--image">
+                  <div class="client--edit-manga__middle--image-main"><img src="../../assets/img/edit-manga-uploadMangaDefault.png" alt="defaultIMG"></div>
+                  <label class="client--edit-manga__middle--image-button">
+                    <input type="file" name="thumbnail"><span class="button">Chọn ảnh bìa</span>
+                  </label><span class="nameFile" id="file-name">No file chosen</span>
+                </div>
+                <div class="client--edit-manga__middle--form">
+                  <div class="client--edit-manga__middle--form-main">
+                    <div class="client--edit-manga__middle--form-main_title">Tên truyện:</div>
+                    <div class="client--edit-manga__middle--form-main_form"> 
+                      <input type="text" name="nameOfManga" aria-label="x">
+                    </div>
+                  </div>
+                  <div class="client--edit-manga__middle--form-list">
+                    <div class="client--edit-manga__middle--form-element"> 
+                      <div class="client--edit-manga__middle--form-element_title">Tác giả: </div>
+                      <div class="client--edit-manga__middle--form-element_form"> 
+                        <input type="text" name="nameOfAuthor" aria-label="x">
+                      </div>
+                    </div>
+                    <div class="client--edit-manga__middle--form-element">
+                      <div class="client--edit-manga__middle--form-element_title">Kiểu: </div>
+                      <div class="client--edit-manga__middle--form-element_form"> 
+                        <select id="typeOfManga" name="type" aria-label="x">
+                          <option value="Truyện tranh">Truyện tranh</option>
+                          <option value="Tiểu thuyết">Tiểu thuyết</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="client--edit-manga__middle--form-element"> 
+                      <div class="client--edit-manga__middle--form-element_title">Tình trạng: </div>
+                      <div class="client--edit-manga__middle--form-element_form"> 
+                        <select id="statusOfManga" name="status" aria-label="x">
+                          <option value="Hoàn thành">Hoàn thành</option>
+                          <option value="Chưa hoàn thành">Chưa hoàn thành</option>
+                          <option value="Đang ra">Đang ra</option>
+                          <option value="Tạm hoãn">Tạm hoãn</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="client--edit-manga__middle--tag">
+                  <div class="client--edit-manga__middle--tag-title"> <i class="fa-solid fa-tags"> </i>
+                    <div class="main">Tag:</div>
+                  </div>
+                  <div class="client--edit-manga__middle--tag-box">
+                    <div class="client--edit-manga__middle--tag-list">
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="675125c7c706c61bb91d8c5e" id="alphaMale" name="tag" value="Tổng tài">
+                        <label for="alphaMale">Tổng tài</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="673d82133a86786bbd0e762a" id="detective" name="tag" value="Trinh thám">
+                        <label for="detective">Trinh thám</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512646c706c61bb91d8c64" id="love" name="tag" value="Tình cảm">
+                        <label for="love">Tình cảm</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512652c706c61bb91d8c67" id="advanture" name="tag" value="Phiêu lưu">
+                        <label for="advanture">Phiêu lưu</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512658c706c61bb91d8c6a" id="act" name="tag" value="Hành động">
+                        <label for="act">Hành động</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512660c706c61bb91d8c6d" id="science" name="tag" value="Viễn tưởng">
+                        <label for="science">Viễn tưởng</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512669c706c61bb91d8c70" id="horrified" name="tag" value="Kinh dị">
+                        <label for="horrified">Kinh dị</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="674058a1f8af6e47fd2d5780" id="realLife" name="tag" value="Đời thường">
+                        <label for="realLive">Đời thường</label>
+                      </div>
+                      <div class="client--edit-manga__middle--tag-element-detail">
+                        <input class="checkbox-round" type="checkbox" tag-id="67512671c706c61bb91d8c73" id="funny" name="tag" value="Hài hước">
+                        <label for="funny">Hài hước</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="client--edit-manga__bottom">
+                <div class="client--edit-manga__bottom--introduce">
+                  <div class="client--edit-manga__bottom--introduce-title">Giới thiệu:</div>
+                  <div class="client--edit-manga__bottom--introduce-content">
+                    <textarea id="desc" name="description" rows="3" cols="" aria-label="x"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="client--edit-manga__button"><a class="button" href="mangaWrittingCenter.html"> <i class="fa-solid fa-arrow-left"></i>
+                  <div class="content">Trang trước</div></a>
+                <button class="button button-submit" type="submit"> <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                  <div class="content">Chỉnh sửa truyện</div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <script src="../../assets/js/client/scriptGQ.js"></script>
+    </body>
+  </head>
+</html>

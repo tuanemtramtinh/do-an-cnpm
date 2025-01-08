@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANGO</title>
     <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../assets/css/client/base.css">
-    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
-    <link rel="stylesheet" href="../../assets/css/client/grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/client/base.css">
+    <link rel="stylesheet" href="../../assets/css/client/home_page.css">
+    <link rel="stylesheet" href="../../assets/css/client/grid.css">
     <body>
       <div class="header">
         <div class="header__header-item">
           <div class="menu-list">
-            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png"></a>
+            <div class="menu-list-header"><i class="fa-solid fa-bars"></i></div><a class="header-logo-link" href="./home_page.html"><img class="header__logo" src="../../assets/img/logo.png" alt="avt"></a>
           </div>
           <div class="header__search-bar">
-            <input class="header__search-item" type="text" id="search_header">
+            <input class="header__search-item" type="text" id="search_header" aria-label="x">
             <label class="header__search-link" for="search_header"> <i class="fa-solid fa-magnifying-glass"></i></label>
           </div>
           <div class="header-list">
             <button class="header-item__login">Thành viên</button>
-            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="">
+            <div class="header__navbar-item header__navbar-user"><img class="header__navbar-user-img" src="../../assets/img/truyen1.jpg" alt="avt">
               <ul class="header__navbar-user-menu">
                 <li class="header__navbar-user-item"><a href="./personal_page.html">Trang cá nhân</a></li>
                 <li class="header__navbar-user-item admin-link"><a href="">Trang quản lý</a></li>
@@ -46,7 +46,7 @@
               <form class="form" id="form-1" action="" method="POST">
                 <div class="form-group">
                   <label class="modal-label" for="username">Tên người dùng</label>
-                  <input class="modal-input" id="username" type="text" required><span class="form-message"></span>
+                  <input class="modal-input" id="username" type="text" required aria-label="x"><span class="form-message"></span>
                 </div>
                 <div class="form-group">
                   <label class="modal-label" for="password">Mật khẩu</label>
@@ -145,46 +145,70 @@
             }
         });
       </script>
-      <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
-        <div class="profile-info">
-          <h2 class="profile-name">Triệu Mẫn</h2>
-          <p class="profile-role">Vai trò: Uploader</p>
-          <p class="profile-join-date">Ngày gia nhập: 01/01/2024</p>
-        </div>
-      </div>
-      <div class="block-content"></div>
-      <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
-        <h2 class="personal-info-title">Thông tin cá nhân</h2>
-      </div>
-      <hr class="personal-info-divider">
-      <div class="personal-info-container">
-        <div class="personal-info-box"> 
-          <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
-          <p><strong>Username: </strong>kandy_2705</p>
-          <p><strong>SĐT: </strong>0123456789</p>
-          <p><strong>Ngày sinh: </strong>27/05/2004</p>
-        </div>
-      </div>
-      <div class="main-layout">
-        <div class="grid__column-3">
-          <div class="manga-section">
-            <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
-              <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
-            </div>
-            <hr class="manga-info-divider">
+      <div class="personal_page">
+        <div class="profile-section"><img class="profile-avatar" src="../../assets/img/Boss Combat.jpg" alt="Profile Avatar"/>
+          <div class="profile-info">
+            <h2 class="profile-name"></h2>
+            <p class="profile-role">Vai trò: </p>
+            <p class="profile-join-date">Ngày gia nhập: </p>
           </div>
         </div>
-        <div class="grid__column-1">
-          <div class="function-section">
-            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
-              <h2 class="function-section-title">Chức năng</h2>
-            </div>
-            <hr class="function-info-divider">
-            <button class="function-btn"> <img class="icon" src="../../assets/img/my-story-icon.png" alt="My Story Icon"><span>Truyện của tôi</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/favorite-icon.png" alt="Favorite Icon"><span>Truyện yêu thích</span></button>
-            <button class="function-btn"><img class="icon" src="../../assets/img/write-center-icon.png" alt="Write Center Icon"><span>Trung tâm viết truyện</span></button>
+        <div class="block-content"></div>
+        <div class="personal-info-header"><img class="icon-user" src="../../assets/img/icon.png" alt="User Icon">
+          <h2 class="personal-info-title">Thông tin cá nhân</h2>
+        </div>
+        <hr class="personal-info-divider">
+        <div class="personal-info-container">
+          <div class="personal-info-box"> 
+            <p><strong>Email: </strong>man.ngotrieuman27@hcmut.edu.vn</p>
+            <p><strong>Username: </strong>kandy_2705</p>
+            <p><strong>SĐT: </strong>0123456789</p>
+            <p><strong>Ngày sinh: </strong>27/05/2004</p>
           </div>
         </div>
+        <div class="main-layout">
+          <div class="grid__column-3">
+            <div class="manga-section">
+              <div class="manga-section-title-header"><img class="mangaicon" src="../../assets/img/mangaicon.png" alt="Manga Icon">
+                <h2 class="manga-section-title">Danh sách truyện đã đăng</h2>
+              </div>
+              <hr class="manga-info-divider">
+              <div class="content-chuamanga-personal_page open" id="myMangaList"></div>
+            </div>
+          </div>
+          <div class="grid__column-1">
+            <div class="function-section">
+              <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
+                <h2 class="function-section-title">Chức năng</h2>
+              </div>
+              <hr class="function-info-divider">
+              <button class="function-btn" onclick="toggleMangaList('myMangaList')"> <i class="fa-solid fa-pencil"></i><span>Truyện của tôi</span></button>
+              <button class="function-btn" onclick="toggleMangaList('favoriteMangaList')"> <i class="fa-regular fa-heart"></i><span>Truyện yêu thích</span></button>
+              <button class="function-btn"><a class="mangacenter" href="./mangaWrittingCenter.html"><i class="fa-regular fa-file"></i><span>Trung tâm viết truyện</span></a></button>
+            </div>
+          </div>
+        </div>
+        <div class="static-info-header"><img class="static-user" src="../../assets/img/Static.png" alt="Static Icon">
+          <h2 class="static-info-title">Số liệu</h2>
+        </div>
+        <hr class="static-info-divider">
+        <div class="statistics">
+          <div class="statistics-container">
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+            <div class="stat-box">
+              <h3 class="stat-number">9999</h3>
+              <p class="stat-label"><i class="fa-solid fa-globe"></i>Lượt xem</p>
+            </div>
+          </div>
+        </div>
+        <script src="../../assets/js/client/personal_page.js"></script>
       </div>
     </body>
   </head>

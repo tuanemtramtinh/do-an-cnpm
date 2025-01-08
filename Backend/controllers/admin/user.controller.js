@@ -22,30 +22,31 @@ module.exports.changeRole = async (req, res) => {
 
 module.exports.getAllUsers = async (req, res) => {
   try {
-      const role = req.user.isAdmin;
-      if (role === true) {
-          const users = await User.find()
-              .select('-password') 
-              .sort({ createdAt: 1, updatedAt: 1 }); 
+    const role = req.user.isAdmin;
+    if (role === true) {
+      const users = await User.find({ _id: { $ne: req.user.id } }) 
+        .select('-password') 
+        .sort({ createdAt: 1, updatedAt: 1 }); 
 
-          return res.status(200).json({
-              success: true,
-              data: users
-          });
-      } else {
-          return res.status(403).json({
-              success: false,
-              message: "Unauthorized access. Only admins can retrieve users."
-          });
-      }
-  } catch (error) {
-      console.error("Error fetching users:", error);
-      return res.status(500).json({
-          success: false,
-          message: "An error occurred while fetching users."
+      return res.status(200).json({
+        success: true,
+        data: users,
       });
+    } else {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized access. Only admins can retrieve users.",
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while fetching users.",
+    });
   }
 };
+
 
 module.exports.getAllComments = async (req, res) => {
     try {

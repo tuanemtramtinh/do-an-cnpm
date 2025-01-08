@@ -32,6 +32,8 @@ module.exports.getBook = async (req, res) => {
         age_limit: book.age_limit,
         translator: book.translator,
         tag: book.tag,
+        updatedAt: moment(book.updatedAt).format("DD-MM-YYYY"),
+        status: book.status
       };
 
       res.json(returnMessage("Lấy truyện thành công", finalBook, 200));
@@ -210,8 +212,8 @@ module.exports.getAllChapter = async (req, res) => {
 };
 
 module.exports.updateBook = async (req, res) => {
-  const book_ID = req.query.book_id;
-  const user_ID = req.query.user_id;
+  const book_ID = req.params.id;
+  const user_ID = req.user.id;
   const change = req.body;
   try {
     const book = await Book.findOne({ _id: book_ID });
@@ -223,16 +225,20 @@ module.exports.updateBook = async (req, res) => {
     }
     const user = await User.findOne({ _id: user_ID });
     if (!user) {
-      return res.status(404).json({
-        status: "fail",
-        message: "missing or invalid user id",
-      });
+      return res
+        .status(404)
+        .json(returnMessage("Không tìm thấy user", null, 404));
     }
     if (!user.isAdmin && !book.translator.equals(user._id)) {
-      return res.status(404).json({
-        status: "fail",
-        message: "not have permission to change the book",
-      });
+      return res
+        .status(404)
+        .json(
+          returnMessage(
+            "User không có quyền sửa đổi truyện do không phải người up truyện này hoặc admin",
+            null,
+            404
+          )
+        );
     }
     const updateBook = await Book.findOneAndUpdate(
       { _id: book_ID },
@@ -241,7 +247,7 @@ module.exports.updateBook = async (req, res) => {
     );
     res
       .status(200)
-      .json(returnMessage("Cập nhật truyện thành công", updatedBook, 200));
+      .json(returnMessage("Cập nhật truyện thành công", updateBook, 200));
   } catch (error) {
     res
       .status(400)
@@ -278,7 +284,11 @@ module.exports.getUserUploadBook = async (req, res) => {
           name: tag.name,
         }));
         return {
+          id: book._id,
           img: book.thumbnail,
+          type: book.type,
+          status: book.status,
+          age_limit: book.age_limit,
           name: book.name,
           author: book.author,
           tag: tagData,
