@@ -196,11 +196,11 @@ async function updateUIBasedOnLogin() {
       document.querySelector(".header__navbar-user").style.display = "flex";
     }
     const logoutButton = document.querySelector("#button-logout");
+    console.log(logoutButton);
     if (logoutButton) {
       logoutButton.addEventListener("click", function () {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
-        console.log("Đăng xuất thành công!");
         window.location.href = "./home_page.html";
       });
     } else {
