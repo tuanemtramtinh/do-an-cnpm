@@ -1,69 +1,86 @@
 var urlParams = new URLSearchParams(window.location.search);
 var bookId = urlParams.get('bookId');
 
-document.addEventListener("DOMContentLoaded", function () {
-  
-  fetch(`https://api.mangocomic.io.vn/book/get-all-chapter?id=${bookId}`)
-    .then(response => response.json())  
-    .then(data => {
-      if (data.status === 'success') {
-        const chapters = data.chapters;
-        
-        const chapterListElement = document.querySelector('.chapter-list');
-        chapterListElement.innerHTML = '';  
-        
-        chapters.forEach(chapter => {
-          const chapterItem = document.createElement('div');
-          chapterItem.classList.add('chapter-item');
-          
-          const chapterTitle = document.createElement('div');
-          chapterTitle.classList.add('chapter-title');
-          chapterTitle.textContent = `Chapter ${chapter.chapter_no}: ${chapter.title}`;
-          
-          const chapterDivider = document.createElement('div');
-          chapterDivider.classList.add('chapter-divider');
-          
-          chapterItem.appendChild(chapterTitle);
-          chapterItem.appendChild(chapterDivider);
-          
-          chapterItem.addEventListener("click", () => {
-            window.location.href = `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=${chapter.chapter_no}`;
-          });
-          chapterListElement.appendChild(chapterItem);
-        });
-      } else {
-        console.error("Failed to fetch chapters");
-      }
-    })
-    .catch(error => {
-      console.error("Error fetching chapters:", error);
-    });
-    
-  fetch(`https://api.mangocomic.io.vn/book?book=${bookId}`)
-  .then(response => response.json())
-  .then(data => {
-      if (data.status === 200 && Array.isArray(data.payload)) {
-      const book = data.payload.find(item => item._id === bookId);
+document.addEventListener("DOMContentLoaded", function () {  
+fetch(`https://api.mangocomic.io.vn/book?bookId=${bookId}`)
+.then(response => response.json())
+.then(data => {
+  if (data.status === 200 && data.payload) {
+    const book = data.payload;
 
-      if (book) {
-          document.getElementById('book-cover').src = book.thumbnail;
-          document.getElementById('book-banner').src = book.thumbnail;
-          document.getElementById('book-title').textContent = book.name || 'No title available';
-          document.getElementById('book-author').textContent = book.author || 'No author available';
-          document.getElementById('book-tags').textContent = 
-              Array.isArray(book.tag) 
-              ? book.tag.map(tag => tag.name).join(', ') 
-              : 'No tags available';
-          document.getElementById('book-date').textContent = `Updated at: ${book.updatedAt || 'No date available'}`;
-          document.getElementById('book-description').textContent = book.description;
-      } else {
-          console.error('Book not found with the provided bookId.');
-      }
-      } else {
-      console.error('Invalid API response structure.');
-      }
-  })
-  .catch(error => console.error('Error fetching data:', error));
+    if (book) {
+      document.getElementById('book-cover').src = book.thumbnail;
+      document.getElementById('book-banner').src = book.thumbnail;
+      document.getElementById('book-title').textContent = book.name || 'No title available';
+      document.getElementById('book-author').textContent = book.author || 'No author available';
+      document.getElementById('book-type').textContent = `Type: ${book.type}`;
+      document.getElementById('book-tags').textContent = 
+        Array.isArray(book.tag) 
+        ? book.tag.map(tag => tag.name).join(', ') 
+        : 'No tags available';
+      document.getElementById('book-date').textContent = `Updated at: ${book.updatedAt || 'No date available'}`;
+      document.getElementById('book-description').textContent = book.description || 'No description available';
+
+      // fetch chapter
+      fetch(`https://api.mangocomic.io.vn/book/get-all-chapter?id=${bookId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const chapters = data.chapters;
+            const chapterListElement = document.querySelector('.chapter-list');
+            chapterListElement.innerHTML = '';
+
+            chapters.forEach(chapter => {
+              const chapterItem = document.createElement('div');
+              chapterItem.classList.add('chapter-item');
+              
+              const chapterTitle = document.createElement('div');
+              chapterTitle.classList.add('chapter-title');
+              chapterTitle.textContent = `Chapter ${chapter.chapter_no}: ${chapter.title}`;
+              
+              const chapterDivider = document.createElement('div');
+              chapterDivider.classList.add('chapter-divider');
+              
+              chapterItem.appendChild(chapterTitle);
+              chapterItem.appendChild(chapterDivider);
+
+              // chuyen toi trang doc truyen theo type
+              const chapterLink = book.type === 'truyện tiểu thuyết'
+                ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=${chapter.chapter_no}`
+                : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=${chapter.chapter_no}`;
+              var importContactsIcon = document.getElementById("first-chapter");
+              if (importContactsIcon) {
+                importContactsIcon.addEventListener("click", () => {
+                  const firstChapterLink = book.type === "truyện tiểu thuyết"
+                    ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=1`
+                    : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
+                  
+                  window.location.href = firstChapterLink;
+                });
+              }
+                
+              chapterItem.addEventListener("click", () => {
+                window.location.href = chapterLink;
+              });
+
+              chapterListElement.appendChild(chapterItem);
+            });
+          } else {
+            console.error("Failed to fetch chapters");
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching chapters:", error);
+        });
+    } else {
+      console.error('Book not found with the provided bookId.');
+    }
+  } else {
+    console.error('Invalid API response structure.');
+  }
+})
+.catch(error => console.error('Error fetching data:', error));
+
 
   fetch('https://api.mangocomic.io.vn/book?keyword=highlight')
   .then(response => response.json())
@@ -112,10 +129,6 @@ document.querySelectorAll('.icon-box').forEach(box => {
   });
 });
 
-var importContactsIcon = document.getElementById("first-chapter");
-importContactsIcon.addEventListener("click", () => {
-  window.location.href = `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
-});
 
 function openTab(evt, tabName) {
   const tabcontent = document.getElementsByClassName("tabcontent");
@@ -220,4 +233,3 @@ document.addEventListener('DOMContentLoaded', function() {
       commentInput.value = ''; 
   });
 });
-
