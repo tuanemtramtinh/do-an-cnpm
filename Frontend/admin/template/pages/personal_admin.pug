@@ -16,15 +16,16 @@ block container
             img.functionicon(src="../../assets/img/Function.png" alt="Function Icon")
             h2.function-section-title Chức năng
         hr.function-info-divider
-        button.function-btn(data-section="manga" onclick="showSection('manga')")
-            img.functionicon(src="../../assets/img/mangaiconwhite.png" alt="Manga Icon")
-            span Truyện tranh
-        button.function-btn(data-section="tag")
-            img.functionicon(src="../../assets/img/tag-icon.png" alt="Tag Icon")
-            span Tag
-        button.function-btn(data-section="user" onclick="showSection('user')")
-            img.functionicon(src="../../assets/img/userwhite.png" alt="User Icon")
-            span Người dùng
+        .function-info-list
+          button.function-btn(data-section="manga" onclick="showSection('manga')")
+              <i class="fa-solid fa-book-open"></i>
+              span Truyện tranh
+          button.function-btn(data-section="tag")
+              <i class="fa-solid fa-tag"></i>
+              span Tag
+          button.function-btn(data-section="user" onclick="showSection('user')")
+              <i class="fa-solid fa-user"></i>
+              span Người dùng
 
 
 

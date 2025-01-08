@@ -42,21 +42,20 @@ block container
            
       //- Chức năng
       .grid__column-1
-        .function-section
-          .function-section-title-header
+        .function-section-title-header
             img.functionicon(src="../../assets/img/Function.png" alt="Function Icon")
             h2.function-section-title Chức năng
-          hr.function-info-divider
-          button.function-btn(onclick="toggleMangaList('myMangaList')") 
+        hr.function-info-divider
+        .function-section
+          button.function-btn.active(onclick="toggleMangaList('myMangaList')") 
             i.fa-solid.fa-pencil
             span Truyện của tôi
           button.function-btn(onclick="toggleMangaList('favoriteMangaList')") 
-            img.icon(src="../../assets/img/favorite-icon.png" alt="Favorite Icon")
+            <i class="fa-regular fa-heart"></i>
             span Truyện yêu thích
-          button.function-btn
-            a(href="./mangaWrittingCenter.html").mangacenter
-              img.icon(src="../../assets/img/write-center-icon.png" alt="Write Center Icon")
-              span Trung tâm viết truyện
+          a(href="./mangaWrittingCenter.html" class="mangacenter function-btn" )
+            <i class="fa-solid fa-file-arrow-up"></i>
+            span Trung tâm viết truyện
 
 
     .static-info-header
