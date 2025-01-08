@@ -306,10 +306,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> acb2a366a7591af700d1ef5facb8a7440e8a60b5
 document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem('token');
     const avatarImg = document.querySelector('.header__navbar-user-img');
