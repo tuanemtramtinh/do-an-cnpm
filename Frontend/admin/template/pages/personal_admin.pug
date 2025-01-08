@@ -1,0 +1,92 @@
+extends ../../../client/template/layouts/index.pug
+include ../mixins/user_card.pug
+include ../mixins/manga_card.pug
+include ../mixins/tag.pug
+
+block container
+  div.admin_page 
+    .admin-section
+      .admin-section-header
+        img.admin-setting(src="../../assets/img/setting.png" alt="Setting Icon")
+        h2.admin-setting-title Trang Quản Lý
+    .admin-layout
+      .admin-sidebar
+        .function-admin-section
+          .function-section-title-header
+            img.functionicon(src="../../assets/img/Function.png" alt="Function Icon")
+            h2.function-section-title Chức năng
+        hr.function-info-divider
+        button.function-btn(data-section="manga" onclick="showSection('manga')")
+            img.functionicon(src="../../assets/img/mangaiconwhite.png" alt="Manga Icon")
+            span Truyện tranh
+        button.function-btn(data-section="tag")
+            img.functionicon(src="../../assets/img/tag-icon.png" alt="Tag Icon")
+            span Tag
+        button.function-btn(data-section="user" onclick="showSection('user')")
+            img.functionicon(src="../../assets/img/userwhite.png" alt="User Icon")
+            span Người dùng
+
+
+
+      .admin-user-management.hidden(id="userSection")
+        .user-management-section
+          .user-management-header
+              img.usericon(src="../../assets/img/icon.png" alt="User Icon")
+              h2.user-management-title Người dùng
+          hr.user-divider    
+          input.user-search(type="text" placeholder="Tìm kiếm...")
+          .user-list
+
+
+      .admin-user-management.hidden(id="mangaSection")
+        .user-management-header
+          img.usericon(src="../../assets/img/mangaicon.png" alt="Manga Icon")
+          h2.user-management-title Truyện tranh
+        hr.user-divider    
+        input.user-search(type="text" placeholder="Tìm kiếm...")
+        .manga-list
+          +mangaCard(
+            "Alya Sometimes Hides Her Feelings in Russian",
+            "Sansan Sun, Tenamachi Saho",
+            ["Sci-Fi", "Monster", "Action", "Comedy", "Romance"],
+            "../../assets/img/dandadan.webp",
+            9999,
+            9999,
+            4.8
+          )
+          +mangaCard(
+            "Alya Sometimes Hides Her Feelings in Russian",
+            "Sansan Sun, Tenamachi Saho",
+            ["Sci-Fi", "Monster", "Action", "Comedy", "Romance"],
+            "../../assets/img/dandadan.webp",
+            9999,
+            9999,
+            4.8
+          )
+          +mangaCard(
+            "Alya Sometimes Hides Her Feelings in Russian",
+            "Sansan Sun, Tenamachi Saho",
+            ["Sci-Fi", "Monster", "Action", "Comedy", "Romance"],
+            "../../assets/img/dandadan.webp",
+            9999,
+            9999,
+            4.8
+          )
+      .admin-user-management.hidden(id="tagSection")
+        .user-management-header
+          img.usericon(src="../../assets/img/Tagg.png" alt="Manga Icon")
+          h2.user-management-title Tag
+        hr.user-divider    
+        .management-controls
+          input.management-search(type="text" placeholder="Tìm kiếm...")
+          button.add-tag-btn + Tạo tag
+        .tag-list
+          +tagCard("Kinh dị", "Hoạt động")
+          +tagCard("Siêu nhiên", "Dừng hoạt động")
+          +tagCard("Hài hước", "Dừng hoạt động")
+          +tagCard("Cảm động", "Hoạt động")
+          +tagCard("Isekai", "Hoạt động")
+          +tagCard("Trinh thám", "Dừng hoạt động")
+
+  script(src="../../assets/js/client/home_page.js")
+  script(src="../../assets/js/admin/script.js")

@@ -133,38 +133,91 @@ function openTab(evt, tabName) {
       evt.currentTarget.className += " active";
     }
 }
+fetchComments(bookId);
 
-fetch(`https://api.mangocomic.io.vn/book/getComment/${bookId}`)
-  .then(response => response.json())
-  .then(data => {
-    if (data.status === 200 && Array.isArray(data.payload)) {
-      const commentList = document.querySelector(".comment-list");
+async function postComment(bookId, commentContent) {
+  const token = localStorage.getItem('token'); 
 
-      if (commentList) {
-        commentList.innerHTML = '';
-        data.payload.forEach((comment) => {
-          const commentItem = document.createElement("li");
-          commentItem.className = "comment-item";
+  if (!token) {
+      alert('Bạn phải đăng nhập trước khi bình luận!');
+      return;
+  }
 
-          commentItem.innerHTML = `
-            <img src="${comment.avatar}" alt="${comment.username}" class="avatar" />
-            <div class="comment-content">
-              <span class="username">${comment.username}</span>: 
-              <span class="comment-text">${comment.comment}</span>
-            </div>
-          `;
+  try {
+      const response = await fetch("https://api.mangocomic.io.vn/user/comment", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`, 
+          },
+          body: JSON.stringify({
+              bookId: bookId,
+              comment: commentContent,
+          }),
+      });
 
-          commentList.appendChild(commentItem);
-        });
+      if (response.ok) {
+          const data = await response.json();
+          console.log('Bình luận thành công:', data);
+          // alert('Bình luận đã được đăng!');
+
+          fetchComments(bookId);
+          document.getElementById('comment-input').value = '';
       } else {
-        console.error("Element with class 'comment-list' not found.");
+          const errorData = await response.json();
+          console.error('Bình luận thất bại:', errorData.message);
+          // alert(`Bình luận thất bại: ${errorData.message}`);
       }
-    } else {
-      console.error("Failed to fetch comments:", data.message);
-    }
-  })
-  .catch(error => {
-    console.error("Error fetching comments:", error);
-  });
+  } catch (error) {
+      console.error('Lỗi:', error);
+      alert('Đã xảy ra lỗi trong quá trình đăng bình luận.');
+  }
+}
 
+
+function fetchComments(bookId) {
+    fetch(`https://api.mangocomic.io.vn/book/getComment/${bookId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 200 && Array.isArray(data.payload)) {
+                const commentList = document.querySelector(".comment-list");
+
+                if (commentList) {
+                    commentList.innerHTML = ''; 
+                    data.payload.forEach((comment) => {
+                        const commentItem = document.createElement("li");
+                        commentItem.className = "comment-item";
+
+                        commentItem.innerHTML = `
+                            <img src="${comment.avatar}" alt="${comment.username}" class="avatar" />
+                            <div class="comment-content">
+                                <span class="username">${comment.username}</span>: 
+                                <span class="comment-text">${comment.comment}</span>
+                            </div>
+                        `;
+
+                        commentList.appendChild(commentItem);
+                    });
+                }
+            } else {
+                console.error("Failed to fetch comments:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching comments:", error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('comment-form');
+  form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const commentInput = document.getElementById('comment-input');
+      const commentContent = commentInput.value.trim(); 
+
+      postComment(bookId, commentContent);
+      commentInput.value = ''; 
+  });
+});
 

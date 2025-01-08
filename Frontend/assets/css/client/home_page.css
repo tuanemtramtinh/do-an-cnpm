@@ -10,7 +10,7 @@ html{
     width: 100%;
     height: var(--header-height);
     background: var(--nav-color);
-    z-index: 2;
+    z-index: 100;
 }
 .menu-list{
     display: flex;
@@ -876,7 +876,8 @@ html{
 
 .modal .modal-container,
 .modal-dangky .modal-container-dangky,
-.modal-quenpass .modal-quenpass-container,
+.modal-quenpass
+ .modal-quenpass-container,
  .modal-otp .modal-otp-container,
  .modal-changepass .modal-changepass-container{
   background: #1E1E1E;
