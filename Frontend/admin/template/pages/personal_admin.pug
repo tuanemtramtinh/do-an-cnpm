@@ -2,6 +2,7 @@ extends ../../../client/template/layouts/index.pug
 include ../mixins/user_card.pug
 include ../mixins/manga_card.pug
 include ../mixins/tag.pug
+
 block container
   div.admin_page 
     .admin-section
@@ -87,5 +88,5 @@ block container
           +tagCard("Isekai", "Hoạt động")
           +tagCard("Trinh thám", "Dừng hoạt động")
 
-          
+  script(src="../../assets/js/client/home_page.js")
   script(src="../../assets/js/admin/script.js")

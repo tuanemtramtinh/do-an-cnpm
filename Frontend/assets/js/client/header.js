@@ -196,11 +196,11 @@ async function updateUIBasedOnLogin() {
       document.querySelector(".header__navbar-user").style.display = "flex";
     }
     const logoutButton = document.querySelector("#button-logout");
+    console.log(logoutButton);
     if (logoutButton) {
       logoutButton.addEventListener("click", function () {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
-        console.log("Đăng xuất thành công!");
         window.location.href = "./home_page.html";
       });
     } else {
@@ -306,7 +306,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> acb2a366a7591af700d1ef5facb8a7440e8a60b5
 document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem('token');
     const avatarImg = document.querySelector('.header__navbar-user-img');
