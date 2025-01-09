@@ -637,7 +637,7 @@ html{
   grid-column: 1 / span 2; /* Kéo dài ô qua cả 2 cột */
   justify-self: center; /* Căn giữa ô bên trong container */
   margin-top: 35px;
-  margin-bottom: 166px;
+  /* margin-bottom: 35px; */
 }
 
 /* Tiêu đề số liệu */
