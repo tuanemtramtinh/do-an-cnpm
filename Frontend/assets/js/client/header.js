@@ -207,7 +207,7 @@ async function updateUIBasedOnLogin() {
           window.location.href = "../../client/pages/home_page.html";
         }
         else {
-          
+          window.location.href = "./home_page.html";
         }
       });
     } else {
