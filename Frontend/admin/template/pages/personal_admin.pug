@@ -4,6 +4,8 @@ include ../mixins/manga_card.pug
 include ../mixins/tag.pug
 
 block container
+  .alert-list
+
   div.admin_page 
     .admin-section
       .admin-section-header
@@ -34,7 +36,7 @@ block container
           .user-management-header
               img.usericon(src="../../assets/img/icon.png" alt="User Icon")
               h2.user-management-title Người dùng
-          hr.user-divider    
+          //- hr.user-divider    
           input.user-search(type="text" placeholder="Tìm kiếm...")
           .user-list
 
@@ -43,7 +45,7 @@ block container
         .user-management-header
           img.usericon(src="../../assets/img/mangaicon.png" alt="Manga Icon")
           h2.user-management-title Truyện tranh
-        hr.user-divider    
+        //- hr.user-divider    
         input.user-search(type="text" placeholder="Tìm kiếm...")
         .manga-list
           +mangaCard(
@@ -77,7 +79,7 @@ block container
         .user-management-header
           img.usericon(src="../../assets/img/Tagg.png" alt="Manga Icon")
           h2.user-management-title Tag
-        hr.user-divider    
+        //- hr.user-divider    
         .management-controls
           input.management-search(type="text" placeholder="Tìm kiếm...")
           button.add-tag-btn + Tạo tag

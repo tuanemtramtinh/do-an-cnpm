@@ -10,6 +10,36 @@ const dangXuat = document.querySelector(".header__navbar-user-item--separate a")
 
 dangXuat.href = "../../client/pages/home_page.html"
 
+// Hiển thị thông báo
+const showAlert = (content = null, time = 3000, type = "alert--success") => {
+  if (content) {
+    const newAlert = document.createElement("div");
+    newAlert.setAttribute("class", `alert ${type}`);
+
+    newAlert.innerHTML = `
+            <span class="alert__content">${content}</span>
+            <span class="alert__close">
+            <i class="fa-solid fa-xmark"></i>
+            </span>
+        `;
+
+    const alertList = document.querySelector(".alert-list");
+
+    alertList.appendChild(newAlert);
+
+    const alertClose = newAlert.querySelector(".alert__close");
+
+    alertClose.addEventListener("click", () => {
+      alertList.removeChild(newAlert);
+    });
+
+    setTimeout(() => {
+      alertList.removeChild(newAlert);
+    }, time);
+  }
+};
+// Hết Hiển thị thông báo
+
 // Hàm toggle hiển thị/ẩn dropdown
 function toggleDropdown(button) {
     const dropdown = button.nextElementSibling;
@@ -106,6 +136,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                   role: select.value === "true" ? "admin" : "uploader"
                 })
               });
+              showAlert("Phân quyền thành công");
             })
           })
         }
