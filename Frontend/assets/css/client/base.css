@@ -399,15 +399,19 @@ html{
 /* Function Section */
 .function-section {
   background-color: #f3f4f6; /* Nền màu xám nhạt */
-  padding: 10px; /* Khoảng cách bên trong */
+  padding-top: 30px; /* Khoảng cách bên trong */
+  padding-bottom: 40px;
+  padding-left: 25px;
+  padding-right: 25px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Bóng đổ */
-  border-radius: 10px; /* Bo góc container */
+  border-radius: 20px; /* Bo góc container */
   height: auto; /* Tự động theo nội dung */
   overflow: hidden; /* Tránh nội dung tràn */
   display: flex; /* Sử dụng Flexbox để căn chỉnh */
   flex-direction: column; /* Sắp xếp các phần tử dọc */
-  gap: 10px; /* Khoảng cách giữa các phần tử (nút, tiêu đề) */
-  margin-left: 70px;
+  gap: 45px; /* Khoảng cách giữa các phần tử (nút, tiêu đề) */
+  margin-top: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
   
   .function-section-title-header {
@@ -434,6 +438,36 @@ html{
     border: 1px solid #000000;
     margin: 10px 0;
   }
+.function-section-title-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.functionicon {
+  width: 30px;
+  height: 30px;
+}
+
+.function-section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+}
+
+.function-info-divider {
+  width: 100%;
+  border: 1px solid #000000;
+  margin: 10px 0;
+  margin-top: 19px;
+}
+
+.function-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
 /* Button */
 .function-btn {
@@ -455,11 +489,18 @@ html{
   justify-content: center;
     margin-bottom: 45px;
   height: 40px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.function-btn.active {
+  background: #fff; /* Nền tối hơn khi hover */
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 .function-btn:hover {
-  background: #FFFFFF; /* Nền tối hơn khi hover */
-  color: #000;
+  background: white; /* Nền tối hơn khi hover */
+  color: black;
 }
 
 /* Icon trong nút */
@@ -557,6 +598,10 @@ html{
 
 
 /* Container chính */
+.statistics {
+  padding-bottom: 100px;
+}
+
 .statistics-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột bằng nhau */
@@ -625,6 +670,10 @@ html{
 
 
 /* Layout chính cho trang Admin */
+.admin_page {
+  margin-bottom: 120px;
+}
+
 .admin-setting {
   margin-left: 88px;
   height: 25px;
@@ -672,15 +721,16 @@ html{
   display: flex; /* Sử dụng Flexbox để căn chỉnh */
   flex-direction: column; /* Sắp xếp các phần tử dọc */
   gap: 10px; /* Khoảng cách giữa các phần tử (nút, tiêu đề) */
-  margin-left: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Phần quản lý người dùng */
 .admin-user-management {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px;
+  /* gap: 20px; */
+  padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -706,8 +756,8 @@ html{
 }
 
 .user-search {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 5px 10px;
   border-radius: 10px;
   border: 1px solid #0f0f0f;
@@ -946,8 +996,8 @@ html{
 }
 
 .management-search{
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 5px 10px;
   border-radius: 10px;
   border: 1px solid #0f0f0f;
@@ -958,7 +1008,7 @@ html{
 }
 
 .add-tag-btn {
-  margin-top: 5px;
+  margin-top: 20px;
   padding: 5px 10px;
   background-color: #000000;
   color: #fff;

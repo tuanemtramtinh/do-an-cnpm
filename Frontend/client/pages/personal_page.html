@@ -177,14 +177,14 @@
             </div>
           </div>
           <div class="grid__column-1">
+            <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
+              <h2 class="function-section-title">Chức năng</h2>
+            </div>
+            <hr class="function-info-divider">
             <div class="function-section">
-              <div class="function-section-title-header"><img class="functionicon" src="../../assets/img/Function.png" alt="Function Icon">
-                <h2 class="function-section-title">Chức năng</h2>
-              </div>
-              <hr class="function-info-divider">
-              <button class="function-btn" onclick="toggleMangaList('myMangaList')"> <i class="fa-solid fa-pencil"></i><span>Truyện của tôi</span></button>
-              <button class="function-btn" onclick="toggleMangaList('favoriteMangaList')"> <i class="fa-regular fa-heart"></i><span>Truyện yêu thích</span></button>
-              <button class="function-btn"><a class="mangacenter" href="./mangaWrittingCenter.html"><i class="fa-regular fa-file"></i><span>Trung tâm viết truyện</span></a></button>
+              <button class="function-btn active" onclick="toggleMangaList('myMangaList')"> <i class="fa-solid fa-pencil"></i><span>Truyện của tôi</span></button>
+              <button class="function-btn" onclick="toggleMangaList('favoriteMangaList')">
+                 <i class="fa-regular fa-heart"></i><span>Truyện yêu thích</span></button><a class="mangacenter function-btn" href="./mangaWrittingCenter.html"><i class="fa-solid fa-file-arrow-up"></i><span>Trung tâm viết truyện</span></a>
             </div>
           </div>
         </div>
@@ -208,8 +208,24 @@
             </div>
           </div>
         </div>
-        <script src="../../assets/js/client/home_page.js"></script>
         <script src="../../assets/js/client/personal_page.js"></script>
+      </div>
+      <div class="footer">
+        <div class="footer__container"> <img class="footer__header" src="../../assets/img/tieude-logo.png">
+          <div class="footer__container-list">
+            <ul class="footer__container-list-item">  
+              <li class="footer__container-item">Giới thiệu</li>
+              <li class="footer__container-item">Thông báo</li>
+              <li class="footer__container-item">liên hệ: 0865.xxx.xxx</li>
+              <li class="footer__container-item">Email: xxxxxxxxxx@hcmut.edu.vn</li>
+            </ul>
+            <ul class="footer__container-list-text"> 
+              <li class="footer__container-item-text">Trang web này cung cấp nội dung truyện tranh chỉ với mục đích giải trí và không chịu trách nhiệm về bất kỳ nội dung quảng cáo, liên kết của bên thứ ba hiển thị trên trang web của chúng tôi.</li>
+              <li class="footer__container-item-text">Tất cả thông tin và hình ảnh trên website đều được thu thập từ internet. Chúng tôi không chịu trách nhiệm về bất kỳ nội dung nào. Nếu bạn hoặc tổ chức của bạn có vấn đề gì liên quan đến nội dung hiển thị trên website, vui lòng liên hệ với chúng tôi để được giải quyết.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer__container-copyright">Copyright © 2024 Mango</p>
       </div>
     </body>
   </head>
