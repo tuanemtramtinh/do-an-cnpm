@@ -115,6 +115,7 @@ html{
   color:var(--text-color);
   font-size: 1.6rem !important;
   /* border-top: 1px solid #000; */
+  margin: 16px 0px;
 }
 
 
