@@ -45,13 +45,13 @@ fetch(`https://api.mangocomic.io.vn/book?bookId=${bookId}`)
               chapterItem.appendChild(chapterDivider);
 
               // chuyen toi trang doc truyen theo type
-              const chapterLink = book.type === 'truyện tiểu thuyết'
+              const chapterLink = book.type === 'tiểu thuyết'
                 ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=${chapter.chapter_no}`
                 : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=${chapter.chapter_no}`;
               var importContactsIcon = document.getElementById("first-chapter");
               if (importContactsIcon) {
                 importContactsIcon.addEventListener("click", () => {
-                  const firstChapterLink = book.type === "truyện tiểu thuyết"
+                  const firstChapterLink = book.type === "tiểu thuyết"
                     ? `../../client/pages/read-novel.html?novelId=${bookId}&chapterNo=1`
                     : `../../client/pages/read-manga.html?bookId=${bookId}&chapterNo=1`;
                   

@@ -414,7 +414,7 @@ html{
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
   
-  .function-section-title-header {
+  /* .function-section-title-header {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -437,7 +437,7 @@ html{
     width: 100%;
     border: 1px solid #000000;
     margin: 10px 0;
-  }
+  } */
 .function-section-title-header {
   display: flex;
   align-items: center;
@@ -459,8 +459,8 @@ html{
 .function-info-divider {
   width: 100%;
   border: 1px solid #000000;
-  margin: 10px 0;
-  margin-top: 19px;
+  /* margin: 10px 0; */
+  /* margin-top: 19px; */
 }
 
 .function-info-list {
@@ -487,7 +487,6 @@ html{
   transition: background 0.3s; 
   border-radius: 80px;
   justify-content: center;
-    margin-bottom: 45px;
   height: 40px;
   border: 2px solid rgba(0, 0, 0, 0.4);
 }
