@@ -2,7 +2,8 @@ const buyBtns = document.querySelectorAll(".header-item__login");
 const modal = document.querySelector(".js-modal");
 const modalContai = document.querySelector(".js-modal-container");
 const tat = document.querySelector(".js-modal-close");
-
+const pathname = location.pathname.split("/")[4];
+console.log(pathname);
 function showbuyticket() {
   modal.classList.add("open");
 }
@@ -196,12 +197,18 @@ async function updateUIBasedOnLogin() {
       document.querySelector(".header__navbar-user").style.display = "flex";
     }
     const logoutButton = document.querySelector("#button-logout");
-    console.log(logoutButton);
     if (logoutButton) {
       logoutButton.addEventListener("click", function () {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
         window.location.href = "./home_page.html";
+        if (pathname === "personal_admin.html") {
+          console.log("hello");
+          window.location.href = "../../client/pages/home_page.html";
+        }
+        else {
+          
+        }
       });
     } else {
       console.error("Không tìm thấy nút đăng xuất.");
