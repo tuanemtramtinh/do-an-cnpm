@@ -8,6 +8,8 @@
   margin-bottom: 25px;
 }
 
+
+
 .preview-image-title {
   display: flex;
   gap: 15px;
@@ -225,6 +227,18 @@
   gap: 26px;
 }
 .client--user-info__element--image img {
+
+
+  box-sizing: border-box;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  /* left: 89px; */
+  border: 0.5px solid #2B2B2B;
+  border-radius: 1000px;
+  background-size: cover;
+  background-position: center;
+
   width: 200px;
   height: auto;
   position: absolute;
@@ -789,7 +803,8 @@
 }
 .client--mangaWrittingCenter-element--right img {
   width: 150px;
-  aspect-ratio: 1/1;
+  height: 150px;
+  object-fit: cover;
   display: block;
 }
 .client--mangaWrittingCenter-element--middle {

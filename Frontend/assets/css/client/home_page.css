@@ -672,7 +672,7 @@ html{
 
 .content-chuamanga__item-rank-tag-list:last-child{
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   padding-left: 0;
 }
 
@@ -746,14 +746,17 @@ html{
   margin: 0;
   padding: 8px 12px;
 }
-.content-chuamanga__item-rank-chap:first-child{
-  border-radius: 4px 4px 0 0;
-}
 
 .content-chuamanga__item-rank-chap:last-child{
   border-bottom: 1px solid #5B5B5B;
   border-radius:  0 0 4px 4px;
 }
+
+.content-chuamanga__item-rank-chap:first-child{
+  border-radius: 4px 4px 0 0;
+}
+
+
 
 /* footer */
 .footer__container{
