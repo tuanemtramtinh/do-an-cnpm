@@ -201,7 +201,6 @@ async function updateUIBasedOnLogin() {
       logoutButton.addEventListener("click", function () {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
-        window.location.href = "./home_page.html";
         if (pathname === "personal_admin.html") {
           console.log("hello");
           window.location.href = "../../client/pages/home_page.html";

@@ -6,8 +6,8 @@ trangCaNhan.href = "../../client/pages/personal_page.html";
 const trangChu = document.querySelector(".header-logo-link");
 trangChu.href = "../../client/pages/home_page.html"
 
-const dangXuat = document.querySelector(".header__navbar-user-item--separate button");
-// dangXuat.innerHTML = '<a href="./../client/pages/home_page.html">Đăng Xuất</a>';
+// const dangXuat = document.querySelector(".header__navbar-user-item--separate");
+// dangXuat.innerHTML = '<a href="../../client/pages/home_page.html">Đăng Xuất</a>';
 
 // Hiển thị thông báo
 const showAlert = (content = null, time = 3000, type = "alert--success") => {
