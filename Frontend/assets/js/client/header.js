@@ -2,7 +2,7 @@ const buyBtns = document.querySelectorAll(".header-item__login");
 const modal = document.querySelector(".js-modal");
 const modalContai = document.querySelector(".js-modal-container");
 const tat = document.querySelector(".js-modal-close");
-const pathname = location.pathname.split("/")[4];
+const pathname = location.pathname;
 console.log(pathname);
 function showbuyticket() {
   modal.classList.add("open");
@@ -201,7 +201,7 @@ async function updateUIBasedOnLogin() {
       logoutButton.addEventListener("click", function () {
         localStorage.removeItem("token");
         updateUIBasedOnLogin();
-        if (pathname === "personal_admin.html") {
+        if (pathname.includes("personal_admin.html")) {
           console.log("hello");
           window.location.href = "../../client/pages/home_page.html";
         }
