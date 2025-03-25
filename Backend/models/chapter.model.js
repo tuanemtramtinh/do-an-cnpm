@@ -21,7 +21,6 @@ const chapterSchema = mongoose.Schema({
       url: { type: String, required: true },
     },
   ],
-
   content: {
     type: String,
   },
